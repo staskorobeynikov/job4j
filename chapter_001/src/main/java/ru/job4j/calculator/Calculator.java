@@ -1,3 +1,10 @@
+/**
+ * Package for calculate task.
+ *
+ * @author Stas Korobeynikov (stas.korobeinikov@mail.ru)
+ * @version $Id$
+ * @since 0.1
+ */
 package ru.job4j.calculator;
 
 public class Calculator {
@@ -17,6 +24,11 @@ public class Calculator {
         double result = first - second;
         System.out.println(first + " - " + second + " = " + result);
     }
+
+    /**
+     * Main. Method with parameters.
+     * @param args
+     */
     public static void main (String[] args){
         add(1, 1);
         div(4, 2);
