@@ -28,6 +28,6 @@ public class CheckPrimeNumberTest {
     public void when1() {
         CheckPrimeNumber prime = new CheckPrimeNumber();
         boolean rsl = prime.check(1);
-        assertThat(rsl, is(true));
+        assertThat(rsl, is(false));
     }
 }
