@@ -3,9 +3,9 @@ package ru.job4j.loop;
 public class PrimeNumber {
     public int calc(int finish){
         int count = 0;
+        CheckPrimeNumber primeNumber = new CheckPrimeNumber();
         for(int i=2; i<=finish; i++){
-            CheckPrimeNumber primeNumber = new CheckPrimeNumber();
-            if (primeNumber.check(i)==true){
+            if (primeNumber.check(i)){
                 count++;
             }
         }
