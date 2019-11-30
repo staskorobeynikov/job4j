@@ -10,9 +10,6 @@ package ru.job4j.calculator;
 public class Calculator {
     /**
      * Method add calculate Sum two numbers
-     * Method div calculate Divide two numbers
-     * Method multiply calculate Multiplication two numbers
-     * Method subtract calculate Substraction two numbers
      * @param first First number
      * @param second Second number
      */
@@ -20,14 +17,32 @@ public class Calculator {
         double result = first + second;
         System.out.println(first + " + " + second + " = " + result);
     }
+
+    /**
+     * Method div calculate Divide two numbers
+     * @param first First number
+     * @param second Second number
+     */
     public static void div(double first, double second){
         double result = first/second;
         System.out.println(first + " / " + second + " = " + result);
     }
+
+    /**
+     * Method multiply calculate Multiplication two numbers
+     * @param first First number
+     * @param second Second number
+     */
     public static void multiply(double first, double second){
         double result = first*second;
         System.out.println(first + " * " + second + " = " + result);
     }
+
+    /**
+     * Method subtract calculate Substraction two numbers
+     * @param first First number
+     * @param second Second number
+     */
     public static void subtract(double first, double second){
         double result = first - second;
         System.out.println(first + " - " + second + " = " + result);
