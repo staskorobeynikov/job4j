@@ -8,6 +8,14 @@
 package ru.job4j.calculator;
 
 public class Calculator {
+    /**
+     * Method add calculate Sum two numbers
+     * Method div calculate Divide two numbers
+     * Method multiply calculate Multiplication two numbers
+     * Method subtract calculate Substraction two numbers
+     * @param first First number
+     * @param second Second number
+     */
     public static void add(double first, double second){
         double result = first + second;
         System.out.println(first + " + " + second + " = " + result);
