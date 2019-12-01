@@ -4,29 +4,29 @@ public class MatrixCheck {
     public static boolean isWin(char[][] board) {
         boolean result = false;
         for (int row = 0; row < board.length; row++) {
-            int countcell=0;
-            int countrow=0;
+            int countcell = 0;
+            int countrow = 0;
             for (int cell = 0; cell < board.length; cell++) {
                 char sign = board[row][cell];
                 System.out.print(sign);
                 //for () { проверить последовательность.
-                for (row=0; row < board.length; row++){
-                    if(board[row][row]!=' '){
-                        for (cell=0; cell<board.length; cell++){
-                            if(board[cell][row]!=' '){
+                for (row = 0; row < board.length; row++) {
+                    if (board[row][row] != ' ') {
+                        for (cell = 0; cell < board.length; cell++) {
+                            if (board[cell][row] != ' ') {
                                 countcell++;
                             }
-                            if(board[row][cell]!=' '){
+                            if (board[row][cell] != ' ') {
                                 countrow++;
                             }
                         }
                     }
                 }
-                if(countcell==board.length){
+                if (countcell == board.length) {
                     result = true;
                     break;
                 }
-                if(countrow==board.length){
+                if (countrow == board.length) {
                     result = true;
                     break;
                 }

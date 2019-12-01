@@ -6,15 +6,15 @@ import static org.junit.Assert.assertThat;
 
 public class CounterTest {
     @Test
-    public void whenSumEvenNumbersFromOneToTenThenThirty(){
+    public void whenSumEvenNumbersFromOneToTenThenThirty() {
         Counter check = new Counter();
-        int result = check.add(1,10);
+        int result = check.add(1, 10);
         assertThat(result, is(30));
     }
     @Test
-    public void whenSumEvenNumbersFrom10To100Then2550(){
+    public void whenSumEvenNumbersFrom10To100Then2550() {
         Counter check = new Counter();
-        int result = check.add(10,100);
+        int result = check.add(10, 100);
         assertThat(result, is(2550));
     }
 }

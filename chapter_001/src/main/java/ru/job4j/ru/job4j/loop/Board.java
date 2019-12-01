@@ -6,7 +6,7 @@ public class Board {
             for (int cell = 0; cell < width; cell++) {
                 // условие проверки, что писать пробел или X
                 // Выше в задании мы определили закономерность, когда нужно проставлять X
-                if ((row+cell)%2==0) {
+                if ((row + cell) % 2 == 0) {
                     System.out.print("X");
                 } else {
                     // для наглядности пропуск заменил на "O"
@@ -23,10 +23,10 @@ public class Board {
         System.out.println();
         paint(4, 4);
         System.out.println();
-        paint(5,5);
+        paint(5, 5);
         System.out.println();
-        paint(6,4);
+        paint(6, 4);
         System.out.println();
-        paint(4,6);
+        paint(4, 6);
     }
 }

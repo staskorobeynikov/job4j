@@ -6,27 +6,27 @@ import static org.junit.Assert.assertThat;
 
 public class MultiMaxTest {
     @Test
-    public void whenSecondMax(){
+    public void whenSecondMax() {
         MultiMax check = new MultiMax();
-        int result = check.max(1,4,2);
+        int result = check.max(1, 4, 2);
         assertThat(result, is(4));
     }
     @Test
-    public void whenFirstMax(){
+    public void whenFirstMax() {
         MultiMax check = new MultiMax();
-        int result = check.max(5,2,4);
+        int result = check.max(5, 2, 4);
         assertThat(result, is(5));
     }
     @Test
-    public void whenThirdMax(){
+    public void whenThirdMax() {
         MultiMax check = new MultiMax();
-        int result = check.max(1,8,10);
+        int result = check.max(1, 8, 10);
         assertThat(result, is(10));
     }
     @Test
-    public void whenAllEquals(){
+    public void whenAllEquals() {
         MultiMax check = new MultiMax();
-        int result = check.max(6,6,6);
+        int result = check.max(6, 6, 6);
         assertThat(result, is(6));
     }
 }

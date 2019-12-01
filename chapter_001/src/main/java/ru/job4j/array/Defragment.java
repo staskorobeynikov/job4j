@@ -7,12 +7,12 @@ public class Defragment {
             if (cell == null) {
                 // переместить первую не null ячейку
                 // Здесь нужен цикл while
-                while(index<array.length){
-                    if(array[index]!=null){
+                while (index < array.length) {
+                    if (array[index] != null) {
                         String temp = cell;
                         cell = array[index];
                         array[index] = temp;
-                        index=0;
+                        index = 0;
                         break;
                     }
                     index++;
