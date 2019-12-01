@@ -9,27 +9,26 @@ public class MatrixCheck {
             for (int cell = 0; cell < board.length; cell++) {
                 char sign = board[row][cell];
                 System.out.print(sign);
-                    if (board[cell][cell] != ' ') {
-                        for (cell = 0; cell < board.length; cell++) {
-                            if (board[cell][row] != ' ') {
-                                countcell++;
-                            }
-                            if (board[row][cell] != ' ') {
-                                countrow++;
-                            }
-                        }
+                if (board[cell][cell] == 'X') {
+                    if (board[cell][row] == 'X') {
+                        countcell++;
+                    }
+                    if (board[row][cell] == 'X') {
+                        countrow++;
                     }
                 }
-                if (countcell == board.length) {
-                    result = true;
-                    break;
-                }
-                if (countrow == board.length) {
-                    result = true;
-                    break;
-                }
+            }
+            if (countcell == board.length) {
+                result = true;
+                break;
+            }
+            if (countrow == board.length) {
+                result = true;
+                break;
             }
             System.out.println();
+        }
+        System.out.println();
         return result;
     }
     public static void main(String[] args) {
