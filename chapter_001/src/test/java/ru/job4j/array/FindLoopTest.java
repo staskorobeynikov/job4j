@@ -26,9 +26,6 @@ public class FindLoopTest {
     @Test
     public void whenArrayHas8Then4() {
         FindLoop find = new FindLoop();
-        // в массиве передаем значения где искомое значени
-        // содержится несколько раз. Результатом будет
-        // первое встречаемое значение
         int[] input = new int[] {5, 2, 3, 10, 8, 13, 8, 8, 8};
         int value = 8;
         int result = find.indexOf(input, value);
@@ -55,5 +52,4 @@ public class FindLoopTest {
         int expect = 4;
         assertThat(result, is(expect));
     }
-
 }

@@ -15,7 +15,6 @@ public class MinDiapasonTest {
                 is(0)
         );
     }
-
     @Test
     public void whenLastMin() {
         assertThat(
@@ -26,7 +25,6 @@ public class MinDiapasonTest {
                 is(3)
         );
     }
-
     @Test
     public void whenMiddleMin() {
         assertThat(

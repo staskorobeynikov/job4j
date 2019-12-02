@@ -17,7 +17,6 @@ public class SqMax {
             } else {
                 result = forth;
                 }
-
         } else if (second > third) {
             if (second > forth) {
                 result = second;

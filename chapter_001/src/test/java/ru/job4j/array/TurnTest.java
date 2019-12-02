@@ -12,7 +12,6 @@ public class TurnTest {
         int[] expect = new int[] {2, 6, 1, 4};
         assertThat(result, is(expect));
     }
-
     @Test
     public void whenTurnArrayWithOddAmountOfElementsThenTurnedArray() {
         Turn turner = new Turn();

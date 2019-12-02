@@ -11,7 +11,6 @@ public class CheckPrimeNumberTest {
         boolean rsl = prime.check(5);
         assertThat(rsl, is(true));
     }
-
     @Test
     public void when4() {
         CheckPrimeNumber prime = new CheckPrimeNumber();

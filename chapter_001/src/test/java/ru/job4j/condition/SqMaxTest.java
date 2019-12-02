@@ -5,8 +5,6 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 public class SqMaxTest {
-    // тесты с максимальным значением первого значения
-    // разные комбинации остальным чисел
     @Test
     public void whenFirstMax() {
         SqMax check = new SqMax();
@@ -43,8 +41,6 @@ public class SqMaxTest {
         int result = check.max(4, 3, 2, 1);
         assertThat(result, is(4));
     }
-    // тесты с максимальным значением второго значения
-    // разные комбинации остальным чисел
     @Test
     public void whenSecondMax() {
         SqMax check = new SqMax();
@@ -81,8 +77,6 @@ public class SqMaxTest {
         int result = check.max(3, 4, 2, 1);
         assertThat(result, is(4));
     }
-    // тесты с максимальным значением третьего значения
-    // разные комбинации остальным чисел
     @Test
     public void whenThirdMax() {
         SqMax check = new SqMax();
@@ -119,8 +113,6 @@ public class SqMaxTest {
         int result = check.max(3, 2, 4, 1);
         assertThat(result, is(4));
     }
-    // тесты с максимальным значением четвертого значения
-    // разные комбинации остальным чисел
     @Test
     public void whenForthMax() {
         SqMax check = new SqMax();
@@ -157,7 +149,6 @@ public class SqMaxTest {
         int result = check.max(3, 2, 1, 4);
         assertThat(result, is(4));
     }
-    // пример который выполнен согласно комментарию.
     @Test
     public void whenThird12Max() {
         SqMax check = new SqMax();

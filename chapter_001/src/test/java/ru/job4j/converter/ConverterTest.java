@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class ConverterTest {
-
     @Test
     public void rubleToEuro() {
         int in = 140;

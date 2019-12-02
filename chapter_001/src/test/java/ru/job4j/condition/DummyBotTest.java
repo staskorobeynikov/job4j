@@ -12,8 +12,6 @@ public class DummyBotTest {
     }
     @Test
     public void whenGreetBotErr() {
-        // не совпадает формулировка вопроса,
-        // но в ответе мы указываем правильный ответ бота
         assertThat(DummyBot.answer("Привет, Бот"),
                 is("Это ставит меня в тупик. Задайте другой вопрос."));
     }
@@ -26,8 +24,6 @@ public class DummyBotTest {
     public void whenByeBotErr() {
         assertThat(DummyBot.answer("Пока."),
                 is("Привет, умник."));
-        // вопрос задан правильно, однако ответ из другого блока.
-        // тест кидает ошибку.
     }
     @Test
     public void whenUnknownBot() {
@@ -36,5 +32,4 @@ public class DummyBotTest {
                         +
                         "Задайте другой вопрос."));
     }
-
 }
