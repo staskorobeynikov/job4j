@@ -25,4 +25,16 @@ public class MaxTest {
         int result = Max.max(7, 7);
         assertThat(result, is(4));
     }
+    @Test
+    public void whenMaxThirdNumbers() {
+        Max max = new Max();
+        int result = max.max(3, 6, 10);
+        assertThat(result, is(10));
+    }
+    @Test
+    public void whenMaxForthNumbers() {
+        Max max = new Max();
+        int result = max.max(1, 10, 30, 50);
+        assertThat(result, is(50));
+    }
 }
