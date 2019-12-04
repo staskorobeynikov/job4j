@@ -24,11 +24,7 @@ public class TrgArea {
         return result;
     }
     private boolean exist(double a, double b, double c) {
-        boolean result = false;
-        if (a + b > c && a + c > b && b + c > a) {
-            result = true;
-        }
-        return result;
+        return a + b > c && a + c > b && b + c > a;
     }
     public static void main(String[] args) {
         Point ap = new Point(0, 4);
