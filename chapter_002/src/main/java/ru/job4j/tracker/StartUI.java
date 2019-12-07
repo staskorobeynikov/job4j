@@ -3,8 +3,7 @@ package ru.job4j.tracker;
 public class StartUI {
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ===");
-        System.out.print("Enter name: ");
-        String name = input.askStr("");
+        String name = input.askStr("Enter name: ");
         Item item = new Item(name);
         tracker.add(item);
     }
@@ -62,8 +61,7 @@ public class StartUI {
         boolean run = true;
         while (run) {
             this.showMenu();
-            System.out.println("Select: ");
-            int select = Integer.valueOf(input.askStr(""));
+            int select = Integer.valueOf(input.askStr("Select: "));
             if (select == 0) {
                 StartUI.createItem(input, tracker);
             } else if (select == 1) {
