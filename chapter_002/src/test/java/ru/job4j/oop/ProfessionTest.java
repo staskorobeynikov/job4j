@@ -45,7 +45,7 @@ public class ProfessionTest {
     public void checkProgrammer() {
         String[] expected = {"High", "Java", "1970-17-11"};
         Programmer programmer = new Programmer("Clark", "Bailey", "High", "1970-17-11", "QA engineer", "Java");
-        String out[] = new String[3];
+        String[] out = new String[3];
         out[0] = programmer.getEducation();
         out[1] = programmer.getLanguageprog();
         out[2] = programmer.getBirthday();

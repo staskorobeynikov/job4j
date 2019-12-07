@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 
 public class TrgAreaTest {
     @Test
-    public void area () {
+    public void area() {
         double expected = 19.0;
         Point ap = new Point(0, 4);
         Point bp = new Point(10, 2);
@@ -17,7 +17,7 @@ public class TrgAreaTest {
         Assert.assertEquals(expected, out, 0.01);
     }
     @Test
-    public void areaNot () {
+    public void areaNot() {
         double expected = -1.0;
         Point ap = new Point(3, 3);
         Point bp = new Point(1, 9);
@@ -27,7 +27,7 @@ public class TrgAreaTest {
         Assert.assertEquals(expected, out, 0.01);
     }
     @Test
-    public void areaNull () {
+    public void areaNull() {
         double expected = -1.0;
         Point ap = new Point(2, 2);
         Point bp = new Point(5, 2);

@@ -27,7 +27,7 @@ public class Library {
         System.out.println("Show book with name - Clean code");
         for (int i = 0; i < books.length; i++) {
             Book b = books[i];
-            if(b.getName() == "Clean Code") {
+            if (b.getName() == "Clean Code") {
                 System.out.println(b.getName() + " - " + b.getCount());
             }
         }

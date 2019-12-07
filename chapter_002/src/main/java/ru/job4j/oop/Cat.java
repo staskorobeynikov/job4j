@@ -7,10 +7,10 @@ public class Cat {
         System.out.println("Cat's name is " + this.name);
         System.out.println("He eats " + this.food);
     }
-    public void giveNick(String nick){
+    public void giveNick(String nick) {
         this.name = nick;
     }
-    public void eat(String meat){
+    public void eat(String meat) {
         this.food = meat;
     }
     public static void main(String[] args) {

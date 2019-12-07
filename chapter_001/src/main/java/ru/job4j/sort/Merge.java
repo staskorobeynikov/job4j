@@ -8,7 +8,7 @@ public class Merge {
         int leftI = 0;
         int rightI = 0;
         int[] result = new int[left.length + right.length];
-        while (i < left.length + right.length){
+        while (i < left.length + right.length) {
             if (leftI >= left.length) {
                 result[i] = right[rightI];
                 rightI++;

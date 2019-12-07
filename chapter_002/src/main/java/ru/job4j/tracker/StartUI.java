@@ -35,7 +35,7 @@ public class StartUI {
             System.out.println("Заявка по id " + id + " не найдена");
         }
     }
-    public static void findItemId (Input input, Tracker tracker) {
+    public static void findItemId(Input input, Tracker tracker) {
         System.out.println("=== Find Item by ID ===");
         String id = input.askStr("Enter ID: ");
         Item itemById = tracker.findById(id);
@@ -46,7 +46,7 @@ public class StartUI {
             System.out.println("Заявка по id " + id + " не найдена");
         }
     }
-    public static void findItemsName (Input input, Tracker tracker) {
+    public static void findItemsName(Input input, Tracker tracker) {
         System.out.println("=== Find Items by Name ===");
         String name = input.askStr("Enter name: ");
         Item[] itemsByName = tracker.findByName(name);

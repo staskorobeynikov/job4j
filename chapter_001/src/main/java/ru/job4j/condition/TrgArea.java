@@ -9,7 +9,7 @@ public class TrgArea {
         this.second = bp;
         this.third = cp;
     }
-    public double period (double a,  double b, double c) {
+    public double period(double a,  double b, double c) {
         return (a + b + c) / 2;
     }
     public double area() {

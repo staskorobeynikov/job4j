@@ -21,11 +21,6 @@ public class DummyBotTest {
                 is("До скорой встречи!"));
     }
     @Test
-    public void whenByeBotErr() {
-        assertThat(DummyBot.answer("Пока."),
-                is("Привет, умник."));
-    }
-    @Test
     public void whenUnknownBot() {
         assertThat(DummyBot.answer("Сколько будет 2+2?"),
                 is("Это ставит меня в тупик. "
