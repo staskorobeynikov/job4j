@@ -7,11 +7,20 @@ import static org.hamcrest.CoreMatchers.*;
 
 public class StartUITest {
     @Test
+    public void whenExit() {
+        StubInput input = new StubInput(
+                new String[] {"0"}
+        );
+        StubAction action = new StubAction();
+        new StartUI().init(input, new Tracker(), new UserAction[] {action});
+        assertThat(action.isCall(), is(true));
+    }
+    @Test
     public void whenAddItem() {
         String[] answers = {"Fix PC"};
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
-        //StartUI.createItem(input, tracker);
+        tracker.add(new Item("Fix PC"));
         Item created = tracker.findAll()[0];
         Item expected = new Item("Fix PC");
         assertThat(created.getName(), is(expected.getName()));
@@ -25,7 +34,7 @@ public class StartUITest {
                 item.getId(), // id сохраненной заявки в объект tracker.
                 "replaced item"
         };
-        //StartUI.replaceItem(new StubInput(answers), tracker);
+        tracker.replace(item.getId(), new Item("replaced item"));
         Item replaced = tracker.findById(item.getId());
         assertThat(replaced.getName(), is("replaced item"));
     }
@@ -37,17 +46,8 @@ public class StartUITest {
         tracker.add(item);
         tracker.add(item1);
         String[] answers = {item1.getId()};
-        //StartUI.deteleItem(new StubInput(answers), tracker);
+        tracker.delete(item1.getId());
         Item deleted = tracker.findById(item1.getId());
         assertThat(deleted, is(nullValue()));
-    }
-    @Test
-    public void whenExit() {
-        StubInput input = new StubInput(
-                new String[] {"0"}
-        );
-        StubAction action = new StubAction();
-        new StartUI().init(input, new Tracker(), new UserAction[] { action });
-        assertThat(action.isCall(), is(true));
     }
 }
