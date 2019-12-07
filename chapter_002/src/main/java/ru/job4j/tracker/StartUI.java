@@ -18,10 +18,10 @@ public class StartUI {
     public static void replaceItem(Input input, Tracker tracker) {
         System.out.println("=== Edit an Item ===");
         String id = input.askStr("Enter ID: ");
-        Item edit = tracker.findById(id);
-        if (edit != null) {
-            String name = input.askStr("Enter name: ");
-            edit.setName(name);
+        String name = input.askStr("Enter name: ");
+        Item itemReplace = new Item(name);
+        if (tracker.replace(id, itemReplace)) {
+            System.out.println("Заявка изменена");
         } else {
             System.out.println("Заявка по id " + id + " не найдена");
         }
@@ -50,11 +50,9 @@ public class StartUI {
         System.out.println("=== Find Items by Name ===");
         String name = input.askStr("Enter name: ");
         Item[] itemsByName = tracker.findByName(name);
-        if (itemsByName[0] != null) {
-            for (Item item : itemsByName) {
-                System.out.print("ID: " + item.getId() + "; ");
-                System.out.println("Name: " + item.getName());
-            }
+        for (Item item : itemsByName) {
+            System.out.print("ID: " + item.getId() + "; ");
+            System.out.println("Name: " + item.getName());
         }
     }
     public void init(Input input, Tracker tracker) {
@@ -82,11 +80,11 @@ public class StartUI {
     private void showMenu() {
         System.out.println("Menu.");
         System.out.println("0. Add new Item");
-        System.out.println("1. Show all items");
-        System.out.println("2. Edit item");
-        System.out.println("3. Delete item");
-        System.out.println("4. Find item by Id");
-        System.out.println("5. Find items by name");
+        System.out.println("1. Show all Items");
+        System.out.println("2. Edit Item");
+        System.out.println("3. Delete Item");
+        System.out.println("4. Find Item by Id");
+        System.out.println("5. Find Items by Name");
         System.out.println("6. Exit Program");
     }
     public static void main(String[] args) {
