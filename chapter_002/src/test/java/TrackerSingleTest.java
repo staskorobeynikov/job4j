@@ -9,8 +9,6 @@ public class TrackerSingleTest {
     public void whenTwoObjects() {
         TrackerSingle tracker = TrackerSingle.INSTANCE;
         TrackerSingle tracker1 = TrackerSingle.INSTANCE;
-        TrackerSingle actual = tracker;
-        TrackerSingle expected = tracker1;
-        assertThat(actual, is(expected));
+        assertThat(tracker, is(tracker1));
     }
 }

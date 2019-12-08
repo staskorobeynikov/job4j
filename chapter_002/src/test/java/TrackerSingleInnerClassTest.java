@@ -8,8 +8,6 @@ public class TrackerSingleInnerClassTest {
     public void whenTwoObjects() {
         TrackerSingleInnerClass tracker = TrackerSingleInnerClass.getInstance();
         TrackerSingleInnerClass tracker1 = TrackerSingleInnerClass.getInstance();
-        TrackerSingleInnerClass actual = tracker;
-        TrackerSingleInnerClass expected = tracker1;
-        assertThat(actual, is(expected));
+        assertThat(tracker, is(tracker1));
     }
 }

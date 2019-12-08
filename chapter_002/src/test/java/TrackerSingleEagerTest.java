@@ -7,8 +7,6 @@ public class TrackerSingleEagerTest {
     public void whenTwoObjects() {
         TrackerSingleEager tracker = TrackerSingleEager.getInstance();
         TrackerSingleEager tracker1 = TrackerSingleEager.getInstance();
-        TrackerSingleEager actual = tracker;
-        TrackerSingleEager expected = tracker1;
-        assertThat(actual, is(expected));
+        assertThat(tracker, is(tracker1));
     }
 }

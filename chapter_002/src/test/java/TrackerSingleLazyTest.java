@@ -7,8 +7,6 @@ public class TrackerSingleLazyTest {
     public void whenTwoObjects() {
         TrackerSingleLazy tracker = TrackerSingleLazy.getInstance();
         TrackerSingleLazy tracker1 = TrackerSingleLazy.getInstance();
-        TrackerSingleLazy actual = tracker;
-        TrackerSingleLazy expected = tracker1;
-        assertThat(actual, is(expected));
+        assertThat(tracker, is(tracker1));
     }
 }
