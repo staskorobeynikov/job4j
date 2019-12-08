@@ -26,7 +26,7 @@ public class RefactStartUITest {
                 new String[] {"0"}
         );
         StubAction action = new StubAction();
-        new StartUI().init(input, new Tracker(), new UserAction[] { action });
+        new StartUI().init(input, new Tracker(), new UserAction[] {action});
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("Menu.")
                 .add("0. Stub action")
@@ -40,8 +40,9 @@ public class RefactStartUITest {
         tracker.add(item);
         ShowAllAction act = new ShowAllAction();
         act.execute(new StubInput(new String[] {}), tracker);
-        String expect = new String("ID: " + item.getId() + "; " + "Name: "
-                + item.getName() + "\r\n");
+        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                .add("ID: " + item.getId() + "; " + "Name: " + item.getName())
+                .toString();
         assertThat(new String(out.toByteArray()), is(expect));
     }
     @Test
@@ -51,8 +52,9 @@ public class RefactStartUITest {
         tracker.add(item);
         FindByNameAction actual = new FindByNameAction();
         actual.execute(new StubInput(new String[] {"test1"}), tracker);
-        String expect = new String("ID: " + item.getId() + "; " + "Name: "
-                + item.getName() + "\r\n");
+        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                .add("ID: " + item.getId() + "; " + "Name: " + item.getName())
+                .toString();
         assertThat(new String(out.toByteArray()), is(expect));
     }
 }
