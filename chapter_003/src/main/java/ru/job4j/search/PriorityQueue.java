@@ -10,12 +10,16 @@ public class PriorityQueue {
      * @param task задача
      */
     public void put(Task task) {
-        if (task.getPriority() > 1) {
-            tasks.addLast(task);
+        int i = 0;
+        for (Task current : tasks) {
+            if (task.getPriority() < current.getPriority()) {
+                i = tasks.indexOf(current);
+                break;
+            } else {
+                i++;
+            }
         }
-        if (task.getPriority() <= 1) {
-            tasks.add(0, task);
-        }
+        tasks.add(i, task);
     }
     public Task take() {
         return this.tasks.poll();
