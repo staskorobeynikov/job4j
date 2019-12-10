@@ -15,17 +15,13 @@ public class ConvertList2Array {
         int[][] array = new int[groups][cells];
         int row = 0, cell = 0;
         for (Integer num : list) {
-            if (row < cells - 1) {
-                if (cell < cells - 1) {
-                    array[row][cell] = num;
-                    cell++;
-                } else {
-                    array[row][cell] = num;
-                    cell = 0;
-                    row++;
-                }
+            if (cell < cells - 1) {
+                array[row][cell] = num;
+                cell++;
             } else {
                 array[row][cell] = num;
+                row++;
+                cell = 0;
             }
         }
         return array;
