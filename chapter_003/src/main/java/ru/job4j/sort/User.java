@@ -49,4 +49,10 @@ public class User implements Comparable<User> {
     public int hashCode() {
         return Objects.hash(name, age);
     }
+
+    @Override
+    public String toString() {
+        return "name = '" + name + '\''
+                + ", age = " + age;
+    }
 }
