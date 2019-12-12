@@ -1,6 +1,5 @@
 package ru.job4j.sort;
 
-import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 public class User implements Comparable<User> {
@@ -21,7 +20,7 @@ public class User implements Comparable<User> {
     }
 
     @Override
-    public int compareTo(@NotNull User o) {
+    public int compareTo(User o) {
         int result = 0;
         if (this.name == o.getName()) {
             result = age - o.getAge();
