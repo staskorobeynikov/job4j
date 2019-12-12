@@ -3,16 +3,18 @@ package ru.job4j.collection;
 import java.util.Comparator;
 
 public class StringCompare implements Comparator<String> {
+    /**
+     * Метод позволяет сравнить два слова
+     * @param left слово с которым сравнивают
+     * @param right слово которое сравнивают
+     * @return возвращает число, которое означает где будет располагаться слово.
+     */
     @Override
     public int compare(String left, String right) {
         boolean result;
-        int exitCycle = 0;
+        int exitCycle;
         int index = 0;
-        if (left.length() >= right.length()) {
-            exitCycle = right.length();
-        } else {
-            exitCycle = left.length();
-        }
+        exitCycle = Math.min(right.length(), left.length());
         do {
             if (left.charAt(index) == right.charAt(index)) {
                 result = true;
