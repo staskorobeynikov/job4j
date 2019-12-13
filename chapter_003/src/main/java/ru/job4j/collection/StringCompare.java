@@ -16,6 +16,9 @@ public class StringCompare implements Comparator<String> {
         int index = 0;
         exitCycle = Math.min(right.length(), left.length());
         do {
+            if (exitCycle == 0) {
+                return 1;
+            }
             if (left.charAt(index) == right.charAt(index)) {
                 result = true;
                 index++;
