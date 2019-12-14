@@ -121,10 +121,13 @@ public class Bank {
     private Account findAccountByRequisite(String requisites,
                                           List<Account> accounts) {
         Account result = null;
-        for (Account a : accounts) {
-            if (a.getRequisites() == requisites && a.getRequisites() != null) {
-                result = a;
-                break;
+        if (accounts != null) {
+            for (Account a : accounts) {
+                if (a.getRequisites() == requisites
+                        && a.getRequisites() != null) {
+                    result = a;
+                    break;
+                }
             }
         }
         return result;

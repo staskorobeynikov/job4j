@@ -90,7 +90,7 @@ public class BankTest {
         assertThat(expected, is(false));
     }
     @Test
-    public void whenTransfer100OneUserTwoAccountsThenTrue() {
+    public void whenTransfer100OneUserTwoAccountsThenFalse() {
         Bank bank = new Bank();
         User stas = new User("Stas", "2564759");
         bank.addUser(stas);
@@ -105,5 +105,12 @@ public class BankTest {
         boolean expected = bank.transferMoney("2564759", "00001",
                 "2564759", "00002", 100);
         assertThat(expected, is(true));
+    }
+    @Test
+    public void whenTransfer100NoUserNoAccountsThenFalse() {
+        Bank bank = new Bank();
+        boolean expected = bank.transferMoney("2564759", "00001",
+                "2564759", "00002", 100);
+        assertThat(expected, is(false));
     }
 }
