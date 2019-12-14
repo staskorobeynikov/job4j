@@ -11,23 +11,16 @@ public class StringCompare implements Comparator<String> {
      */
     @Override
     public int compare(String left, String right) {
-        boolean result;
         int exitCycle;
         int index = 0;
         exitCycle = Math.min(right.length(), left.length());
-        do {
-            if (exitCycle == 0) {
-                return 1;
+        for (int i = 0; i < exitCycle; i++) {
+            index = Character.compare(left.charAt(i), right.charAt(i));
+            if (index != 0) {
+                break;
             }
-            if (left.charAt(index) == right.charAt(index)) {
-                result = true;
-                index++;
-            } else {
-                result = false;
-            }
-        } while (result && index < exitCycle);
-        return result ? left.length()
-                - right.length() : left.charAt(index)
-                - right.charAt(index);
+        }
+        return index == 0 ? Integer.compare(left.length(),
+                right.length()) : index;
     }
 }
