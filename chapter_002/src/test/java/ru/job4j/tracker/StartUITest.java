@@ -17,8 +17,6 @@ public class StartUITest {
     }
     @Test
     public void whenAddItem() {
-        String[] answers = {"Fix PC"};
-        Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
         tracker.add(new Item("Fix PC"));
         Item created = tracker.findAll().get(0);
@@ -30,10 +28,6 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = new Item("new item");
         tracker.add(item);
-        String[] answers = {
-                item.getId(), // id сохраненной заявки в объект tracker.
-                "replaced item"
-        };
         tracker.replace(item.getId(), new Item("replaced item"));
         Item replaced = tracker.findById(item.getId());
         assertThat(replaced.getName(), is("replaced item"));
@@ -45,7 +39,6 @@ public class StartUITest {
         Item item1 = new Item("new item1");
         tracker.add(item);
         tracker.add(item1);
-        String[] answers = {item1.getId()};
         tracker.delete(item1.getId());
         Item deleted = tracker.findById(item1.getId());
         assertThat(deleted, is(nullValue()));

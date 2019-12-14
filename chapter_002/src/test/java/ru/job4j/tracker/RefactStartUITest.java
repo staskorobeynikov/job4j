@@ -1,11 +1,9 @@
 package ru.job4j.tracker;
 
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Arrays;
 import java.util.StringJoiner;
 import java.util.function.Consumer;
 
@@ -22,7 +20,7 @@ public class RefactStartUITest {
             stdout.println(s);
         }
     };
-    UserAction[] actions = {
+    private UserAction[] actions = {
             new CreateAction(),
             new ShowAllAction(),
             new ReplaceAction(),
@@ -31,10 +29,6 @@ public class RefactStartUITest {
             new FindByNameAction(),
             new ExitAction()
     };
-    @Before
-    public void loadOutput() {
-        System.setOut(new PrintStream(this.out));
-    }
     @After
     public void backOutput() {
         System.setOut(this.stdout);
@@ -45,7 +39,7 @@ public class RefactStartUITest {
                 new String[] {"0"}
         );
         StubAction action = new StubAction();
-        new StartUI(System.out::println).init(input, new Tracker(),
+        new StartUI(output).init(input, new Tracker(),
                 new UserAction[] {action});
         String expect = new StringJoiner(System.lineSeparator(), "",
                 System.lineSeparator())
@@ -60,7 +54,7 @@ public class RefactStartUITest {
         Item item = new Item("fix bug");
         tracker.add(item);
         Input input = new StubInput(new String[] {"1", "6"});
-        new StartUI(System.out::println).init(input, tracker, actions);
+        new StartUI(output).init(input, tracker, actions);
         int i1 = new StringBuilder(out.toString()).indexOf("Name:");
         int i2 = new StringBuilder(out.toString()).indexOf("Menu.", i1);
         String actual = new StringBuilder(out.toString()).substring(i1, i2);
@@ -77,7 +71,7 @@ public class RefactStartUITest {
         tracker.add(item2);
         Input input = new StubInput(new String[] {"2", item2.getId(),
                 "test2 replace", "6"});
-        new StartUI(System.out::println).init(input, tracker, actions);
+        new StartUI(output).init(input, tracker, actions);
         String actual = tracker.findById(item2.getId()).getName();
         assertThat(actual, is("test2 replace"));
     }
@@ -89,7 +83,7 @@ public class RefactStartUITest {
         tracker.add(item);
         tracker.add(item2);
         Input input = new StubInput(new String[] {"3", item2.getId(), "6"});
-        new StartUI(System.out::println).init(input, tracker, actions);
+        new StartUI(output).init(input, tracker, actions);
         Item actual = tracker.findById(item2.getId());
         assertThat(actual, is(nullValue()));
     }
@@ -99,7 +93,7 @@ public class RefactStartUITest {
         Item item = new Item("test1");
         tracker.add(item);
         Input input = new StubInput(new String[] {"4", item.getId(), "6"});
-        new StartUI(System.out::println).init(input, tracker, actions);
+        new StartUI(output).init(input, tracker, actions);
         int i1 = new StringBuilder(out.toString()).indexOf("Name:");
         int i2 = new StringBuilder(out.toString()).indexOf("Menu.", i1);
         String actual = new StringBuilder(out.toString()).substring(i1, i2);
@@ -113,7 +107,7 @@ public class RefactStartUITest {
         Item item = new Item("test1");
         tracker.add(item);
         Input input = new StubInput(new String[] {"5", "test1", "6"});
-        new StartUI(System.out::println).init(input, tracker, actions);
+        new StartUI(output).init(input, tracker, actions);
         int i1 = new StringBuilder(out.toString()).indexOf("Name:");
         int i2 = new StringBuilder(out.toString()).indexOf("Menu.", i1);
         String actual = new StringBuilder(out.toString()).substring(i1, i2);
