@@ -102,13 +102,9 @@ public class Bank {
      * @return пользователя с идентификатором passport
      */
     private User findUserByPassport(String passport) {
-        User result = null;
-        for (User u : users.keySet()) {
-            if (u.getPassport().equals(passport) && u.getPassport() != null) {
-                result = u;
-                break;
-            }
-        }
+        User result = users.keySet().stream()
+                .filter(u -> u.getPassport().equals(passport))
+                .findAny().orElse(null);
         return result;
     }
 
@@ -120,14 +116,9 @@ public class Bank {
      */
     private Account findAccountByRequisite(String requisites,
                                           List<Account> accounts) {
-        Account result = null;
-        for (Account a : accounts) {
-            if (a.getRequisites().equals(requisites)
-                    && a.getRequisites() != null) {
-                result = a;
-                break;
-            }
-        }
+        Account result = accounts.stream()
+                .filter(a -> a.getRequisites().equals(requisites))
+                .findAny().orElse(null);
         return result;
     }
 }
