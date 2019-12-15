@@ -65,7 +65,7 @@ public class Bank {
      */
     public List<Account> getUserAccounts(String passport) {
         User user = findUserByPassport(passport);
-        return user != null ? users.get(user) : null;
+        return user != null ? users.get(user) : new ArrayList<>();
     }
 
     /**
@@ -104,7 +104,7 @@ public class Bank {
     private User findUserByPassport(String passport) {
         User result = null;
         for (User u : users.keySet()) {
-            if (u.getPassport() == passport && u.getPassport() != null) {
+            if (u.getPassport().equals(passport) && u.getPassport() != null) {
                 result = u;
                 break;
             }
@@ -121,13 +121,11 @@ public class Bank {
     private Account findAccountByRequisite(String requisites,
                                           List<Account> accounts) {
         Account result = null;
-        if (accounts != null) {
-            for (Account a : accounts) {
-                if (a.getRequisites() == requisites
-                        && a.getRequisites() != null) {
-                    result = a;
-                    break;
-                }
+        for (Account a : accounts) {
+            if (a.getRequisites().equals(requisites)
+                    && a.getRequisites() != null) {
+                result = a;
+                break;
             }
         }
         return result;

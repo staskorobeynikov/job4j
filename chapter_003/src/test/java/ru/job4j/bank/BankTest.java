@@ -2,10 +2,10 @@ package ru.job4j.bank;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 public class BankTest {
@@ -32,7 +32,7 @@ public class BankTest {
         bank.addAccountToUser("2564759", stasAccount);
         bank.deleteUser(stas);
         List<Account> expected = bank.getUserAccounts("2564759");
-        assertNull(expected);
+        assertThat(new ArrayList<>(), is(expected));
     }
     @Test
     public void whenDeleteAccount() {
