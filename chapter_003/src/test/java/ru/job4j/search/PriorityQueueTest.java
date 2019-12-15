@@ -7,38 +7,38 @@ import static org.junit.Assert.assertThat;
 public class PriorityQueueTest {
     @Test
     public void whenHigherPrioritySecond() {
-        PriorityQueue queue = new PriorityQueue();
+        var queue = new PriorityQueue();
         queue.put(new Task("low", 5));
         queue.put(new Task("urgent", 1));
         queue.put(new Task("middle", 3));
-        Task result = queue.take();
+        var result = queue.take();
         assertThat(result.getDesc(), is("urgent"));
     }
     @Test
     public void whenHigherPriorityFirst() {
-        PriorityQueue queue1 = new PriorityQueue();
+        var queue1 = new PriorityQueue();
         queue1.put(new Task("low", 1));
         queue1.put(new Task("urgent", 5));
         queue1.put(new Task("middle", 3));
-        Task result = queue1.take();
+        var result = queue1.take();
         assertThat(result.getDesc(), is("low"));
     }
     @Test
     public void whenHigherPriorityThird() {
-        PriorityQueue queue1 = new PriorityQueue();
+        var queue1 = new PriorityQueue();
         queue1.put(new Task("low", 3));
         queue1.put(new Task("urgent", 5));
         queue1.put(new Task("middle", 1));
-        Task result = queue1.take();
+        var result = queue1.take();
         assertThat(result.getDesc(), is("middle"));
     }
     @Test
     public void whenHigherPriorityEquals() {
-        PriorityQueue queue = new PriorityQueue();
+        var queue = new PriorityQueue();
         queue.put(new Task("low", 5));
         queue.put(new Task("urgent", 5));
         queue.put(new Task("middle", 5));
-        Task result = queue.take();
+        var result = queue.take();
         assertThat(result.getDesc(), is("low"));
     }
 
