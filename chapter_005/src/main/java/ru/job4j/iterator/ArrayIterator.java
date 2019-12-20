@@ -23,7 +23,7 @@ public class ArrayIterator<T> implements Iterator<T> {
             i++;
             j = 0;
         }
-        if (j >= array[i].length) {
+        if (!hasNext()) {
             throw new NoSuchElementException("Элемент не найден");
         } else {
             return array[i][j++];

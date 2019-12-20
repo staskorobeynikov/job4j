@@ -66,6 +66,15 @@ public class ArrayIteratorTest {
         assertThat(it.next(), is(5));
     }
     @Test
+    public void whenThreeArrayWithNullMoreOne() {
+        ArrayIterator<Integer> it = new ArrayIterator<Integer>(new Integer[][]
+                {{}, {1}, {}, {}, {2}, {}, {}, {}, {3, 5}});
+        assertThat(it.next(), is(1));
+        assertThat(it.next(), is(2));
+        assertThat(it.next(), is(3));
+        assertThat(it.next(), is(5));
+    }
+    @Test
     public void whenThreeArrayHasNextMethod() {
         ArrayIterator<Integer> it = new ArrayIterator<Integer>(new Integer[][]
                 {{1}, {2}, {3, 5}});
