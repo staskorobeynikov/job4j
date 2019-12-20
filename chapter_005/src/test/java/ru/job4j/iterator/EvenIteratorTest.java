@@ -10,10 +10,12 @@ import static org.hamcrest.Matchers.is;
 
 public class EvenIteratorTest {
     private EvenIterator it;
+
     @Before
     public void setUp() {
         it = new EvenIterator(new int[]{1, 2, 3, 4, 5, 6, 7});
     }
+
     @Test(expected = NoSuchElementException.class)
     public void shouldReturnEvenNumbersSequentially() {
         assertThat(it.hasNext(), is(true));
@@ -25,6 +27,7 @@ public class EvenIteratorTest {
         assertThat(it.hasNext(), is(false));
         it.next();
     }
+
     @Test
     public void sequentialHasNextInvocationDoesntAffectRetrievalOrder() {
         assertThat(it.hasNext(), is(true));
@@ -33,11 +36,13 @@ public class EvenIteratorTest {
         assertThat(it.next(), is(4));
         assertThat(it.next(), is(6));
     }
+
     @Test
     public void  shouldReturnFalseIfNoAnyEvenNumbers() {
         it = new EvenIterator(new int[]{1});
         assertThat(it.hasNext(), is(false));
     }
+
     @Test
     public void allNumbersAreEven() {
         it = new EvenIterator(new int[]{2, 4, 6, 8});
