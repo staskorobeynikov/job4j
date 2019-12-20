@@ -13,6 +13,7 @@ import static org.hamcrest.Matchers.is;
 
 public class ConverterTest {
     Iterator<Integer> it;
+
     @Before
     public void setUp() {
         Iterator<Integer> it1 = Arrays.asList(1, 2, 3).iterator();
@@ -22,6 +23,7 @@ public class ConverterTest {
         Converter iteratorOfIterators = new Converter();
         it = iteratorOfIterators.convert(its);
     }
+
     @Test
     public void hasNextNextSequentialInvocation() {
         assertThat(it.hasNext(), is(true));

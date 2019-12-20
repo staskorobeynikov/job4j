@@ -15,20 +15,6 @@ public class Converter {
 
             @Override
             public boolean hasNext() {
-                marker = changeCurrentIterator();
-                return marker.hasNext();
-            }
-
-            @Override
-            public Integer next() {
-                marker = changeCurrentIterator();
-                if (marker == null) {
-                    throw new NoSuchElementException("Элемент не найден");
-                }
-                return marker.next();
-            }
-
-            private Iterator<Integer> changeCurrentIterator() {
                 Iterator<Integer> itInner;
                 if (marker.hasNext()) {
                     itInner = marker;
@@ -38,7 +24,15 @@ public class Converter {
                     }
                     itInner = marker;
                 }
-                return itInner;
+                return itInner.hasNext();
+            }
+
+            @Override
+            public Integer next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException("Элемент не найден");
+                }
+                return marker.next();
             }
         };
     }
