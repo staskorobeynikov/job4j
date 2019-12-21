@@ -47,7 +47,7 @@ public class GeneralStoreTest {
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void whenAddNewModelThenException() {
         us.add(user4);
-        rs.add(user4);
+        rs.add(role4);
     }
 
     @Test

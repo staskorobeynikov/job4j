@@ -15,8 +15,9 @@ public class GeneralStore<T extends Base> implements Store<T> {
     @Override
     public boolean replace(String id, T model) {
         boolean result = false;
-        if (findIndex(id) >= 0) {
-            store.set(findIndex(id), model);
+        int index = findIndex(id);
+        if (index >= 0) {
+            store.set(index, model);
             result = true;
         }
         return result;
@@ -25,8 +26,9 @@ public class GeneralStore<T extends Base> implements Store<T> {
     @Override
     public boolean delete(String id) {
         boolean result = false;
-        if (findIndex(id) >= 0) {
-            store.remove(findIndex(id));
+        int index = findIndex(id);
+        if (index >= 0) {
+            store.remove(index);
             result = true;
         }
         return result;
