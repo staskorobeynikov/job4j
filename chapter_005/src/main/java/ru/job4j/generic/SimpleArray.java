@@ -18,7 +18,7 @@ public class SimpleArray<T> implements Iterable<T> {
     }
 
     public void set(int index, T model) {
-        if (index > sizeArray - 1) {
+        if (index > array.length) {
             throw new ArrayIndexOutOfBoundsException("Индекс больше размера "
                     + "массива");
         }
@@ -26,12 +26,20 @@ public class SimpleArray<T> implements Iterable<T> {
     }
 
     public void remove(int index) {
+        if (index > array.length) {
+            throw new ArrayIndexOutOfBoundsException("Индекс больше размера "
+                    + "массива");
+        }
         sizeArray--;
         System.arraycopy(array, index + 1, array,
                 index, sizeArray - index);
         array[sizeArray] = null;
     }
     public T get(int index) {
+        if (index > array.length) {
+            throw new ArrayIndexOutOfBoundsException("Индекс больше размера "
+                    + "массива");
+        }
         return (T) array[index];
     }
 

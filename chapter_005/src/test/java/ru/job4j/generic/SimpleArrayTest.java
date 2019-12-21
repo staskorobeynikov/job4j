@@ -27,6 +27,11 @@ public class SimpleArrayTest {
     }
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void whenAddModel1() {
+        assertThat(simpleArray.get(3), is(4));
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void whenAddNewModelMoreArrayLength() {
         simpleArray.add(4);
     }
@@ -45,6 +50,11 @@ public class SimpleArrayTest {
         assertThat(simpleArray.get(0), is(1));
         assertThat(simpleArray.get(1), is(2));
         assertNull(simpleArray.get(2));
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void whenRemoveIndexGreatThanArrayLength() {
+        simpleArray.remove(10);
     }
 
     @Test
