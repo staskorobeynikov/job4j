@@ -17,4 +17,8 @@ public class SimpleStack<E> {
     public void push(E value) {
         stack.add(value);
     }
+
+    public boolean isEmpty() {
+        return stack.listLength == 0 ? true : false;
+    }
 }

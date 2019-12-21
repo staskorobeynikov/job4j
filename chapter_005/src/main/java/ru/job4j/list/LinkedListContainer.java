@@ -8,7 +8,7 @@ public class LinkedListContainer<E> implements Iterable {
     private Node<E> first = null;
     private Node<E> last = null;
     private int modCount = 0;
-    private int listLength = 0;
+    public int listLength = 0;
 
     /**
      * Метод позволяет вставить элемент
