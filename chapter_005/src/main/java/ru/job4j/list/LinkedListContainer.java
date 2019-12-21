@@ -5,8 +5,8 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class LinkedListContainer<E> implements Iterable {
-    Node<E> first = null;
-    Node<E> last = null;
+    private Node<E> first = null;
+    private Node<E> last = null;
     private int modCount = 0;
     private int listLength = 0;
 
@@ -37,6 +37,24 @@ public class LinkedListContainer<E> implements Iterable {
         return result.data;
     }
 
+    public E removeLast() {
+        if (first == null) {
+            throw new NoSuchElementException();
+        }
+        E result = last.data;
+        if (last == first) {
+            last = null;
+            first = null;
+        } else {
+            last = first;
+            for (int i = 0; i < listLength - 2; i++) {
+                last = last.next;
+            }
+            last.next = null;
+        }
+        listLength--;
+        return result;
+    }
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
