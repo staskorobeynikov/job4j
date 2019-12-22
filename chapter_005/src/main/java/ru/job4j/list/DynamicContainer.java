@@ -41,7 +41,7 @@ public class DynamicContainer<E> implements Iterable<E> {
 
             @Override
             public boolean hasNext() {
-                return index < size ? true : false;
+                return index < size;
             }
 
             @Override
