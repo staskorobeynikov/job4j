@@ -30,6 +30,11 @@ public class User {
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(name, children, birthday);
+    }
+
+    @Override
     public String toString() {
         SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         return String.format("User| name: %s, children: %s, birthday: %s",
