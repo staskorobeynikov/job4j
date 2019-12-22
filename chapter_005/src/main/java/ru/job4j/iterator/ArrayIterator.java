@@ -14,7 +14,7 @@ public class ArrayIterator<T> implements Iterator<T> {
 
     @Override
     public boolean hasNext() {
-        return !(i == array.length - 1 && j == array[i].length);
+        return j != array[i].length || i < array.length - 1;
     }
 
     @Override
@@ -25,8 +25,7 @@ public class ArrayIterator<T> implements Iterator<T> {
         }
         if (!hasNext()) {
             throw new NoSuchElementException("Элемент не найден");
-        } else {
-            return array[i][j++];
         }
+        return array[i][j++];
     }
 }
