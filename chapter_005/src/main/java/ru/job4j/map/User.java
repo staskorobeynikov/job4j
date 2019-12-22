@@ -1,5 +1,6 @@
 package ru.job4j.map;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class User {
@@ -15,6 +16,8 @@ public class User {
 
     @Override
     public String toString() {
-        return String.format("User| name: %s, children: %s, birthday: %s", name, children, birthday);
+        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+        return String.format("User| name: %s, children: %s, birthday: %s",
+                name, children, df.format(birthday.getTime()));
     }
 }
