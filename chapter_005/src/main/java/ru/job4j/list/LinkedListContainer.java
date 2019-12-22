@@ -71,18 +71,17 @@ public class LinkedListContainer<E> implements Iterable {
 
             @Override
             public E next() {
-                E result;
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                result = lastReturned.data;
+                E result = lastReturned.data;
                 temp = nodeInMemory;
                 nodeInMemory = lastReturned;
                 lastReturned = lastReturned.next;
                 return result;
             }
             private void checkModCount() {
-                if (expectedModCount != modCount) {
+                if (modCount != expectedModCount) {
                     throw new ConcurrentModificationException();
                 }
             }

@@ -3,6 +3,7 @@ package ru.job4j.list;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -45,6 +46,15 @@ public class LinkedListContainerTest {
         list.add(5);
         Iterator<Integer> it = list.iterator();
         it.next();
+        it.next();
+    }
+
+    @Test(expected = ConcurrentModificationException.class)
+    public void whenException() {
+        list.add(5);
+        Iterator<Integer> it = list.iterator();
+        it.next();
+        list.add(10);
         it.next();
     }
 }
