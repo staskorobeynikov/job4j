@@ -16,14 +16,10 @@ public class Converter {
             @Override
             public boolean hasNext() {
                 Iterator<Integer> itInner;
-                if (marker.hasNext()) {
-                    itInner = marker;
-                } else {
-                    while (!marker.hasNext() && itAll.hasNext()) {
-                        marker = itAll.next();
-                    }
-                    itInner = marker;
+                while (!marker.hasNext() && itAll.hasNext()) {
+                    marker = itAll.next();
                 }
+                itInner = marker;
                 return itInner.hasNext();
             }
 
