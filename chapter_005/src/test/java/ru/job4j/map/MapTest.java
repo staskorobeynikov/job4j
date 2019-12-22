@@ -18,6 +18,8 @@ public class MapTest {
         User user1 = new User("Stas", 0, calendar);
         User user2 = new User("Stas", 0, calendar);
         map.put(user1, user1);
+        map.put(user1, user2);
+        map.put(user2, user1);
         map.put(user2, user2);
         System.out.println(map);
     }
