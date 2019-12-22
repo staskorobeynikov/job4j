@@ -26,10 +26,9 @@ public class EvenIterator implements Iterator {
 
     @Override
     public Object next() {
-        if (hasNext()) {
-            return array[marker++];
-        } else {
+        if (!hasNext()) {
             throw new NoSuchElementException("Элемент не найден");
         }
+        return array[marker++];
     }
 }
