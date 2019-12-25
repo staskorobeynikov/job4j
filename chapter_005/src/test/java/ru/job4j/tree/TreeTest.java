@@ -36,17 +36,17 @@ public class TreeTest {
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void whenTestWorkiterator() {
+    public void whenTestWorkIterator() {
         Tree<Integer> tree = new Tree<>(1);
         tree.add(1, 2);
         tree.add(1, 3);
-        Iterator it = tree.iterator();
+        Iterator<Integer> it = tree.iterator();
         assertThat(it.hasNext(), is(true));
-        assertThat(((Node) it.next()).getValue(), is(1));
+        assertThat(it.next(), is(1));
         assertThat(it.hasNext(), is(true));
-        assertThat(((Node) it.next()).getValue(), is(2));
+        assertThat(it.next(), is(2));
         assertThat(it.hasNext(), is(true));
-        assertThat(((Node) it.next()).getValue(), is(3));
+        assertThat(it.next(), is(3));
         assertThat(it.hasNext(), is(false));
         it.next();
     }
