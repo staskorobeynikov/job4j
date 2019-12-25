@@ -1,76 +1,144 @@
 package ru.job4j.map;
 
-import java.util.Arrays;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.NoSuchElementException;
 
+/**
+ * Контейнер на базе ассоциативного массива, который хранит пары
+ * типа "ключ - значение".
+ *
+ * @author Stas Korobeynikov
+ * @since 23.12.2019
+ */
 public class SimpleHashMap<K, V> implements Iterable {
     private Node<K, V>[] table;
     private static final int DEFAULT_INITIAL_CAPACITY = 16;
-    private int index = 0;
+    /**
+     * Количество элементов в массиве
+     */
+    private int size = 0;
+    private int capacity;
 
     public SimpleHashMap() {
-        table = new Node[DEFAULT_INITIAL_CAPACITY];
+        this.capacity = DEFAULT_INITIAL_CAPACITY;
+        table = new Node[capacity];
     }
 
     /**
-     * Метод повзоляет добавить элемент в коллекцию по ключу
+     * Метод повзоляет добавить элемент в коллекцию по ключу.
+     * Вставка осуществляется по индексу, который расчитывается по значению хэшкода ключа
+     * и размеру массива. Если ячейка с таким индексом уже заполнена - вставка элемента производится
+     * в первую пустую ячейку (отсчет начинается с начала массива).
      */
     public boolean insert(K key, V value) {
         boolean result = true;
-        if (get(key) != null) {
-            getNode(key).setValue(value);
-            result = false;
+        Node<K, V> e;
+        if (size >= 0.75 * capacity) {
+            resize();
+        }
+        int i = getIndex(key);
+        if (table[i] == null) {
+            table[i] = new Node<>(key.hashCode(), key, value, null);
+            size++;
         } else {
-            verifySize();
-            table[index++] = new Node<>(key.hashCode(), key, value, null);
+            e = table[i];
+            if (e.hash == key.hashCode() && (e.key == key || e.key.equals(key))) {
+                e.value = value;
+                result = false;
+            } else {
+                for (int j = 0; j < table.length; j++) {
+                    if (table[j] == null) {
+                        table[j] = new Node<>(key.hashCode(), key, value, null);
+                        size++;
+                        break;
+                    }
+                }
+            }
         }
         return result;
     }
 
     /**
-     * Метод осуществляет поиск элемента по ключу
+     * Метод осуществляет поиск элемента по ключу. При несовпадении хэшкода, дополнительно поиск
+     * производится по всему массиву.
      */
     public V get(K key) {
-        Node<K, V> result = getNode(key);
-        return result == null ? null : result.getValue();
+        V result = null;
+        int i = getIndex(key);
+        Node<K, V> e = table[i];
+        if (e != null) {
+            if (e.hash == key.hashCode() && (e.key == key || e.key.equals(key))) {
+                result = e.value;
+            } else {
+                for (Node<K, V> elFind : table) {
+                    if (elFind.hash == key.hashCode()
+                            && (elFind.key == key || elFind.key.equals(key))) {
+                        result = elFind.value;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
     }
 
     /**
-     * Метод осуществляет удаление элемента из коллекции по ключу
+     * Метод осуществляет удаление элемента из коллекции по ключу, на основе которого расчитывается
+     * индекс элемента в массиве. Если при обращении к этой ячейке окажется, что хэшкод ключей
+     * не совпадает - поиск элемента осуществляется по всему массиву.
      */
     public boolean delete(K key) {
         boolean result = false;
-        for (int i = 0; i < index; i++) {
-            if (table[i].getKey().equals(key)) {
-                System.arraycopy(table, i + 1, table, i, table.length - 1 - i);
-                result = true;
-                index--;
-                break;
+        int i = getIndex(key);
+        Node<K, V> e = table[i];
+        if (e.hash == key.hashCode() && (e.key == key || e.key.equals(key))) {
+            table[i] = null;
+            result = true;
+            size--;
+        } else {
+            for (Node<K, V> elFind : table) {
+                if (elFind.hash == key.hashCode()
+                        && (elFind.key == key || elFind.key.equals(key))) {
+                    elFind = null;
+                    result = true;
+                    size--;
+                    break;
+                }
             }
         }
         return result;
     }
 
-    private void verifySize() {
-        if (index == table.length) {
-            table = Arrays.copyOf(table, table.length * 2);
-        }
+    /**
+     * Возвращает индекс в массиве по ключу, для которого вычисляется хэш-код
+     */
+    private int getIndex(K key) {
+        return key.hashCode() & (capacity - 1);
     }
 
-    private Node<K, V> getNode(K key) {
-        Node<K, V> result = null;
-        for (int i = 0; i < index; i++) {
-            if (table[i].getKey().equals(key)) {
-                result = table[i];
-                break;
+    public int getSize() {
+        return size;
+    }
+
+    public int getLength() {
+        return table.length;
+    }
+
+    /**
+     * Вспомогательный метод, позволяет увеличить размер массива при его переполнении.
+     */
+    private void resize() {
+        capacity *= 2;
+        Node<K, V>[] oldTable = table;
+        table = new Node[capacity];
+        for (Node<K, V> e : oldTable) {
+            if (e != null) {
+                table[getIndex(e.key)] = e;
             }
         }
-        return result;
     }
 
-    static class Node<K, V> implements Map.Entry<K, V> {
+    static class Node<K, V> {
         final int hash;
         final K key;
         V value;
@@ -83,37 +151,24 @@ public class SimpleHashMap<K, V> implements Iterable {
             this.next = next;
         }
 
-        @Override
-        public K getKey() {
-            return key;
-        }
-
-        @Override
         public V getValue() {
             return value;
-        }
-
-        @Override
-        public V setValue(V newValue) {
-            V oldValue = value;
-            value = newValue;
-            return oldValue;
-        }
-
-        @Override
-        public String toString() {
-            return String.format("Key: %s = Value: %s", key, value);
         }
     }
 
     @Override
     public Iterator iterator() {
         return new Iterator() {
-            private int iterIndex;
+            private int index;
+            Node<K, V> e = table[index];
 
             @Override
             public boolean hasNext() {
-                return iterIndex < index;
+                while ((index < (capacity - 1)) && e == null) {
+                    index++;
+                    e = table[index];
+                }
+                return e != null;
             }
 
             @Override
@@ -121,7 +176,19 @@ public class SimpleHashMap<K, V> implements Iterable {
                 if (!hasNext()) {
                     throw new NoSuchElementException("Element not found");
                 }
-                return table[iterIndex++];
+                Node<K, V> result = e;
+                if (e.next != null) {
+                    e = e.next;
+                } else {
+                    while (index < capacity - 1) {
+                        index++;
+                        e = table[index];
+                        if (e != null) {
+                            break;
+                        }
+                    }
+                }
+                return result;
             }
         };
     }
