@@ -71,4 +71,33 @@ public class TreeTest {
         tree.add(5, 6);
         assertFalse(tree.isBinary());
     }
+
+    @Test
+    public void whenTreeIsNotBinaryOnSecondLevel() {
+        Tree<Integer> tree = new Tree<>(1);
+        tree.add(1, 2);
+        tree.add(1, 3);
+        tree.add(3, 4);
+        tree.add(4, 5);
+        tree.add(2, 6);
+        tree.add(2, 7);
+        tree.add(2, 8);
+        assertFalse(tree.isBinary());
+    }
+
+    @Test
+    public void whenTreeIsNotBinaryOnThirdLevel() {
+        Tree<Integer> tree = new Tree<>(1);
+        tree.add(1, 2);
+        tree.add(1, 3);
+        tree.add(2, 4);
+        tree.add(2, 5);
+        tree.add(3, 6);
+        tree.add(3, 7);
+        tree.add(4, 8);
+        tree.add(4, 9);
+        tree.add(4, 10);
+        tree.add(4, 11);
+        assertFalse(tree.isBinary());
+    }
 }
