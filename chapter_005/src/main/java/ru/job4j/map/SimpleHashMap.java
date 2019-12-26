@@ -27,8 +27,8 @@ public class SimpleHashMap<K, V> implements Iterable {
     /**
      * Метод повзоляет добавить элемент в коллекцию по ключу.
      * Вставка осуществляется по индексу, который расчитывается по значению хэшкода ключа
-     * и размеру массива. Если ячейка с таким индексом уже заполнена - вставка элемента производится
-     * в первую пустую ячейку (отсчет начинается с начала массива).
+     * и размеру массива. Если ячейка с таким индексом уже заполнена - вставка не произойдет и метод
+     * вернет false.
      */
     public boolean insert(K key, V value) {
         boolean result = true;
@@ -44,23 +44,15 @@ public class SimpleHashMap<K, V> implements Iterable {
             e = table[i];
             if (e.hash == key.hashCode() && (e.key == key || e.key.equals(key))) {
                 e.value = value;
-                result = false;
             } else {
-                for (int j = 0; j < table.length; j++) {
-                    if (table[j] == null) {
-                        table[j] = new Node<>(key.hashCode(), key, value, null);
-                        size++;
-                        break;
-                    }
-                }
+                result = false;
             }
         }
         return result;
     }
 
     /**
-     * Метод осуществляет поиск элемента по ключу. При несовпадении хэшкода, дополнительно поиск
-     * производится по всему массиву.
+     * Метод осуществляет поиск элемента по ключу.
      */
     public V get(K key) {
         V result = null;
@@ -69,14 +61,6 @@ public class SimpleHashMap<K, V> implements Iterable {
         if (e != null) {
             if (e.hash == key.hashCode() && (e.key == key || e.key.equals(key))) {
                 result = e.value;
-            } else {
-                for (Node<K, V> elFind : table) {
-                    if (elFind.hash == key.hashCode()
-                            && (elFind.key == key || elFind.key.equals(key))) {
-                        result = elFind.value;
-                        break;
-                    }
-                }
             }
         }
         return result;
@@ -84,8 +68,7 @@ public class SimpleHashMap<K, V> implements Iterable {
 
     /**
      * Метод осуществляет удаление элемента из коллекции по ключу, на основе которого расчитывается
-     * индекс элемента в массиве. Если при обращении к этой ячейке окажется, что хэшкод ключей
-     * не совпадает - поиск элемента осуществляется по всему массиву.
+     * индекс элемента в массиве.
      */
     public boolean delete(K key) {
         boolean result = false;
@@ -95,16 +78,6 @@ public class SimpleHashMap<K, V> implements Iterable {
             table[i] = null;
             result = true;
             size--;
-        } else {
-            for (Node<K, V> elFind : table) {
-                if (elFind.hash == key.hashCode()
-                        && (elFind.key == key || elFind.key.equals(key))) {
-                    elFind = null;
-                    result = true;
-                    size--;
-                    break;
-                }
-            }
         }
         return result;
     }
@@ -129,11 +102,12 @@ public class SimpleHashMap<K, V> implements Iterable {
      */
     private void resize() {
         capacity *= 2;
+        size = 0;
         Node<K, V>[] oldTable = table;
         table = new Node[capacity];
         for (Node<K, V> e : oldTable) {
             if (e != null) {
-                table[getIndex(e.key)] = e;
+                insert(e.key, e.value);
             }
         }
     }
