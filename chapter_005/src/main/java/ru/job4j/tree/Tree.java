@@ -26,12 +26,11 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     public boolean add(E parent, E child) {
         boolean result = false;
         Optional<Node<E>> par = findBy(parent);
-        if (!par.isPresent()) {
+        if (par.isEmpty()) {
             throw new NoSuchElementException("Element not found");
         }
-        Node<E> newNode = par.get();
-        if (!newNode.leaves().contains(child)) {
-            newNode.add(new Node<>(child));
+        if (findBy(child).isEmpty()) {
+            par.get().add(new Node<>(child));
             result = true;
         }
         return result;
@@ -83,6 +82,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
         Queue<Node<E>> data = new LinkedList<>();
         data.offer(root);
         return new Iterator<>() {
+
             @Override
             public boolean hasNext() {
                 return !data.isEmpty();
@@ -94,10 +94,14 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
                     throw new NoSuchElementException("Collection is empty");
                 }
                 Node<E> e = data.poll();
-                for (Node<E> child : e.leaves()) {
-                    data.offer(child);
+                E result = null;
+                if (e != null) {
+                    for (Node<E> child : e.leaves()) {
+                        data.offer(child);
+                    }
+                    result = e.getValue();
                 }
-                return e.getValue();
+                return result;
             }
         };
     }

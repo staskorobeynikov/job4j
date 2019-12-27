@@ -22,6 +22,15 @@ public class TreeTest {
     }
 
     @Test
+    public void whenAddElementsIsTrueOrFalse() {
+        Tree<Integer> tree = new Tree<>(1);
+        assertThat(tree.add(1, 2), is(true));
+        assertThat(tree.add(1, 3), is(true));
+        assertThat(tree.add(3, 4), is(true));
+        assertThat(tree.add(1, 4), is(false));
+    }
+
+    @Test
     public void when6ElFindNotExitThenOptionEmpty() {
         Tree<Integer> tree = new Tree<>(1);
         tree.add(1, 2);
