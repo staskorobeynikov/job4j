@@ -28,8 +28,7 @@ public class Search {
                 if (file.isDirectory()) {
                     data.offer(file);
                 } else {
-                    String validate = file.getName().split("\\.")[1];
-                    if (exts.contains(validate)) {
+                    if (defineExtension(file, exts)) {
                         System.out.println(file.getName());
                         list.add(file);
                     }
@@ -37,5 +36,14 @@ public class Search {
             }
         }
         return list;
+    }
+
+    private boolean defineExtension(File file, List<String> exts) {
+        boolean result = false;
+        String validate = file.getName().split("\\.")[1];
+        if (exts.contains(validate)) {
+            result = true;
+        }
+        return result;
     }
 }
