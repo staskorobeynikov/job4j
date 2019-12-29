@@ -2,6 +2,7 @@ package ru.job4j.io;
 
 import java.io.File;
 import java.util.*;
+import java.util.function.Predicate;
 
 /**
  * Класс позволяет получить список файлов в каталоге
@@ -16,10 +17,10 @@ public class Search {
     /**
      * Метод позволяет получить содержимое папок
      * @param parent Путь до каталога, с которого нужно осуществить поиск
-     * @param exts Расширение файлов, которые необходимо получить
+     * @param predicate Условие для проверки
      * @return Список содержимого папки в виде массива
      */
-    public List<File> files(String parent, List<String> exts) {
+    public List<File> files(String parent, Predicate<File> predicate) {
         File fileParent = new File(parent);
         data.offer(fileParent);
         while (!data.isEmpty()) {
@@ -28,7 +29,7 @@ public class Search {
                 if (file.isDirectory()) {
                     data.offer(file);
                 } else {
-                    if (defineExtension(file, exts)) {
+                    if (predicate.test(file)) {
                         System.out.println(file.getName());
                         list.add(file);
                     }
@@ -38,12 +39,7 @@ public class Search {
         return list;
     }
 
-    private boolean defineExtension(File file, List<String> exts) {
-        boolean result = false;
-        String validate = file.getName().split("\\.")[1];
-        if (exts.contains(validate)) {
-            result = true;
-        }
-        return result;
+    public List<File> defineExtension(String parent, List<String> exts) {
+        return files(parent, (file) -> exts.contains(file.getName().split("\\.")[1]));
     }
 }
