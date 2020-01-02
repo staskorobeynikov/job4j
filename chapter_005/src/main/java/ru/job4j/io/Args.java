@@ -13,8 +13,18 @@ public class Args {
     private Map<String, String> info = new HashMap<>();
 
     public Args(String[] args) {
-        for (int i = 0; i < args.length; i += 2) {
-            info.put(args[i], args[i + 1]);
+        for (int i = 0; i < args.length; i++) {
+            String key;
+            String value = null;
+            int index;
+            if (args[i].startsWith("-")) {
+                key = args[i];
+                index = i;
+                if (index + 1 < args.length && !(args[index + 1].startsWith("-"))) {
+                    value = args[i + 1];
+                }
+                info.put(key, value);
+            }
         }
     }
 
@@ -38,5 +48,9 @@ public class Args {
      */
     public String output() {
         return info.get("-o");
+    }
+
+    public Map<String, String> getInfo() {
+        return this.info;
     }
 }
