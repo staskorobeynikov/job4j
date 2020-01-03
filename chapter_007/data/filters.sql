@@ -51,7 +51,7 @@ select p.name from product as p where p.name like '%мороженное%';
 --Написать запрос, который выводит все продукты, срок годности которых заканчивается в следующем месяце.
 select p.name, p.expired_date, t.name from product as p
 inner join type as t on p.type_id = t.id
-where p.expired_date between '2020-02-01' and '2020-02-28';
+where p.expired_date between current_date + integer '30' and current_date + integer '60';
 
 --Написать запрос, который выводит самый дорогой продукт.
 select p.name, t.name, p.price  from product as p
