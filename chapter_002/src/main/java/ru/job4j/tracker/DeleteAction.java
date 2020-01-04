@@ -9,7 +9,7 @@ public class DeleteAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
+    public boolean execute(Input input, ITracker tracker, Consumer<String> output) {
         String id = input.askStr("Enter ID: ");
         if (tracker.delete(id)) {
             output.accept(String.format("Заявка по id %s удалена", id));

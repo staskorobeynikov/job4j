@@ -9,7 +9,7 @@ public class StartUI {
         this.output = output;
     }
 
-    public void init(Input input, Tracker tracker, UserAction[] actions) {
+    public void init(Input input, ITracker tracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
