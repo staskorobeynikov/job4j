@@ -27,7 +27,6 @@ public class TrackerSQLTest {
         }
     }
 
-
     @Test
     public void checkConnection() {
         TrackerSQL sql = new TrackerSQL();
