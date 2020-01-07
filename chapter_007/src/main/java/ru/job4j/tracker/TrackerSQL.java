@@ -96,10 +96,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
             addSt.executeUpdate();
             selectSt.setString(1, item.getName());
             ResultSet rs = selectSt.executeQuery();
-            while (rs.next()) {
-                result = new Item(rs.getString("name"));
-                result.setId(String.valueOf(rs.getInt("id")));
-            }
+            result = getResult(rs).get(0);
         } catch (SQLException exc) {
             logger.error(exc.getMessage(), exc);
         }
@@ -114,7 +111,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
      */
     @Override
     public boolean replace(String id, Item item) {
-        boolean result;
+        boolean result = false;
         try (PreparedStatement replaceSt =
                      connection.prepareStatement("update items set name = ? where id = ?;")) {
             replaceSt.setString(1, item.getName());
@@ -123,7 +120,6 @@ public class TrackerSQL implements ITracker, AutoCloseable {
             result = true;
         } catch (SQLException exc) {
             logger.error(exc.getMessage(), exc);
-            result = false;
         }
         return result;
     }
@@ -135,14 +131,13 @@ public class TrackerSQL implements ITracker, AutoCloseable {
      */
     @Override
     public boolean delete(String id) {
-        boolean result;
+        boolean result = false;
         try (PreparedStatement deleteSt = connection.prepareStatement("delete from items where id = ?;")) {
             deleteSt.setInt(1, Integer.parseInt(id));
             deleteSt.executeUpdate();
             result = true;
         } catch (SQLException exc) {
             logger.error(exc.getMessage(), exc);
-            result = false;
         }
         return result;
     }
@@ -155,11 +150,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
         List<Item> result = new ArrayList<>();
         try (Statement st = connection.createStatement()) {
             ResultSet rs = st.executeQuery("select * from items;");
-            while (rs.next()) {
-                Item it = new Item(rs.getString("name"));
-                it.setId(String.valueOf(rs.getInt("id")));
-                result.add(it);
-            }
+            result = getResult(rs);
         } catch (SQLException exc) {
             logger.error(exc.getMessage(), exc);
         }
@@ -176,11 +167,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
                      connection.prepareStatement("select * from items where name = ?;")) {
             findByNameSt.setString(1, key);
             ResultSet rs = findByNameSt.executeQuery();
-            while (rs.next()) {
-                Item it = new Item(rs.getString("name"));
-                it.setId(String.valueOf(rs.getInt("id")));
-                result.add(it);
-            }
+            result = getResult(rs);
         } catch (SQLException exc) {
             logger.error(exc.getMessage(), exc);
         }
@@ -197,9 +184,20 @@ public class TrackerSQL implements ITracker, AutoCloseable {
                      connection.prepareStatement("select * from items where id = ?;")) {
             findByIdSt.setInt(1, Integer.parseInt(id));
             ResultSet rs = findByIdSt.executeQuery();
-            while (rs.next()) {
-                result = new Item(rs.getString("name"));
-                result.setId(String.valueOf(rs.getInt("id")));
+            result = getResult(rs).get(0);
+        } catch (SQLException exc) {
+            logger.error(exc.getMessage(), exc);
+        }
+        return result;
+    }
+
+    private List<Item> getResult(ResultSet resultSet) {
+        List<Item> result = new ArrayList<>();
+        try {
+            while (resultSet.next()) {
+                Item it = new Item(resultSet.getString("name"));
+                it.setId(String.valueOf(resultSet.getInt("id")));
+                result.add(it);
             }
         } catch (SQLException exc) {
             logger.error(exc.getMessage(), exc);

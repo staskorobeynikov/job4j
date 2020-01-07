@@ -34,7 +34,7 @@ public class TrackerSQLTest {
     }
 
     @Test
-    public void when() {
+    public void whenConnectionIsTrue() {
         TrackerSQLTest sqlTest = new TrackerSQLTest();
         TrackerSQL sql = new TrackerSQL();
         assertThat(sql.tableExist(sqlTest.init()), is(true));
