@@ -113,8 +113,9 @@ public class TrackerSQL implements ITracker, AutoCloseable {
                      connection.prepareStatement("update items set name = ? where id = ?;")) {
             replaceSt.setString(1, item.getName());
             replaceSt.setInt(2, Integer.parseInt(id));
-            replaceSt.executeUpdate();
-            result = true;
+            if (replaceSt.executeUpdate() > 0) {
+                result = true;
+            }
         } catch (SQLException exc) {
             logger.error(exc.getMessage(), exc);
         }
@@ -131,8 +132,9 @@ public class TrackerSQL implements ITracker, AutoCloseable {
         boolean result = false;
         try (PreparedStatement deleteSt = connection.prepareStatement("delete from items where id = ?;")) {
             deleteSt.setInt(1, Integer.parseInt(id));
-            deleteSt.executeUpdate();
-            result = true;
+            if (deleteSt.executeUpdate() > 0) {
+                result = true;
+            }
         } catch (SQLException exc) {
             logger.error(exc.getMessage(), exc);
         }

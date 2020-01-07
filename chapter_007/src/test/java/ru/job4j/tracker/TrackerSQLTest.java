@@ -72,7 +72,7 @@ public class TrackerSQLTest {
     }
 
     @Test
-    public void whenReplaceItem() {
+    public void whenReplaceItemIsTrue() {
         try (TrackerSQL sql = new TrackerSQL(ConnectionRollback.create(this.init()))) {
             String id = sql.add(new Item("name4")).getId();
             boolean replaceItem = sql.replace(id, new Item("nameReplace"));
@@ -84,7 +84,18 @@ public class TrackerSQLTest {
     }
 
     @Test
-    public void whenDeleteItem() {
+    public void whenReplaceItemIsFalse() {
+        try (TrackerSQL sql = new TrackerSQL(ConnectionRollback.create(this.init()))) {
+            sql.add(new Item("name4"));
+            boolean replaceItem = sql.replace(String.valueOf(5), new Item("nameReplace"));
+            assertFalse(replaceItem);
+        } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
+        }
+    }
+
+    @Test
+    public void whenDeleteItemIsTrue() {
         try (TrackerSQL sql = new TrackerSQL(ConnectionRollback.create(this.init()))) {
             String id = sql.add(new Item("name5")).getId();
             String id1 = sql.add(new Item("name6")).getId();
@@ -95,6 +106,23 @@ public class TrackerSQLTest {
             assertTrue(sql.delete(id1));
             assertThat(sql.findAll().size(), is(1));
             assertTrue(sql.delete(id2));
+        } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
+        }
+    }
+
+    @Test
+    public void whenDeleteItemIsFalse() {
+        try (TrackerSQL sql = new TrackerSQL(ConnectionRollback.create(this.init()))) {
+            sql.add(new Item("name5"));
+            sql.add(new Item("name6"));
+            sql.add(new Item("name7"));
+            assertThat(sql.findAll().size(), is(3));
+            assertFalse(sql.delete(String.valueOf(100)));
+            assertThat(sql.findAll().size(), is(3));
+            assertFalse(sql.delete(String.valueOf(200)));
+            assertThat(sql.findAll().size(), is(3));
+            assertFalse(sql.delete(String.valueOf(300)));
         } catch (SQLException e) {
             logger.error(e.getMessage(), e);
         }
