@@ -20,9 +20,6 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     private Connection connection;
     private static final String TABLE = "items";
 
-    public TrackerSQL() {
-    }
-
     public TrackerSQL(Connection connection) {
         this.connection = connection;
     }
