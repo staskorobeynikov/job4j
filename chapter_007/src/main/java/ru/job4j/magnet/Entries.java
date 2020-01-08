@@ -18,7 +18,7 @@ public class Entries {
     public List<Entry> getList() {
         return list;
     }
-
+    @XmlElement(name = "entry")
     public void setList(List<Entry> list) {
         this.list = list;
     }

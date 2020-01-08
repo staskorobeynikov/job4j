@@ -10,14 +10,15 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class StoreSQLTest {
-    private Connection conn = new Config().init("urlCreateDb");
+    private Connection conn = new Config().init("url");
     private StoreSQL storeSQL = new StoreSQL(conn);
 
     @Test
-    public void when() {
+    public void whenAdd2Items() {
         storeSQL.generate(2);
         List<Entry> res = storeSQL.load();
         Iterator<Entry> it = res.iterator();
+        assertThat(res.size(), is(2));
         assertThat(it.next().getField(), is(0));
         assertThat(it.next().getField(), is(1));
     }

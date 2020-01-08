@@ -27,13 +27,4 @@ public class StoreXML {
             logger.error(exc.getMessage(), exc);
         }
     }
-
-    public static void main(String[] args) {
-        Config config = new Config();
-        StoreSQL str = new StoreSQL(config.init("urlCreateDb"));
-        str.generate(100);
-        List<Entry> result = str.load();
-        StoreXML st = new StoreXML(new File(".data/fileXML.xml"));
-        st.save(result);
-    }
 }

@@ -7,26 +7,28 @@ import org.xml.sax.helpers.DefaultHandler;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
+import java.util.List;
 
 public class Application {
-    private StoreSQL storeSQL;
-    private StoreXML storeXML;
-    private ConvertXSQT convertXSQT;
     private static int count;
     private File source;
 
-    public Application(StoreSQL storeSQL, StoreXML storeXML, ConvertXSQT convertXSQT, File source) {
-        this.storeSQL = storeSQL;
-        this.storeXML = storeXML;
-        this.convertXSQT = convertXSQT;
+    public Application(File source) {
         this.source = source;
     }
 
-    public int parsing(int number) {
-        storeSQL.generate(number);
-        storeXML.save(storeSQL.load());
-        convertXSQT.convert();
-        parseSax();
+    public static int parse(int generate) {
+        Config config = new Config();
+        StoreSQL str = new StoreSQL(config.init("url"));
+        str.generate(generate);
+        List<Entry> result = str.load();
+        StoreXML st = new StoreXML(new File(config.get("fileXML")));
+        st.save(result);
+        ConvertXSQT cont = new ConvertXSQT(new File(config.get("fileXML")),
+                new File(config.get("convertFileXML")), new File(config.get("schemaXSTL")));
+        cont.convert();
+        Application app = new Application(new File(config.get("convertFileXML")));
+        app.parseSax();
         return getCount();
     }
 
@@ -51,5 +53,9 @@ public class Application {
         } catch (Exception exc) {
             throw new RuntimeException(exc);
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(parse(10000));
     }
 }
