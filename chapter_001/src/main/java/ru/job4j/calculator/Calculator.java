@@ -13,9 +13,8 @@ public class Calculator {
      * @param first First number
      * @param second Second number
      */
-    public static void add(double first, double second) {
-        double result = first + second;
-        System.out.println(first + " + " + second + " = " + result);
+    public double add(double first, double second) {
+        return first + second;
     }
 
     /**
@@ -23,9 +22,8 @@ public class Calculator {
      * @param first First number
      * @param second Second number
      */
-    public static void div(double first, double second) {
-        double result = first / second;
-        System.out.println(first + " / " + second + " = " + result);
+    public double div(double first, double second) {
+        return first / second;
     }
 
     /**
@@ -33,9 +31,8 @@ public class Calculator {
      * @param first First number
      * @param second Second number
      */
-    public static void multiply(double first, double second) {
-        double result = first * second;
-        System.out.println(first + " * " + second + " = " + result);
+    public double multiply(double first, double second) {
+        return first * second;
     }
 
     /**
@@ -43,19 +40,7 @@ public class Calculator {
      * @param first First number
      * @param second Second number
      */
-    public static void subtract(double first, double second) {
-        double result = first - second;
-        System.out.println(first + " - " + second + " = " + result);
-    }
-
-    /**
-     * Main. Method with parameters.
-     * @param args
-     */
-    public static void main(String[] args) {
-        add(1, 1);
-        div(4, 2);
-        multiply(2, 1);
-        subtract(10, 5);
+    public double subtract(double first, double second) {
+        return first - second;
     }
 }
