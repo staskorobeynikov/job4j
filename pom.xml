@@ -16,6 +16,7 @@
         <module>chapter_005</module>
         <module>chapter_006</module>
         <module>chapter_007</module>
+        <module>parser</module>
     </modules>
     <properties>
         <maven.compiler.source>12</maven.compiler.source>
