@@ -18,7 +18,6 @@ public class WareHouse implements Store {
         boolean result = false;
         if (determineResourceProduct(food.getExpireDate(), food.getCreateDate()) > 75) {
             result = true;
-            list.add(food);
         }
         return result;
     }
@@ -31,11 +30,19 @@ public class WareHouse implements Store {
      * @return int percent resource product.
      */
     public int determineResourceProduct(Date expireDate, Date createDate) {
-        int result;
         long resourceProdDate = expireDate.getTime() - createDate.getTime();
         long balanceProdDate = expireDate.getTime() - System.currentTimeMillis();
-        result = Math.round(balanceProdDate * 100 / resourceProdDate);
-        return result;
+        return Math.round(balanceProdDate * 100 / resourceProdDate);
+    }
+
+    /**
+     * Method adds product to list products WareHouse.
+     *
+     * @param food product for adding.
+     */
+    @Override
+    public void addFood(Food food) {
+        list.add(food);
     }
 
     public List<Food> getList() {

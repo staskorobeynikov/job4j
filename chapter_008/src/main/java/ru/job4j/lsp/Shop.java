@@ -18,13 +18,22 @@ public class Shop extends WareHouse {
         boolean result = false;
         if (determineResourceProduct(food.getExpireDate(), food.getCreateDate()) <= 75
                 && determineResourceProduct(food.getExpireDate(), food.getCreateDate()) > 0) {
-            result = true;
             if (determineResourceProduct(food.getExpireDate(), food.getCreateDate()) < 25) {
                 food.setDiscount(50);
             }
-            list.add(food);
+            result = true;
         }
         return result;
+    }
+
+    /**
+     * Method adds product to list products Shop.
+     *
+     * @param food product for adding.
+     */
+    @Override
+    public void addFood(Food food) {
+        list.add(food);
     }
 
     public List<Food> getList() {

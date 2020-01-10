@@ -26,6 +26,7 @@ public class ControlQuality {
     public void control(Food food) {
         for (Store store : listStore) {
             if (store.checkFood(food)) {
+                store.addFood(food);
                 break;
             }
         }

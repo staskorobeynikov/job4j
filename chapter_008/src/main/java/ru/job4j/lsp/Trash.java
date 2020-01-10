@@ -17,9 +17,18 @@ public class Trash extends WareHouse {
         boolean result = false;
         if (determineResourceProduct(food.getExpireDate(), food.getCreateDate()) < 0) {
             result = true;
-            list.add(food);
         }
         return result;
+    }
+
+    /**
+     * Method adds product to list products Trash.
+     *
+     * @param food product for adding.
+     */
+    @Override
+    public void addFood(Food food) {
+        list.add(food);
     }
 
     public List<Food> getList() {
