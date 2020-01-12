@@ -23,4 +23,11 @@ public class SimpleMenu implements Menu {
     public void add(Item item) {
         list.add(item);
     }
+
+    @Override
+    public void execute(Input input) {
+        for (Item item : list) {
+            item.execute(input);
+        }
+    }
 }

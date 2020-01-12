@@ -17,6 +17,5 @@ public class StartMenu {
         Menu menu = new SimpleMenu();
         menu.add(item);
         menu.show();
-
     }
 }

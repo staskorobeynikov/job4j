@@ -46,4 +46,9 @@ public class SimpleItem implements Item {
             }
         }
     }
+
+    @Override
+    public void execute(Input input) {
+        System.out.println("Execute some action!!!");
+    }
 }
