@@ -8,4 +8,6 @@ public interface InterfaceParking {
      * @return true - car parked.
      */
     boolean start(InterfaceCar car);
+
+    int getCountFreeSpace();
 }

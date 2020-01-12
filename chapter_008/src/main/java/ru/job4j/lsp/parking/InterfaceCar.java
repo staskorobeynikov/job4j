@@ -1,6 +1,7 @@
 package ru.job4j.lsp.parking;
 
 public interface InterfaceCar {
+
     /**
      * Method determine parking space size.
      *
