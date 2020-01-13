@@ -1,6 +1,7 @@
 package ru.job4j.lsp;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Trash extends WareHouse {
@@ -13,9 +14,9 @@ public class Trash extends WareHouse {
      * @return true - product will be send to Trash.
      */
     @Override
-    public boolean checkFood(Food food) {
+    public boolean checkFood(Food food, Date currentDate) {
         boolean result = false;
-        if (determineResourceProduct(food.getExpireDate(), food.getCreateDate()) < 0) {
+        if (determineResourceProduct(food, currentDate) < 0) {
             result = true;
         }
         return result;
@@ -33,5 +34,17 @@ public class Trash extends WareHouse {
 
     public List<Food> getList() {
         return list;
+    }
+
+    /**
+     * Method to get list Foods.
+     *
+     * @return Array products.
+     */
+    @Override
+    public List<Food> getAllFood() {
+        List<Food> result = new ArrayList<>(list);
+        list.clear();
+        return result;
     }
 }

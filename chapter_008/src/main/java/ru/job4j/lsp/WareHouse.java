@@ -13,10 +13,18 @@ public class WareHouse implements Store {
      * @param food product for checking.
      * @return true - product will be send to WareHouse.
      */
+
+    /**
+     * Method for checking product quality.
+     *
+     * @param food product for checking.
+     * @param currentDate Date current date.
+     * @return true - product will be send to WareHouse.
+     */
     @Override
-    public boolean checkFood(Food food) {
+    public boolean checkFood(Food food, Date currentDate) {
         boolean result = false;
-        if (determineResourceProduct(food.getExpireDate(), food.getCreateDate()) > 75) {
+        if (determineResourceProduct(food, currentDate) > 75) {
             result = true;
         }
         return result;
@@ -25,13 +33,13 @@ public class WareHouse implements Store {
     /**
      * Helper method for determining resource products.
      *
-     * @param expireDate expire date product.
-     * @param createDate create date product.
+     * @param food product for checking.
+     * @param currentDate Date current date.
      * @return int percent resource product.
      */
-    public int determineResourceProduct(Date expireDate, Date createDate) {
-        long resourceProdDate = expireDate.getTime() - createDate.getTime();
-        long balanceProdDate = expireDate.getTime() - System.currentTimeMillis();
+    public int determineResourceProduct(Food food, Date currentDate) {
+        long resourceProdDate = food.getExpireDate().getTime() - food.getCreateDate().getTime();
+        long balanceProdDate = food.getExpireDate().getTime() - currentDate.getTime();
         return Math.round(balanceProdDate * 100 / resourceProdDate);
     }
 
@@ -47,5 +55,17 @@ public class WareHouse implements Store {
 
     public List<Food> getList() {
         return list;
+    }
+
+    /**
+     * Method to get list Foods.
+     *
+     * @return Array products.
+     */
+    @Override
+    public List<Food> getAllFood() {
+        List<Food> result = new ArrayList<>(list);
+        list.clear();
+        return result;
     }
 }

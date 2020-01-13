@@ -1,6 +1,7 @@
 package ru.job4j.lsp;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Shop extends WareHouse {
@@ -9,16 +10,16 @@ public class Shop extends WareHouse {
 
     /**
      * Method for checking product quality.
-     *
      * @param food product for checking.
+     * @param currentDate Date current date.
      * @return true - product will be send to Shop.
      */
     @Override
-    public boolean checkFood(Food food) {
+    public boolean checkFood(Food food, Date currentDate) {
         boolean result = false;
-        if (determineResourceProduct(food.getExpireDate(), food.getCreateDate()) <= 75
-                && determineResourceProduct(food.getExpireDate(), food.getCreateDate()) > 0) {
-            if (determineResourceProduct(food.getExpireDate(), food.getCreateDate()) < 25) {
+        if (determineResourceProduct(food, currentDate) <= 75
+                && determineResourceProduct(food, currentDate) > 0) {
+            if (determineResourceProduct(food, currentDate) < 25) {
                 food.setDiscount(50);
             }
             result = true;
@@ -38,5 +39,17 @@ public class Shop extends WareHouse {
 
     public List<Food> getList() {
         return list;
+    }
+
+    /**
+     * Method to get list Foods.
+     *
+     * @return Array products.
+     */
+    @Override
+    public List<Food> getAllFood() {
+        List<Food> result = new ArrayList<>(list);
+        list.clear();
+        return result;
     }
 }
