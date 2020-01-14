@@ -10,13 +10,13 @@ public class ConfigTest {
     Config config = new Config();
 
     @Test
-    public void when() {
+    public void whenConnectionUrlNotNull() {
         Connection conn = config.init("url");
         assertNotNull(conn);
     }
 
     @Test
-    public void when1() {
+    public void whenConnectionUrlCreateDbNotNull() {
         Connection conn = config.init("urlCreateDb");
         assertNotNull(conn);
     }

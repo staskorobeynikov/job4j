@@ -17,6 +17,7 @@ public class StoreSQL implements AutoCloseable {
     }
 
     public void generate(int size) {
+        createTableInDB();
         try (PreparedStatement pr = connection.prepareStatement("insert into entry(field) values(?);")) {
             connection.setAutoCommit(false);
             for (int i = 0; i < size; i++) {
@@ -42,6 +43,17 @@ public class StoreSQL implements AutoCloseable {
             logger.error(exc.getMessage(), exc);
         }
         return result;
+    }
+
+    private void createTableInDB() {
+        if (connection != null) {
+            try (Statement st = connection.createStatement()) {
+                st.execute("drop table if exists entry;");
+                st.execute("create table entry (field integer);");
+            } catch (SQLException exc) {
+                throw new IllegalStateException();
+            }
+        }
     }
 
     @Override
