@@ -11,7 +11,7 @@ public class ManagerParking implements InterfaceParking {
 
     @Override
     public boolean start(InterfaceCar car) {
-        return false;
+        return true;
     }
 
     @Override
