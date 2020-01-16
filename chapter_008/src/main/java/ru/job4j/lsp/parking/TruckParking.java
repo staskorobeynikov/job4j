@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TruckParking implements InterfaceParking {
-    private final int parkingSize;
-    private List<Truck> truckList = new ArrayList<>();
+    private int parkingSize;
+    private List<InterfaceCar> truckList = new ArrayList<>();
 
     public TruckParking(int parkingSize) {
         this.parkingSize = parkingSize;
@@ -13,11 +13,16 @@ public class TruckParking implements InterfaceParking {
 
     @Override
     public boolean start(InterfaceCar car) {
-        return false;
+        boolean result = false;
+        if (car instanceof Truck && getCountFreeSpace() > 0) {
+            truckList.add(car);
+            result = true;
+        }
+        return result;
     }
 
     @Override
     public int getCountFreeSpace() {
-        return 0;
+        return parkingSize - truckList.size();
     }
 }

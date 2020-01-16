@@ -11,11 +11,13 @@ public class ManagerParking implements InterfaceParking {
 
     @Override
     public boolean start(InterfaceCar car) {
-        return true;
+        return truckParking.start(car)
+                || passengerCarParking.start(car);
     }
 
     @Override
     public int getCountFreeSpace() {
-        return 0;
+        return truckParking.getCountFreeSpace()
+                + passengerCarParking.getCountFreeSpace();
     }
 }
