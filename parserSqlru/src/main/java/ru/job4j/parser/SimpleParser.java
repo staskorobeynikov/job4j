@@ -108,7 +108,7 @@ public class SimpleParser implements Parser {
     }
 
     private Timestamp convert(String date) {
-        String result = "";
+        String result;
         String[] splitYearAndTime = date.split(", ");
         String[] splitYearMonthDay = splitYearAndTime[0].split(" ");
         if (splitYearMonthDay.length == 3) {
