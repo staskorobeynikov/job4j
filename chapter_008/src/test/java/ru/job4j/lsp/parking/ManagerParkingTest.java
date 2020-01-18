@@ -6,6 +6,60 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class ManagerParkingTest {
+    @Test
+    public void whenAddSomePassengerCarsOnTruckParkingThenFalse() {
+        ManagerParking managerParking = new ManagerParking(
+                new TruckParking(3),
+                new PassengerCarParking(0)
+        );
+        managerParking.start(new PassengerCar());
+        InterfaceCar car = new PassengerCar();
+
+        boolean result = managerParking.start(car);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void whenAddSomePassengerCarsOnTruckParkingThenSizeParkingNotChange() {
+        ManagerParking managerParking = new ManagerParking(
+                new TruckParking(3),
+                new PassengerCarParking(0)
+        );
+        managerParking.start(new PassengerCar());
+        managerParking.start(new PassengerCar());
+        managerParking.start(new PassengerCar());
+
+        int result = managerParking.getCountFreeSpace();
+
+        assertThat(result, is(3));
+    }
+
+    @Test
+    public void whenAddTruckOnPassengerCarParkingIsTrue() {
+        ManagerParking managerParking = new ManagerParking(
+                new TruckParking(0),
+                new PassengerCarParking(3)
+        );
+        InterfaceCar truck = new Truck(2);
+
+        boolean result = managerParking.start(truck);
+
+        assertTrue(result);
+    }
+
+    @Test
+    public void whenAddTruckOnPassengerCarParkingThenSizeParkingChange() {
+        ManagerParking managerParking = new ManagerParking(
+                new TruckParking(0),
+                new PassengerCarParking(3)
+        );
+        managerParking.start(new Truck(2));
+
+        int result = managerParking.getCountFreeSpace();
+
+        assertThat(result, is(1));
+    }
 
     @Test
     public void whenAddPassengerCarStartIsTrue() {
@@ -13,7 +67,7 @@ public class ManagerParkingTest {
                 new TruckParking(3),
                 new PassengerCarParking(2)
         );
-        InterfaceCar car = new PassengerCar(1);
+        InterfaceCar car = new PassengerCar();
 
         boolean result = managerParking.start(car);
 
@@ -26,7 +80,7 @@ public class ManagerParkingTest {
                 new TruckParking(0),
                 new PassengerCarParking(2)
         );
-        InterfaceCar car = new PassengerCar(1);
+        InterfaceCar car = new PassengerCar();
         managerParking.start(car);
 
         int result = managerParking.getCountFreeSpace();
@@ -40,8 +94,8 @@ public class ManagerParkingTest {
                 new TruckParking(3),
                 new PassengerCarParking(1)
         );
-        managerParking.start(new PassengerCar(1));
-        InterfaceCar car = new PassengerCar(1);
+        managerParking.start(new PassengerCar());
+        InterfaceCar car = new PassengerCar();
         boolean result = managerParking.start(car);
 
         assertFalse(result);
@@ -53,8 +107,8 @@ public class ManagerParkingTest {
                 new TruckParking(0),
                 new PassengerCarParking(2)
         );
-        managerParking.start(new PassengerCar(1));
-        managerParking.start(new PassengerCar(1));
+        managerParking.start(new PassengerCar());
+        managerParking.start(new PassengerCar());
 
         int result = managerParking.getCountFreeSpace();
 
@@ -121,7 +175,7 @@ public class ManagerParkingTest {
                 new TruckParking(3),
                 new PassengerCarParking(2)
         );
-        managerParking.start(new PassengerCar(1));
+        managerParking.start(new PassengerCar());
         InterfaceCar car = new Truck(2);
 
         boolean result = managerParking.start(car);
@@ -135,7 +189,7 @@ public class ManagerParkingTest {
                 new TruckParking(0),
                 new PassengerCarParking(2)
         );
-        managerParking.start(new PassengerCar(1));
+        managerParking.start(new PassengerCar());
         InterfaceCar car = new Truck(2);
 
         boolean result = managerParking.start(car);
@@ -149,7 +203,7 @@ public class ManagerParkingTest {
                 new TruckParking(1),
                 new PassengerCarParking(2)
         );
-        managerParking.start(new PassengerCar(1));
+        managerParking.start(new PassengerCar());
         managerParking.start(new Truck(2));
 
         int result = managerParking.getCountFreeSpace();
@@ -163,7 +217,7 @@ public class ManagerParkingTest {
                 new TruckParking(1),
                 new PassengerCarParking(1)
         );
-        managerParking.start(new PassengerCar(1));
+        managerParking.start(new PassengerCar());
         managerParking.start(new Truck(2));
 
         int result = managerParking.getCountFreeSpace();

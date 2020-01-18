@@ -14,7 +14,7 @@ public class TruckParking implements InterfaceParking {
     @Override
     public boolean start(InterfaceCar car) {
         boolean result = false;
-        if (car instanceof Truck && getCountFreeSpace() > 0) {
+        if (car.getSize() > 1 && getCountFreeSpace() > 0) {
             truckList.add(car);
             result = true;
         }

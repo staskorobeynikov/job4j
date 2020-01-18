@@ -14,7 +14,7 @@ public class PassengerCarParking implements InterfaceParking {
     @Override
     public boolean start(InterfaceCar car) {
         boolean result = false;
-        if (car instanceof PassengerCar && getCountFreeSpace() > 0) {
+        if (car.getSize() == 1 && getCountFreeSpace() > 0) {
             passengerCarList.add(car);
             result = true;
         } else if (car.getSize() < parkingSize) {
