@@ -57,6 +57,35 @@ public class ProductTest {
     }
 
     @Test
+    public void whenEqualsProductIsTrue1() {
+        Product product = new Product("milk", 1);
+
+        boolean result = product.equals(product);
+
+        assertThat(result, is(true));
+    }
+
+    @Test
+    public void whenEqualsProductIsFalse1() {
+        Product product = new Product("milk", 1);
+        Product product1 = null;
+
+        boolean result = product.equals(product1);
+
+        assertThat(result, is(false));
+    }
+
+    @Test
+    public void whenEqualsProductIsFalse2() {
+        Product product = new Product("milk", 1);
+        Book book = new Book("milk", 1);
+
+        boolean result = product.equals(book);
+
+        assertThat(result, is(false));
+    }
+
+    @Test
     public void whenEqualsProductIsFalseCount() {
         Product product = new Product("milk", 1);
         Product product1 = new Product("milk", 2);

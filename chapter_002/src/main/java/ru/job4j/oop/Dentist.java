@@ -5,9 +5,9 @@ public class Dentist extends Doctor {
         super(n, sn, e, y, sp);
     }
     public void pullTooth() {
-
+        System.out.println("pullTooth");
     }
     public void putSeal() {
-
+        System.out.println("putSeal");
     }
 }

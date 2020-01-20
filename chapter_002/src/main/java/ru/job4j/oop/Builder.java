@@ -5,9 +5,9 @@ public class Builder extends Engineer {
         super(n, sn, e, y, cat);
     }
     public void readDrawing() {
-
+        System.out.println("readDrawing");
     }
     public void makeFoundation() {
-
+        System.out.println("makeFoundation");
     }
 }

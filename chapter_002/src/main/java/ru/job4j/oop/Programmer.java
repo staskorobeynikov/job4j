@@ -6,13 +6,15 @@ public class Programmer extends Engineer {
         super(n, sn, e, y, cat);
         this.languageprog = lp;
     }
+
     public String getLanguageprog() {
         return languageprog;
     }
-    public void testProgramm() {
 
+    public void testProgramm() {
+        System.out.println("testProgramm");
     }
     public void installsSoftware() {
-
+        System.out.println("installsSoftware");
     }
 }

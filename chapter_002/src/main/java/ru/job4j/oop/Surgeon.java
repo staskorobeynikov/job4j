@@ -5,9 +5,9 @@ public class Surgeon extends  Doctor {
         super(n, sn, e, y, sp);
     }
     public void doSurgery() {
-
+        System.out.println("doSurgery");
     }
     public void makeIncision() {
-
+        System.out.println("makeIncision");
     }
 }

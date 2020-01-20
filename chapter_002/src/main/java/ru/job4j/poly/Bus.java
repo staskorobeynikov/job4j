@@ -20,7 +20,7 @@ public class Bus implements Transport {
         int cost = amountFuel * 44;
         return cost;
     }
-    public static void main(String[] args) {
+    public static void main() {
         Bus bus = new Bus();
         bus.drive();
         bus.amountPassengers(10);
