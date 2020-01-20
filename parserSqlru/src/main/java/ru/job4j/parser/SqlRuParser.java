@@ -12,19 +12,21 @@ public class SqlRuParser {
     private final Logger logger = LogManager.getLogger(SqlRuParser.class.getName());
 
     private void start() {
-        Config config = new Config();
-        SimpleParser parser = new SimpleParser();
-        StoreSQL storeSQL = new StoreSQL(config.init());
+        Config config = new ConfigForSQLParser();
+        Parser parser = new SimpleParser();
+        config.init();
+        ConnectManager connectManager = new ConnectStoreSQL(config);
+        Store store = new StoreSQL(connectManager.getConnection());
         try {
             SchedulerFactory schedulerFactory = new StdSchedulerFactory();
             Scheduler scheduler = schedulerFactory.getScheduler();
             JobDetail job = newJob(ParserJob.class)
                     .withIdentity("ParserJob", "group1")
-                    .usingJobData("parser.url", config.get("parser.url"))
+                    .usingJobData("parser.url", config.getProperty("parser.url"))
                     .build();
             CronTrigger trigger = TriggerBuilder.newTrigger()
                     .withIdentity("trigger1", "group1")
-                    .withSchedule(CronScheduleBuilder.cronSchedule(config.get("cron.time")))
+                    .withSchedule(CronScheduleBuilder.cronSchedule(config.getProperty("cron.time")))
                     .forJob("ParserJob", "group1")
                     .build();
             scheduler.scheduleJob(job, trigger);
@@ -32,7 +34,7 @@ public class SqlRuParser {
         } catch (SchedulerException e) {
             logger.error(e.getMessage(), e);
         }
-        storeSQL.addVacancies(parser.parse(config.get("parser.url"), storeSQL.getSetDateCreate()));
+        store.addVacancies(parser.parse(config.getProperty("parser.url"), store.getSetDateCreate()));
     }
 
     public static void main(String[] args) {

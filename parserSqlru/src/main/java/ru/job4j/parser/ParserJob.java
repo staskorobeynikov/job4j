@@ -19,7 +19,7 @@ public class ParserJob implements Job {
     public void execute(JobExecutionContext jobExecutionContext) {
         JobDataMap dataMap = jobExecutionContext.getJobDetail().getJobDataMap();
         String string = dataMap.getString("parser.url");
-        Config config = new Config();
-        store.addVacancies(parser.parse(config.get(string), store.getSetDateCreate()));
+        Config config = new ConfigForSQLParser();
+        store.addVacancies(parser.parse(config.getProperty(string), store.getSetDateCreate()));
     }
 }
