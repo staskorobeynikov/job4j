@@ -20,8 +20,8 @@ public class PredatorTest {
         Predator predator = new Predator();
 
         String expect = String.format(
-                "Class name: Animal%s" +
-                        "Class name: Predator%s",
+                "Class name: Animal%s"
+                        + "Class name: Predator%s",
                 LN,
                 LN);
         assertThat(new String(out.toByteArray()), is(expect));

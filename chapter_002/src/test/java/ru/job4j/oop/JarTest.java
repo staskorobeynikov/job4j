@@ -51,8 +51,8 @@ public class JarTest {
         Jar.main();
 
         String expect = String.format(
-                "first : 10. second : 5%s" +
-                        "first : 15. second : 0%s",
+                "first : 10. second : 5%s"
+                        + "first : 15. second : 0%s",
                 LN,
                 LN);
         assertThat(new String(out.toByteArray()), is(expect));

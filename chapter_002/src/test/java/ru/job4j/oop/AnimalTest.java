@@ -33,15 +33,15 @@ public class AnimalTest {
         Animal.main();
 
         String expect = String.format(
-                "Class name: Animal%s%s" +
-                        "Class name: Predator%s" +
-                        "Class name: Animal%s" +
-                        "Class name: Predator%s%s" +
-                        "Class name: Predator%s" +
-                        "Class name: Tiger%s" +
-                        "Class name: Animal%s" +
-                        "Class name: Predator%s" +
-                        "Class name: Tiger%s",
+                "Class name: Animal%s%s"
+                        + "Class name: Predator%s"
+                        + "Class name: Animal%s"
+                        + "Class name: Predator%s%s"
+                        + "Class name: Predator%s"
+                        + "Class name: Tiger%s"
+                        + "Class name: Animal%s"
+                        + "Class name: Predator%s"
+                        + "Class name: Tiger%s",
                 LN,
                 LN,
                 LN,

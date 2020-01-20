@@ -23,8 +23,8 @@ public class CatTest {
         cat.show();
 
         String expect = String.format(
-                "Cat's name is gav%s" +
-                        "He eats meat%s",
+                "Cat's name is gav%s"
+                        + "He eats meat%s",
                 LN,
                 LN);
         assertThat(new String(out.toByteArray()), is(expect));

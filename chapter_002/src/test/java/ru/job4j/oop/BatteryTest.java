@@ -51,8 +51,8 @@ public class BatteryTest {
         Battery.main();
 
         String expect = String.format(
-                "first : 30. second : 20%s" +
-                        "first : 0. second : 50%s",
+                "first : 30. second : 20%s"
+                        + "first : 0. second : 50%s",
                 LN,
                 LN);
         assertThat(new String(out.toByteArray()), is(expect));

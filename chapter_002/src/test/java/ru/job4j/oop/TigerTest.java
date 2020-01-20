@@ -20,9 +20,9 @@ public class TigerTest {
         Tiger tiger = new Tiger();
 
         String expect = String.format(
-                "Class name: Animal%s" +
-                        "Class name: Predator%s" +
-                        "Class name: Tiger%s",
+                "Class name: Animal%s"
+                        + "Class name: Predator%s"
+                        + "Class name: Tiger%s",
                 LN,
                 LN,
                 LN);
@@ -39,8 +39,8 @@ public class TigerTest {
         Tiger tiger = new Tiger("lion");
 
         String expect = String.format(
-                "Class name: Predator%s" +
-                        "Class name: Tiger%s",
+                "Class name: Predator%s"
+                        + "Class name: Tiger%s",
                 LN,
                 LN);
         assertThat(new String(out.toByteArray()), is(expect));

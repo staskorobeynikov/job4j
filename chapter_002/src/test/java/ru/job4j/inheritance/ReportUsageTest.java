@@ -20,13 +20,13 @@ public class ReportUsageTest {
         ReportUsage.main();
 
         String expect = String.format(
-                "<h1>Report's name</h1><br/><span>Report's body</span>%s%s" +
-                        "Report's name%s" +
-                        "Report's body%s%s" +
-                        "{\n\n" +
-                        "name : Report's name,\n" +
-                        "body : Report's body\n\n" +
-                        "}%s",
+                "<h1>Report's name</h1><br/><span>Report's body</span>%s%s"
+                        + "Report's name%s"
+                        + "Report's body%s%s"
+                        + "{\n\n"
+                        + "name : Report's name,\n"
+                        + "body : Report's body\n\n"
+                        + "}%s",
                 LN,
                 LN,
                 LN,
