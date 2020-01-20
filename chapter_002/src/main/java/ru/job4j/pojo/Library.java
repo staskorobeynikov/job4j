@@ -1,7 +1,7 @@
 package ru.job4j.pojo;
 
 public class Library {
-    public static void  main(String[] args) {
+    public static void  main() {
         Book book1 = new Book("Евгений Онегин", 3);
         Book book2 = new Book("Китайский язык", 2);
         Book book3 = new Book("Инструкция пользователя", 5);

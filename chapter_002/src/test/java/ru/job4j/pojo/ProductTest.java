@@ -45,4 +45,52 @@ public class ProductTest {
 
         assertThat(result, is(4));
     }
+
+    @Test
+    public void whenEqualsProductIsTrue() {
+        Product product = new Product("milk", 1);
+        Product product1 = new Product("milk", 1);
+
+        boolean result = product.equals(product1);
+
+        assertThat(result, is(true));
+    }
+
+    @Test
+    public void whenEqualsProductIsFalseCount() {
+        Product product = new Product("milk", 1);
+        Product product1 = new Product("milk", 2);
+
+        boolean result = product.equals(product1);
+
+        assertThat(result, is(false));
+    }
+
+    @Test
+    public void whenEqualsProductIsFalseName() {
+        Product product = new Product("milk", 1);
+        Product product1 = new Product("milk1", 1);
+
+        boolean result = product.equals(product1);
+
+        assertThat(result, is(false));
+    }
+
+    @Test
+    public void whenGetHashCode() {
+        Product product = new Product("milk", 1);
+
+        int result = product.hashCode();
+
+        assertThat(result, is(103899911));
+    }
+
+    @Test
+    public void whenGetToString() {
+        Product product = new Product("milk", 1);
+
+        String result = product.toString();
+
+        assertThat(result, is("Product: milk, 1."));
+    }
 }
