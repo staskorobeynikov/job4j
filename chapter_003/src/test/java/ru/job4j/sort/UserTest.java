@@ -54,4 +54,41 @@ public class UserTest {
                 );
         assertThat(rsl, greaterThan(0));
     }
+
+    @Test
+    public void testHashCode() {
+        User user = new User("Petr", 35);
+
+        int result = user.hashCode();
+
+        assertThat(result, is(77006577));
+    }
+
+    @Test
+    public void testToString() {
+        User user = new User("Petr", 35);
+
+        String result = user.toString();
+
+        assertThat(result, is("name = 'Petr', age = 35"));
+    }
+
+    @Test
+    public void whenTestEqualsIsTrue() {
+        User user = new User("Petr", 35);
+
+        boolean result = user.equals(user);
+
+        assertThat(result, is(true));
+    }
+
+    @Test
+    public void whenTestEqualsIsFalse() {
+        User user = new User("Petr", 35);
+        SortUser sortUser = new SortUser();
+
+        boolean result = user.equals(sortUser);
+
+        assertThat(result, is(false));
+    }
 }

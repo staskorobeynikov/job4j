@@ -9,7 +9,7 @@ public class ConvertList2Array {
      * @param cells количество необходимых разбиений
      * @return array[][] двумерный массив.
      */
-    public static int[][] toArray(List<Integer> list, int cells) {
+    public int[][] toArray(List<Integer> list, int cells) {
         int groups = (int) Math.ceil((double) list.size() / cells);
         System.out.println(groups);
         int[][] array = new int[groups][cells];
@@ -29,10 +29,11 @@ public class ConvertList2Array {
 
     public static void main(String[] args) {
         List<Integer> list = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        int[][] rsl = toArray(list, 4);
+        ConvertList2Array convertList2Array = new ConvertList2Array();
+        int[][] rsl = convertList2Array.toArray(list, 4);
         for (int[] row : rsl) {
             for (int cell : row) {
-                System.out.println(cell + " ");
+                System.out.print(cell + " ");
             }
             System.out.println();
         }
