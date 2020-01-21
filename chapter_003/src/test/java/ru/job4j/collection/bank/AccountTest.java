@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class AccountTest {
 
     @Test
-    public void whenTestSetRequisite(){
+    public void whenTestSetRequisite() {
         Account account = new Account("1111", 100);
         account.setRequisite("2222");
 
