@@ -26,4 +26,23 @@ public class UserTest {
 
         assertThat(result, is("name666"));
     }
+
+    @Test
+    public void whenTestToString() {
+        User user = new User("1111", "name");
+
+        String result = user.toString();
+
+        assertThat(result, is("User: passport=1111, username=name"));
+    }
+
+    @Test
+    public void whenTestEqualsMethod() {
+        User user = new User("1111", "name");
+        User user1 = new User("1111", "name666");
+
+        boolean result = user.equals(user1);
+
+        assertThat(result, is(true));
+    }
 }
