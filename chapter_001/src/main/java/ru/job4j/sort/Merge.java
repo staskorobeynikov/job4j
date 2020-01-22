@@ -1,7 +1,5 @@
 package ru.job4j.sort;
 
-import java.util.Arrays;
-
 public class Merge {
     public int[] merge(int[] left, int[] right) {
         int i = 0;
@@ -25,13 +23,5 @@ public class Merge {
             i++;
         }
         return result;
-    }
-    public static void main(String[] args) {
-        Merge process = new Merge();
-        int[] result = process.merge(
-                new int[] {1, 3, 5},
-                new int[] {2, 4}
-        );
-        System.out.println(Arrays.toString(result));
     }
 }

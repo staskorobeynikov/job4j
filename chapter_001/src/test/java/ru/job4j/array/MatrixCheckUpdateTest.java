@@ -13,7 +13,8 @@ public class MatrixCheckUpdateTest {
                 {'X', 'X', 'X'},
                 {' ', ' ', ' '},
         };
-        boolean result = MatrixCheckUpdate.monoHorizontal(input, 1);
+        MatrixCheckUpdate matrixCheckUpdate = new MatrixCheckUpdate();
+        boolean result = matrixCheckUpdate.monoHorizontal(input, 1);
         assertThat(result, is(true));
     }
 
@@ -24,7 +25,8 @@ public class MatrixCheckUpdateTest {
                 {'X', 'X', ' '},
                 {' ', ' ', ' '},
         };
-        boolean result = MatrixCheckUpdate.monoHorizontal(input, 1);
+        MatrixCheckUpdate matrixCheckUpdate = new MatrixCheckUpdate();
+        boolean result = matrixCheckUpdate.monoHorizontal(input, 1);
         assertThat(result, is(false));
     }
 
@@ -35,7 +37,8 @@ public class MatrixCheckUpdateTest {
                 {' ', ' ', 'X'},
                 {' ', ' ', 'X'},
         };
-        boolean result = MatrixCheckUpdate.monoVertical(input, 2);
+        MatrixCheckUpdate matrixCheckUpdate = new MatrixCheckUpdate();
+        boolean result = matrixCheckUpdate.monoVertical(input, 2);
         assertThat(result, is(true));
     }
 
@@ -46,7 +49,8 @@ public class MatrixCheckUpdateTest {
                 {' ', ' ', ' '},
                 {' ', ' ', 'X'},
         };
-        boolean result = MatrixCheckUpdate.monoVertical(input, 2);
+        MatrixCheckUpdate matrixCheckUpdate = new MatrixCheckUpdate();
+        boolean result = matrixCheckUpdate.monoVertical(input, 2);
         assertThat(result, is(false));
     }
 
@@ -57,7 +61,8 @@ public class MatrixCheckUpdateTest {
                 {' ', 'X', ' '},
                 {' ', ' ', 'X'},
         };
-        char[] result = MatrixCheckUpdate.extractDiagonal(input);
+        MatrixCheckUpdate matrixCheckUpdate = new MatrixCheckUpdate();
+        char[] result = matrixCheckUpdate.extractDiagonal(input);
         char[] expect = {'X', 'X', 'X'};
         assertThat(result, is(expect));
     }
@@ -69,7 +74,8 @@ public class MatrixCheckUpdateTest {
                 {' ', ' ', ' '},
                 {' ', ' ', 'X'},
         };
-        char[] result = MatrixCheckUpdate.extractDiagonal(input);
+        MatrixCheckUpdate matrixCheckUpdate = new MatrixCheckUpdate();
+        char[] result = matrixCheckUpdate.extractDiagonal(input);
         char[] expect = {'X', ' ', 'X'};
         assertThat(result, is(expect));
     }
@@ -83,7 +89,8 @@ public class MatrixCheckUpdateTest {
                 {' ', ' ', 'X', ' ', ' '},
                 {' ', ' ', 'X', ' ', ' '},
         };
-        boolean result = MatrixCheckUpdate.isWin(input);
+        MatrixCheckUpdate matrixCheckUpdate = new MatrixCheckUpdate();
+        boolean result = matrixCheckUpdate.isWin(input);
         assertThat(result, is(true));
     }
 
@@ -96,7 +103,8 @@ public class MatrixCheckUpdateTest {
                 {' ', ' ', 'X', ' ', ' '},
                 {' ', ' ', 'X', ' ', ' '},
         };
-        boolean result = MatrixCheckUpdate.isWin(input);
+        MatrixCheckUpdate matrixCheckUpdate = new MatrixCheckUpdate();
+        boolean result = matrixCheckUpdate.isWin(input);
         assertThat(result, is(false));
     }
 
@@ -109,7 +117,8 @@ public class MatrixCheckUpdateTest {
                 {' ', ' ', 'X', ' ', ' '},
                 {' ', ' ', 'X', ' ', ' '},
         };
-        boolean result = MatrixCheckUpdate.isWin(input);
+        MatrixCheckUpdate matrixCheckUpdate = new MatrixCheckUpdate();
+        boolean result = matrixCheckUpdate.isWin(input);
         assertThat(result, is(true));
     }
 
@@ -122,7 +131,8 @@ public class MatrixCheckUpdateTest {
                 {' ', ' ', 'X', ' ', ' '},
                 {' ', ' ', 'X', ' ', ' '},
         };
-        boolean result = MatrixCheckUpdate.isWin(input);
+        MatrixCheckUpdate matrixCheckUpdate = new MatrixCheckUpdate();
+        boolean result = matrixCheckUpdate.isWin(input);
         assertThat(result, is(true));
     }
 }

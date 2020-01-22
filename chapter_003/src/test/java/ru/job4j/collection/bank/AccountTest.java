@@ -52,4 +52,14 @@ public class AccountTest {
 
         assertThat(result, is(false));
     }
+
+    @Test
+    public void whenTestEqualsMethodUIsFalse1() {
+        Account account = new Account("1111", 100);
+        Account account1 = null;
+
+        boolean result = account.equals(account1);
+
+        assertThat(result, is(false));
+    }
 }

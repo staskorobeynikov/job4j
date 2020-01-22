@@ -45,4 +45,23 @@ public class UserTest {
 
         assertThat(result, is(true));
     }
+
+    @Test
+    public void whenTestEqualsMethodIsFalse() {
+        User user = new User("1111", "name");
+
+        boolean result = user.equals(new Account(" ", 100));
+
+        assertThat(result, is(false));
+    }
+
+    @Test
+    public void whenTestEqualsMethodIsFalse1() {
+        User user = new User("1111", "name");
+        User user1 = null;
+
+        boolean result = user.equals(user1);
+
+        assertFalse(result);
+    }
 }
