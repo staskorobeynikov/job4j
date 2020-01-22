@@ -25,6 +25,32 @@ public class BankServiceTest {
     }
 
     @Test
+    public void whenAddAccountUserIsNull() {
+        User user = new User("3434", "Petr Arsentev");
+        User user1 = new User("5656", "Arsentev Petr");
+        BankService bank = new BankService();
+
+        bank.addUser(user);
+        bank.addAccount(user.getPassport(), new Account("5546", 150));
+        bank.addAccount(user1.getPassport(), new Account("4655", 150));
+
+        assertNull(bank.findByRequisite("5656", "4655"));
+    }
+
+    @Test
+    public void whenAddAccount() {
+        User user = new User("3434", "Petr Arsentev");
+        BankService bank = new BankService();
+
+        bank.addUser(user);
+        bank.addAccount(user.getPassport(), new Account("5546", 150));
+        bank.addAccount(user.getPassport(), new Account("4655", 250));
+        bank.addAccount(user.getPassport(), new Account("5546", 350));
+
+        assertThat(bank.findByRequisite("3434", "5546").getBalance(), is(150.0));
+    }
+
+    @Test
     public void transferMoney() {
         User user = new User("3434", "Petr Arsentev");
         BankService bank = new BankService();
