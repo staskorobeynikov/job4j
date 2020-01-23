@@ -11,12 +11,19 @@ public class SqlRuParser {
 
     private final Logger logger = LogManager.getLogger(SqlRuParser.class.getName());
 
-    private void start() {
-        Config config = new ConfigForSQLParser();
-        Parser parser = new SimpleParser();
-        config.init();
-        ConnectManager connectManager = new ConnectStoreSQL(config);
-        Store store = new StoreSQL(connectManager.getConnection());
+    private final Config config;
+
+    private final Store store;
+
+    private final Parser parser;
+
+    public SqlRuParser(Config config, Store store, Parser parser) {
+        this.config = config;
+        this.store = store;
+        this.parser = parser;
+    }
+
+    protected void start() {
         try {
             SchedulerFactory schedulerFactory = new StdSchedulerFactory();
             Scheduler scheduler = schedulerFactory.getScheduler();
@@ -38,6 +45,13 @@ public class SqlRuParser {
     }
 
     public static void main(String[] args) {
-        new SqlRuParser().start();
+        Config config = new ConfigForSQLParser();
+        config.init();
+        new SqlRuParser(
+                config,
+                new StoreSQL(
+                        new ConnectStoreSQL(config).getConnection()
+                ),
+                new SimpleParser()).start();
     }
 }
