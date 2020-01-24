@@ -6,6 +6,7 @@ import ru.job4j.calculator.Calculator;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class AddActionTest {
@@ -31,5 +32,14 @@ public class AddActionTest {
         double resultAdd = 25;
         result = add.execute(input, calculator, resultAdd);
         assertEquals(result, 35, 0.01);
+    }
+
+    @Test
+    public void whenGetName() {
+        CalcAction calcAction = new AddAction();
+
+        String result = calcAction.name();
+
+        assertThat(result, is("Addition")); ;
     }
 }

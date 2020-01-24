@@ -6,6 +6,7 @@ import ru.job4j.calculator.Calculator;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class DivideActionTest {
@@ -32,5 +33,14 @@ public class DivideActionTest {
         double resultAdd = 25;
         result = div.execute(input, calculator, resultAdd);
         assertEquals(result, 2.5, 0.01);
+    }
+
+    @Test
+    public void whenGetName() {
+        CalcAction calcAction = new DivideAction();
+
+        String result = calcAction.name();
+
+        assertThat(result, is("Divide"));
     }
 }

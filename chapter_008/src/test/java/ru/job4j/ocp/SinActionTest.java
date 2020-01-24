@@ -7,6 +7,7 @@ import ru.job4j.srp.StubInput;
 import java.util.Collections;
 import java.util.List;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class SinActionTest {
@@ -32,5 +33,14 @@ public class SinActionTest {
         double resultAdd = 25;
         result = sin.execute(input, engCalc, resultAdd);
         assertEquals(result, 0.423, 0.01);
+    }
+
+    @Test
+    public void whenGetName() {
+        SinAction sin = new SinAction();
+
+        String result = sin.name();
+
+        assertThat(result, is("Sinus"));
     }
 }

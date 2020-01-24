@@ -6,6 +6,7 @@ import ru.job4j.calculator.Calculator;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class MultiplyActionTest {
@@ -31,5 +32,14 @@ public class MultiplyActionTest {
         double resultAdd = 25;
         result = mult.execute(input, calculator, resultAdd);
         assertEquals(result, 250, 0.01);
+    }
+
+    @Test
+    public void whenGetName() {
+        CalcAction calcAction = new MultiplyAction();
+
+        String result = calcAction.name();
+
+        assertThat(result, is("Multiply"));
     }
 }

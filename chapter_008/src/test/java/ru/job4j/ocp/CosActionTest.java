@@ -7,6 +7,7 @@ import ru.job4j.srp.StubInput;
 import java.util.Collections;
 import java.util.List;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class CosActionTest {
@@ -32,5 +33,14 @@ public class CosActionTest {
         double resultAdd = 25;
         result = cos.execute(input, engCalc, resultAdd);
         assertEquals(result, 0.906, 0.01);
+    }
+
+    @Test
+    public void whenGetName() {
+        CosAction cos = new CosAction();
+
+        String result = cos.name();
+
+        assertThat(result, is("Cosine"));
     }
 }

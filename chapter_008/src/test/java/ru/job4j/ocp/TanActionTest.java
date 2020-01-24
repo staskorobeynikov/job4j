@@ -6,6 +6,7 @@ import ru.job4j.srp.*;
 import java.util.Collections;
 import java.util.List;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class TanActionTest {
@@ -31,5 +32,14 @@ public class TanActionTest {
         double resultAdd = 25;
         result = tn.execute(input, engCalc, resultAdd);
         assertEquals(result, 0.466, 0.01);
+    }
+
+    @Test
+    public void whenGetName() {
+        TanAction tn = new TanAction();
+
+        String result = tn.name();
+
+        assertThat(result, is("Tangent"));
     }
 }
