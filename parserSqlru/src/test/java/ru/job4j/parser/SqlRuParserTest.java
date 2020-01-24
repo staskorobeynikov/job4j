@@ -9,7 +9,6 @@ import java.util.Set;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-@Ignore
 public class SqlRuParserTest {
 
     @Test
