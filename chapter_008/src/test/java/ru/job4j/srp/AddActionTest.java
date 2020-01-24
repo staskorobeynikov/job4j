@@ -40,6 +40,6 @@ public class AddActionTest {
 
         String result = calcAction.name();
 
-        assertThat(result, is("Addition")); ;
+        assertThat(result, is("Addition"));
     }
 }
