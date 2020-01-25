@@ -23,6 +23,15 @@ public class ControlQualityTest {
         controlQuality = new ControlQuality(Arrays.asList(wareHouse, shop, trash));
     }
 
+    @Test
+    public void whenGetPrice() {
+        Food food = new Food("Keks", new Date(1579910400000L), new Date(1578571200000L), 50, 0);
+
+        int result = food.getPrice();
+
+        assertThat(result, is(50));
+    }
+
     /**
      * currentDate - 1578873600000L - 13 january 2020 00:00:00.
      * expireDate - 1579910400000L - 25 january 2020 00:00:00.
