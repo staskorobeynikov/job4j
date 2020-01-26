@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -25,6 +27,26 @@ public class StartMenuTest {
                 LN,
                 LN,
                 LN,
+                LN,
+                LN)));
+        System.setOut(def);
+    }
+
+    @Test
+    public void whenTestMethodExecute() {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream def = System.out;
+        System.setOut(new PrintStream(out));
+
+        Menu menu = new SimpleMenu();
+        Item item2 = new SimpleItem("Task 1.1.1");
+        Item item3 = new SimpleItem("Task 1.1.2");
+        List<Item> list = Arrays.asList(item2, item3);
+        menu.addItems(list);
+        menu.execute(new StubInput());
+
+        assertThat(new String(out.toByteArray()), is(String.format(
+                "Execute some action!!!%sExecute some action!!!%s",
                 LN,
                 LN)));
         System.setOut(def);
