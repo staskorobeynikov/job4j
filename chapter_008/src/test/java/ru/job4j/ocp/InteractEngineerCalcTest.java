@@ -2,7 +2,6 @@ package ru.job4j.ocp;
 
 import org.junit.Test;
 import ru.job4j.srp.AddAction;
-import ru.job4j.srp.InteractCalc;
 import ru.job4j.srp.Menu;
 import ru.job4j.srp.StubInput;
 
@@ -29,7 +28,7 @@ public class InteractEngineerCalcTest {
         EngineeringCalculator calculator = new EngineeringCalculator();
         List<String> answers = Arrays.asList("0", "10", "15", "y");
         StubInput stubInput = new StubInput(answers);
-        new InteractCalc(stubInput, calculator, menu).init();
+        new InteractEngineerCalc(stubInput, calculator, menu).init();
 
         assertThat(new String(out.toByteArray()), is(String.format(
                 "0 . Addition%s25.0%s",
@@ -50,7 +49,7 @@ public class InteractEngineerCalcTest {
         EngineeringCalculator calculator = new EngineeringCalculator();
         List<String> answers = Arrays.asList("0", "10", "15", "n", "0", "y", "10", "y");
         StubInput stubInput = new StubInput(answers);
-        new InteractCalc(stubInput, calculator, menu).init();
+        new InteractEngineerCalc(stubInput, calculator, menu).init();
 
         assertThat(new String(out.toByteArray()), is(String.format(
                 "0 . Addition%s25.0%s0 . Addition%s35.0%s",
@@ -73,7 +72,7 @@ public class InteractEngineerCalcTest {
         EngineeringCalculator calculator = new EngineeringCalculator();
         List<String> answers = Arrays.asList("0", "10", "y");
         StubInput stubInput = new StubInput(answers);
-        new InteractCalc(stubInput, calculator, menu).init();
+        new InteractEngineerCalc(stubInput, calculator, menu).init();
 
         assertThat(new String(out.toByteArray()), is(String.format(
                 "0 . Cosine%s0.984807753012208%s",
