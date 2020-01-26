@@ -61,6 +61,6 @@ public class TicTacToeGame {
                 new ValidateInput(new ConsoleInput()),
                 new PlayingField(),
                 new SimpleGame(),
-                List.of(new User(), new Computer())).startGame();
+                List.of(new User(), new Computer("Computer", "O"))).startGame();
     }
 }

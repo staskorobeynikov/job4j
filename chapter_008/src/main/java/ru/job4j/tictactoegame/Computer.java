@@ -4,9 +4,24 @@ import java.util.Random;
 
 public class Computer implements Gamer {
     /**
+     * Name gamer 'Computer'.
+     */
+    private final String name;
+
+    /**
+     * Symbol for gamer 'Computer'.
+     */
+    private final String symbol;
+
+    /**
      * Random for generate random numbers for use gamer Computer.
      */
     private final Random random = new Random();
+
+    Computer(String name, String symbol) {
+        this.name = name;
+        this.symbol = symbol;
+    }
 
     /**
      * Method set name for Computer.
@@ -15,7 +30,7 @@ public class Computer implements Gamer {
      */
     @Override
     public String getName() {
-        return "Computer";
+        return name;
     }
 
     /**
@@ -49,6 +64,6 @@ public class Computer implements Gamer {
      */
     @Override
     public String setUseSymbol() {
-        return "O";
+        return symbol;
     }
 }
