@@ -35,6 +35,7 @@ public class SchoolTest {
         );
         Assert.assertThat(actual, is(expected));
     }
+
     @Test
     public void when10BStudents() {
         students.add(new Student(30));
@@ -56,6 +57,7 @@ public class SchoolTest {
         );
         Assert.assertThat(actual, is(expected));
     }
+
     @Test
     public void when10CStudents() {
         students.add(new Student(30));
@@ -75,5 +77,71 @@ public class SchoolTest {
                 new Student(40)
         );
         Assert.assertThat(actual, is(expected));
+    }
+
+    @Test
+    public void whenTestMethodToString() {
+        Student student = new Student(85);
+
+        String result = student.toString();
+
+        Assert.assertThat(result, is("Student: score = 85"));
+    }
+
+    @Test
+    public void whenTestMethodHashCode() {
+        Student student = new Student(85);
+
+        int result = student.hashCode();
+
+        Assert.assertThat(result, is(116));
+    }
+
+    @Test
+    public void whenTestMethodEqualsIsTrue() {
+        Student student = new Student(85);
+
+        boolean result = student.equals(student);
+
+        Assert.assertThat(result, is(true));
+    }
+
+    @Test
+    public void whenTestMethodEqualsIsTrue1() {
+        Student student = new Student(85);
+        Student student1 = new Student(85);
+
+        boolean result = student.equals(student1);
+
+        Assert.assertThat(result, is(true));
+    }
+
+    @Test
+    public void whenTestMethodEqualsIsFalse() {
+        Student student = new Student(85);
+        Student student1 = new Student(55);
+
+        boolean result = student.equals(student1);
+
+        Assert.assertThat(result, is(false));
+    }
+
+    @Test
+    public void whenTestMethodEqualsIsFalse1() {
+        Student student = new Student(85);
+        Student student1 = null;
+
+        boolean result = student.equals(student1);
+
+        Assert.assertThat(result, is(false));
+    }
+
+    @Test
+    public void whenTestMethodEqualsIsFalse2() {
+        Student student = new Student(85);
+
+        boolean result = student.equals(new Address("", "", 10, 20));
+
+        Assert.assertThat(result, is(false));
     }
 }

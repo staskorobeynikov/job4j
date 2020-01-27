@@ -52,4 +52,13 @@ public class StudentTest {
         List<Student> expected = new ArrayList<>();
         assertThat(actual, is(expected));
     }
+
+    @Test
+    public void whenTestMethodToString() {
+        Student st1 = new Student("Name1", 10);
+
+        String result = st1.toString();
+
+        assertThat(result, is("Student: name = Name1, score = 10"));
+    }
 }

@@ -9,6 +9,7 @@ import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class StudentListToMapTest {
+
     @Test
     public void whenConvertListToMap() {
         StudentListToMap convertToMap = new StudentListToMap();
@@ -23,5 +24,23 @@ public class StudentListToMapTest {
                 "Pomidorov", stud3
         );
         assertThat(actual, is(expected));
+    }
+
+    @Test
+    public void whenTestMethodToString() {
+        StudentMap stud = new StudentMap(new Student(40), "Arbuzov");
+
+        String result = stud.toString();
+
+        assertThat(result, is("StudentMap: student = Student: score = 40, surname = Arbuzov"));
+    }
+
+    @Test
+    public void whenTestMethodGetScore() {
+        StudentMap stud = new StudentMap(new Student(40), "Arbuzov");
+
+        int result = stud.getScore();
+
+        assertThat(result, is(40));
     }
 }
