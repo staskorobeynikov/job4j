@@ -14,17 +14,11 @@ public class RectangleMove implements Runnable {
         int i = 1;
         int j = 1;
         while (!Thread.currentThread().isInterrupted()) {
-            if (rect.getX() == 290) {
-                i = -1;
+            if (rect.getX() == 0 || rect.getX() == 290) {
+                i *= -1;
             }
-            if (rect.getX() == 0) {
-                i = 1;
-            }
-            if (rect.getY() == 290) {
-                j = -1;
-            }
-            if (rect.getY() == 0) {
-                j = 1;
+            if (rect.getY() == 0 || rect.getY() == 290) {
+                j *= -1;
             }
             this.rect.setX(this.rect.getX() + i);
             this.rect.setY(this.rect.getY() + j);
