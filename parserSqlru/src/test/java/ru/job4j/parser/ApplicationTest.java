@@ -10,18 +10,18 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 @Ignore
-public class SqlRuParserTest {
+public class ApplicationTest {
 
     @Test
     public void whenSetTimeStampSizeIsOne() {
         Config config = new ConfigForSQLParser();
         config.init();
         StoreSQL storeSQL =  new StoreSQL(new ConnectStoreSQL(config).getConnection());
-        SqlRuParser sqlRuParser = new SqlRuParser(
+        Application application = new Application(
                 config,
                 storeSQL,
-                new StubParser());
-        sqlRuParser.start();
+                new SuperJobParser());
+        application.start();
         Set<Timestamp> set = storeSQL.getSetDateCreate();
 
         int result = set.size();
@@ -34,15 +34,15 @@ public class SqlRuParserTest {
         Config config = new ConfigForSQLParser();
         config.init();
         StoreSQL storeSQL =  new StoreSQL(new ConnectStoreSQL(config).getConnection());
-        StubParser stubParser = new StubParser();
-        SqlRuParser sqlRuParser = new SqlRuParser(
+        SuperJobParser superJobParser = new SuperJobParser();
+        Application application = new Application(
                 config,
                 storeSQL,
-                stubParser);
-        sqlRuParser.start();
+                superJobParser);
+        application.start();
         Set<Timestamp> set = storeSQL.getSetDateCreate();
 
-        boolean result = set.contains(stubParser.getCreateDate());
+        boolean result = set.contains(superJobParser.getCreateDate());
 
         assertThat(result, is(true));
     }

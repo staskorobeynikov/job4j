@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
-public class StubParser implements Parser {
+public class SuperJobParser implements Parser {
 
     @Override
     public Set<Vacancy> parse(String url, Set<Timestamp> setDate) {
