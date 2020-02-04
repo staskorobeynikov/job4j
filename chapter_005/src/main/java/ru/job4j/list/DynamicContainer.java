@@ -10,6 +10,10 @@ public class DynamicContainer<E> implements Iterable<E> {
     private int size = 0;
     private int modCount = 0;
 
+    public DynamicContainer() {
+        container = new Object[1];
+    }
+
     public DynamicContainer(int initialCapacity) {
         container = new Object[initialCapacity];
     }
