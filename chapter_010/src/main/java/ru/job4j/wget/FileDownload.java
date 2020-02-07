@@ -39,7 +39,11 @@ public class FileDownload {
     private void start(String[] args) {
         List<String> urls = getList(args);
         for (String url : urls) {
-            downloadFile(url);
+            Thread thread = new Thread(() -> {
+                downloadFile(url);
+                System.out.println(Thread.currentThread().getName());
+            });
+            thread.start();
         }
     }
 
