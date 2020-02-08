@@ -1,6 +1,5 @@
 package ru.job4j.parser;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.sql.Timestamp;
@@ -9,7 +8,6 @@ import java.util.Set;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-@Ignore
 public class ApplicationTest {
 
     @Test
