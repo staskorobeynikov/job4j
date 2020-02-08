@@ -24,7 +24,7 @@ public class ApplicationTest {
             }
             Class.forName(config.getProperty("driver"));
             return DriverManager.getConnection(
-                    config.getProperty("url"),
+                    config.getProperty("urlTest"),
                     config.getProperty("username"),
                     config.getProperty("password")
             );
