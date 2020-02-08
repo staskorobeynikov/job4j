@@ -15,18 +15,18 @@ public class ConnectStoreSQL implements ConnectManager, AutoCloseable {
 
     private final Logger logger = LogManager.getLogger(ConfigForSQLParser.class.getName());
 
-    public ConnectStoreSQL(Config config) {
+    ConnectStoreSQL(Config config) {
         this.config = config;
     }
 
     @Override
     public Connection getConnection() {
         try {
-            Class.forName(config.getProperty("jdbc.driver"));
+            Class.forName(config.getProperty("driver"));
             this.connection = DriverManager.getConnection(
-                    config.getProperty("jdbc.url"),
-                    config.getProperty("jdbc.username"),
-                    config.getProperty("jdbc.password")
+                    config.getProperty("url"),
+                    config.getProperty("username"),
+                    config.getProperty("password")
             );
         } catch (SQLException | ClassNotFoundException exc) {
             logger.error(exc.getMessage(), exc);

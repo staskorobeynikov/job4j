@@ -22,11 +22,11 @@ public class ApplicationTest {
             if (in != null) {
                 config.load(in);
             }
-            Class.forName(config.getProperty("jdbc.driver"));
+            Class.forName(config.getProperty("driver"));
             return DriverManager.getConnection(
-                    config.getProperty("jdbc.url"),
-                    config.getProperty("jdbc.username"),
-                    config.getProperty("jdbc.password")
+                    config.getProperty("url"),
+                    config.getProperty("username"),
+                    config.getProperty("password")
             );
         } catch (Exception e) {
             throw new IllegalStateException(e);

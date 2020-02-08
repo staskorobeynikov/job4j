@@ -9,26 +9,26 @@ public class Vacancy {
     private final String link;
     private final Timestamp createDate;
 
-    public Vacancy(String name, String text, String link, Timestamp createDate) {
+    Vacancy(String name, String text, String link, Timestamp createDate) {
         this.name = name;
         this.text = text;
         this.link = link;
         this.createDate = createDate;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public String getText() {
+    String getText() {
         return text;
     }
 
-    public String getLink() {
+    String getLink() {
         return link;
     }
 
-    public Timestamp getCreateDate() {
+    Timestamp getCreateDate() {
         return createDate;
     }
 

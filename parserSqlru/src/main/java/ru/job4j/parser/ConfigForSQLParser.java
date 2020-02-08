@@ -4,8 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.Properties;
 
 public class ConfigForSQLParser implements Config {
@@ -18,7 +16,9 @@ public class ConfigForSQLParser implements Config {
     public void init() {
         try (InputStream in = ConfigForSQLParser.class.getClassLoader()
                 .getResourceAsStream("app.properties")) {
-            properties.load(in);
+            if (in != null) {
+                properties.load(in);
+            }
 
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
