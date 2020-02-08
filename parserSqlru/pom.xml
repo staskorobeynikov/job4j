@@ -37,6 +37,11 @@
             <version>2.13.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>ru.job4j</groupId>
+            <artifactId>chapter_007</artifactId>
+            <version>3.0</version>
+        </dependency>
     </dependencies>
     <profiles>
         <profile>
