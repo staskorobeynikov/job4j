@@ -51,8 +51,8 @@ public class InteractCalcTest {
         new InteractCalc(stubInput, calculator, menu).init();
 
         assertThat(new String(out.toByteArray()), is(String.format(
-                "0 . Addition%s0.0%s" +
-                        "0 . Addition%s25.0%s",
+                "0 . Addition%s0.0%s"
+                        + "0 . Addition%s25.0%s",
                 LN,
                 LN,
                 LN,
@@ -75,8 +75,8 @@ public class InteractCalcTest {
         new InteractCalc(stubInput, calculator, menu).init();
 
         assertThat(new String(out.toByteArray()), is(String.format(
-                "0 . Addition%s25.0%s" +
-                        "0 . Addition%s45.0%s",
+                "0 . Addition%s25.0%s"
+                        + "0 . Addition%s45.0%s",
                 LN,
                 LN,
                 LN,
@@ -120,8 +120,8 @@ public class InteractCalcTest {
         new InteractCalc(stubInput, calculator, menu).init();
 
         assertThat(new String(out.toByteArray()), is(String.format(
-                "0 . Subtract%s0.0%s" +
-                        "0 . Subtract%s5.0%s",
+                "0 . Subtract%s0.0%s"
+                        + "0 . Subtract%s5.0%s",
                 LN,
                 LN,
                 LN,
@@ -144,8 +144,8 @@ public class InteractCalcTest {
         new InteractCalc(stubInput, calculator, menu).init();
 
         assertThat(new String(out.toByteArray()), is(String.format(
-                "0 . Subtract%s15.0%s" +
-                        "0 . Subtract%s5.0%s",
+                "0 . Subtract%s15.0%s"
+                        + "0 . Subtract%s5.0%s",
                 LN,
                 LN,
                 LN,
@@ -189,8 +189,8 @@ public class InteractCalcTest {
         new InteractCalc(stubInput, calculator, menu).init();
 
         assertThat(new String(out.toByteArray()), is(String.format(
-                "0 . Multiply%s0.0%s" +
-                        "0 . Multiply%s15.0%s",
+                "0 . Multiply%s0.0%s"
+                        + "0 . Multiply%s15.0%s",
                 LN,
                 LN,
                 LN,
@@ -213,8 +213,8 @@ public class InteractCalcTest {
         new InteractCalc(stubInput, calculator, menu).init();
 
         assertThat(new String(out.toByteArray()), is(String.format(
-                "0 . Multiply%s15.0%s" +
-                        "0 . Multiply%s150.0%s",
+                "0 . Multiply%s15.0%s"
+                        + "0 . Multiply%s150.0%s",
                 LN,
                 LN,
                 LN,
@@ -258,8 +258,8 @@ public class InteractCalcTest {
         new InteractCalc(stubInput, calculator, menu).init();
 
         assertThat(new String(out.toByteArray()), is(String.format(
-                "0 . Divide%s0.0%s" +
-                        "0 . Divide%s2.0%s",
+                "0 . Divide%s0.0%s"
+                        + "0 . Divide%s2.0%s",
                 LN,
                 LN,
                 LN,
@@ -282,8 +282,8 @@ public class InteractCalcTest {
         new InteractCalc(stubInput, calculator, menu).init();
 
         assertThat(new String(out.toByteArray()), is(String.format(
-                "0 . Divide%s5.0%s" +
-                        "0 . Divide%s1.0%s",
+                "0 . Divide%s5.0%s"
+                        + "0 . Divide%s1.0%s",
                 LN,
                 LN,
                 LN,
