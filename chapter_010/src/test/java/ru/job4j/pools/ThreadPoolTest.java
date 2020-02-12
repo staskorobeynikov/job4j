@@ -1,6 +1,5 @@
 package ru.job4j.pools;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -8,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-@Ignore
+
 public class ThreadPoolTest {
 
     private int actionForTest() {
@@ -88,7 +87,7 @@ public class ThreadPoolTest {
         Thread.sleep(1000);
         threadPool.shutdown();
 
-        assertThat(result.get(), is(40320));
+        assertThat(result.get(), is(80640));
     }
 
     @Test

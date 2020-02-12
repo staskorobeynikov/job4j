@@ -10,15 +10,11 @@ class ThreadPool {
 
     private final List<Thread> threads = new LinkedList<>();
 
-    private final SimpleBlockingQueue<Runnable> tasks;
-
-    ThreadPool() {
-        tasks = new SimpleBlockingQueue<>(size);
-    }
+    private final SimpleBlockingQueue<Runnable> tasks = new SimpleBlockingQueue<>(size);
 
     void work(Runnable job) throws InterruptedException {
+        tasks.offer(job);
         if (threads.size() != size) {
-            tasks.offer(job);
             Thread thread = new Thread(() -> {
                 while (!Thread.currentThread().isInterrupted()) {
                     try {
