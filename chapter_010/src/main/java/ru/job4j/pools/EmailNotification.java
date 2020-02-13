@@ -5,11 +5,9 @@ import java.util.concurrent.Executors;
 
 public class EmailNotification {
 
-    private final ExecutorService pool;
-
-    public EmailNotification() {
-        pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-    }
+    private final ExecutorService pool = Executors.newFixedThreadPool(
+            Runtime.getRuntime().availableProcessors()
+    );
 
     void emailTo(User user) {
         String email = user.getEmail();
@@ -21,7 +19,7 @@ public class EmailNotification {
 
     void close() {
         pool.shutdown();
-        while (pool.isTerminated()) {
+        while (!pool.isTerminated()) {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
