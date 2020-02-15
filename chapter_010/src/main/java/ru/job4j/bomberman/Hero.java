@@ -1,6 +1,5 @@
 package ru.job4j.bomberman;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Hero implements Runnable {
@@ -14,31 +13,12 @@ public class Hero implements Runnable {
         this.startPosition = startPosition;
     }
 
-    List<Cell> getList(Cell cell) {
-        List<Cell> result = new ArrayList<>();
-        int i = cell.getLine();
-        int j = cell.getColumn();
-        if ((i - 1) >= 0) {
-            result.add(new Cell(i - 1, j));
-        }
-        if ((i + 1) < board.getSize()) {
-            result.add(new Cell(i + 1, j));
-        }
-        if ((j - 1) >= 0) {
-            result.add(new Cell(i, (j - 1)));
-        }
-        if ((j + 1) < board.getSize()) {
-            result.add(new Cell(i, (j + 1)));
-        }
-        return result;
-    }
-
     @Override
     public void run() {
         boolean doMove = true;
         board.getCell(startPosition).lock();
         try {
-            List<Cell> movesHero = this.getList(startPosition);
+            List<Cell> movesHero = board.getList(startPosition);
             for (Cell move : movesHero) {
                 doMove = board.move(startPosition, move);
                 if (doMove) {

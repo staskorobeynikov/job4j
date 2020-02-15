@@ -76,7 +76,7 @@ public class BoardTest {
     }
 
     @Test
-    public void whenHeroMoveWithTwoCellsIsBlockThenFalse1() throws InterruptedException {
+    public void whenTwoCellsIsBlockAndFirstHeroMovesThenSecondHeroDoesNotMove() throws InterruptedException {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
@@ -108,25 +108,179 @@ public class BoardTest {
     }
 
     @Test
-    public void whenGetList() {
+    public void whenBoarSizeIs3ThenCountMovesIs2() {
         Board board = new Board(3);
         Cell go = new Cell(0, 0);
-        Hero hero = new Hero(board, go);
 
-        List<Cell> result = hero.getList(go);
+        List<Cell> result = board.getList(go);
 
         assertThat(result.size(), is(2));
     }
 
     @Test
-    public void whenGetList1() {
+    public void whenBoardSizeIs5AndStartInMiddleBoardThenCountMovesIs4() {
         Board board = new Board(3);
         Cell go = new Cell(1, 1);
-        Hero hero = new Hero(board, go);
 
-        List<Cell> result = hero.getList(go);
+        List<Cell> result = board.getList(go);
 
         assertThat(result.size(), is(4));
     }
 
+    @Test
+    public void whenBoardSizeIs3GetLockCellsList() {
+        Board board = new Board(3);
+        Blocks blocks = new Blocks(board);
+        blocks.setBlockCell();
+
+        List<Cell> result = blocks.getLockCells();
+
+        assertThat(result.size(), is(1));
+    }
+
+    @Test
+    public void whenBoardSizeIs5GetLockCellsList() {
+        Board board = new Board(5);
+        Blocks blocks = new Blocks(board);
+        blocks.setBlockCell();
+
+        List<Cell> result = blocks.getLockCells();
+
+        assertThat(result.size(), is(3));
+    }
+
+    @Test
+    public void whenAllCellsIsBlockThenBomberManDoesNotMove() throws InterruptedException {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream def = System.out;
+        System.setOut(new PrintStream(out));
+
+        Board board = new Board(2);
+        board.getCell(new Cell(0, 0)).lock();
+        board.getCell(new Cell(1, 1)).lock();
+        board.getCell(new Cell(0, 1)).lock();
+
+        BomberMan bomberman = new BomberMan(board);
+        Thread thread = new Thread(bomberman);
+        thread.start();
+        thread.join();
+
+        String expect = String.format(
+                "Bomberman destroy. User lost.%s",
+                LN);
+        assertThat(new String(out.toByteArray()), is(expect));
+        System.setOut(def);
+    }
+
+    @Test
+    public void whenBomberManMadeAMoveInCell01() throws InterruptedException {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream def = System.out;
+        System.setOut(new PrintStream(out));
+
+        Board board = new Board(2);
+        board.getCell(new Cell(0, 0)).lock();
+
+        BomberMan bomberman = new BomberMan(board);
+        Thread thread = new Thread(bomberman);
+        thread.start();
+        thread.join();
+
+        String expect = String.format(
+                "Bomberman made move in cell - Cell: line=1, column=1.%s"
+                        + "Bomberman destroy. User lost.%s",
+                LN,
+                LN);
+        assertThat(new String(out.toByteArray()), is(expect));
+        System.setOut(def);
+    }
+
+    @Test
+    public void whenAllCellsIsBlockMonsterDoesNotMoveInAnotherCell() throws InterruptedException {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream def = System.out;
+        System.setOut(new PrintStream(out));
+
+        Board board = new Board(2);
+        board.getCell(new Cell(1, 1)).lock();
+        board.getCell(new Cell(0, 1)).lock();
+        board.getCell(new Cell(1, 0)).lock();
+
+        Monsters monsters = new Monsters(board);
+        Thread thread = new Thread(monsters);
+        thread.start();
+        thread.join();
+
+        String expect = String.format(
+                "Monster cannot move from cell - Cell: line=0, column=0.%s",
+                LN);
+        assertThat(new String(out.toByteArray()), is(expect));
+        System.setOut(def);
+    }
+
+    @Test
+    public void whenMonsterMovesInAnotherCell() throws InterruptedException {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream def = System.out;
+        System.setOut(new PrintStream(out));
+
+        Board board = new Board(2);
+        board.getCell(new Cell(1, 1)).lock();
+        board.getCell(new Cell(0, 1)).lock();
+
+        Monsters monsters = new Monsters(board);
+        Thread thread = new Thread(monsters);
+        thread.start();
+        thread.join();
+
+        String expect = String.format(
+                "Monster made a move from cell - "
+                        + "Cell: line=0, column=0. to cell - Cell: line=1, column=0.%s",
+                LN);
+        assertThat(new String(out.toByteArray()), is(expect));
+        System.setOut(def);
+    }
+
+    @Test
+    public void whenBombermanAndMonsterDontMove() throws InterruptedException {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream def = System.out;
+        System.setOut(new PrintStream(out));
+
+        Board board = new Board(2);
+        board.getCell(new Cell(0, 0)).lock();
+        board.getCell(new Cell(1, 1)).lock();
+        Game game = new Game(board);
+        game.start();
+
+        String expect = String.format(
+                "Bomberman destroy. User lost.%s"
+                        + "Monster cannot move from cell - Cell: line=0, column=1.%s",
+                LN,
+                LN);
+        assertThat(new String(out.toByteArray()), is(expect));
+        System.setOut(def);
+    }
+
+    @Test
+    public void whenBomberManMadeAMoveThenMonsterNoMove() throws InterruptedException {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream def = System.out;
+        System.setOut(new PrintStream(out));
+
+        Board board = new Board(2);
+        board.getCell(new Cell(0, 0)).lock();
+        Game game = new Game(board);
+        game.start();
+
+        String expect = String.format(
+                "Bomberman made move in cell - Cell: line=1, column=1.%s"
+                        + "Bomberman destroy. User lost.%s"
+                        + "Monster cannot move from cell - Cell: line=0, column=1.%s",
+                LN,
+                LN,
+                LN);
+        assertThat(new String(out.toByteArray()), is(expect));
+        System.setOut(def);
+    }
 }
