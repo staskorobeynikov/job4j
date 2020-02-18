@@ -20,6 +20,7 @@
         <module>parserSqlru</module>
         <module>chapter_009</module>
         <module>chapter_010</module>
+        <module>chapter_011</module>
     </modules>
     <properties>
         <maven.compiler.source>12</maven.compiler.source>
@@ -90,6 +91,7 @@
             <artifactId>javafx-controls</artifactId>
             <version>12</version>
         </dependency>
+
     </dependencies>
     <build>
         <plugins>
