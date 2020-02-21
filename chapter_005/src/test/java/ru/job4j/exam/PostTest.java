@@ -19,7 +19,8 @@ public class PostTest {
         input.put("user5", "xyz@pisem.net");
 
         Post post = new Post();
-        Map<String, Set<String>> result = post.combine(input);
+        post.parseMap(input);
+        Map<String, Set<String>> result = post.combine();
 
         Map<String, Set<String>> expected = Map.of(
                 "user1", Set.of("ups@pisem.net", "aaa@bbb.ru", "foo@gmail.com", "xxx@ya.ru", "lol@mail.ru"),

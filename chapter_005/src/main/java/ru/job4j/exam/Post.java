@@ -8,48 +8,55 @@ import java.util.*;
  */
 public class Post {
 
+    private Map<String, Set<String>> store = new TreeMap<>();
+
     /**
-     * Метод позволяет исключить дубликаты email у разных пользователей.
+     * Метод для парсинга строки списка email и внесения в хранилище store.
      *
-     * @param list Map - каждому юзеру соответствует строка, содержащая emails, которые относятся к нему.
-     * @return Map - пара User - Множество email, которые принадлежат этому пользователю.
+     * @param list Map - каждому юзеру соответствует строка, содержащая emails, которые ему принадлежат.
      */
-    Map<String, Set<String>> combine(HashMap<String, String> list) {
-        Map<String, Set<String>> store = new TreeMap<>();
+    void parseMap(HashMap<String, String> list) {
         for (String key : list.keySet()) {
             String value = list.get(key);
             String[] valueSplit = value.split(",");
             Set<String> emails = new HashSet<>(Arrays.asList(valueSplit));
             store.put(key, emails);
         }
+    }
 
-        Map<String, String> stringUserHashMap = new HashMap<>();
-        for (String string : store.keySet()) {
-            String value = string;
-            for (String email : store.get(string)) {
-                if (stringUserHashMap.isEmpty()) {
+    /**
+     * Метод позволяет исключить дубликаты email у разных пользователей.
+     *
+     * @return Map - пара User - Множество email, которые принадлежат этому пользователю.
+     */
+    Map<String, Set<String>> combine() {
+        Map<String, Set<String>> result = new HashMap<>();
+        Map<String, String> storeUniqueUser = new HashMap<>();
+        for (String userName : store.keySet()) {
+            String value = userName;
+            for (String email : store.get(userName)) {
+                if (storeUniqueUser.isEmpty()) {
                     break;
                 }
-                if (stringUserHashMap.containsKey(email)) {
-                    value = stringUserHashMap.get(email);
+                if (storeUniqueUser.containsKey(email)) {
+                    value = storeUniqueUser.get(email);
                     break;
                 }
             }
-            for (String email : store.get(string)) {
-                stringUserHashMap.put(email, value);
+            for (String email : store.get(userName)) {
+                storeUniqueUser.put(email, value);
             }
         }
 
-        Map<String, Set<String>> stringSetHashMap = new HashMap<>();
-        for (String email : stringUserHashMap.keySet()) {
-            String value = stringUserHashMap.get(email);
-            if (!stringSetHashMap.containsKey(value)) {
-                stringSetHashMap.put(value, new HashSet<>());
+        for (String email : storeUniqueUser.keySet()) {
+            String value = storeUniqueUser.get(email);
+            if (!result.containsKey(value)) {
+                result.put(value, new HashSet<>());
             }
-            if (stringSetHashMap.containsKey(value)) {
-                stringSetHashMap.get(value).add(email);
+            if (result.containsKey(value)) {
+                result.get(value).add(email);
             }
         }
-        return stringSetHashMap;
+        return result;
     }
 }
