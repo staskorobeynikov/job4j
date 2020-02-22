@@ -1,4 +1,4 @@
-# Учебный репозиторий по курсу job4j.
+# Учебный репозиторий по курсу [job4j](https://job4j.ru/courses/java_with_zero_to_job.html).
 [![Build Status](https://travis-ci.org/staskorobeynikov/job4j.svg?branch=master)](https://travis-ci.org/staskorobeynikov/job4j)
 [![codecov](https://codecov.io/gh/staskorobeynikov/job4j/branch/master/graph/badge.svg)](https://codecov.io/gh/staskorobeynikov/job4j)
 
@@ -107,3 +107,26 @@
 4. **Контрольные вопросы и тестовое задание:**
     - Крестики-нолики на JavaFX: реализация логики;
     - Группировка студентов по интересам. [|click|](https://github.com/staskorobeynikov/job4j/commit/a6fac4bbf73c34c3e20e653a353274f61fffcf7b)
+
+### Chapter_005. Collections. Pro.  
+1. **Iterator:**
+    - Итератор для двумерного массива;
+    - Итератор для четных чисел.
+2. **Generic:**
+    - Реализация SimpleArray<T>;
+3. **List:**
+    - Динамический список на базе массива;
+    - Контейнер [LinkedListContainer<E>](https://github.com/staskorobeynikov/job4j/blob/master/chapter_005/src/main/java/ru/job4j/list/LinkedListContainer.java) на базе связаного списка;
+    - Контейнер [SimpleStack<E>](https://github.com/staskorobeynikov/job4j/blob/master/chapter_005/src/main/java/ru/job4j/list/SimpleStack.java) на базе контейнера LinkedListContainer<E>;
+    - Очередь [SimpleQueue<E>](https://github.com/staskorobeynikov/job4j/blob/master/chapter_005/src/main/java/ru/job4j/list/SimpleQueue.java) на двух стеках SimpleStack<E>.
+4. **Set:**
+    - Коллекция [SimpleSet<E>](https://github.com/staskorobeynikov/job4j/blob/master/chapter_005/src/main/java/ru/job4j/set/SimpleSet.java) реализация на массиве.
+5. **Map:**
+    - Переопределение методов equals() и hashcode();
+    - Коллизии Map;
+    - Реализация структуры [SimpleHashMap<K, V>](https://github.com/staskorobeynikov/job4j/blob/master/chapter_005/src/main/java/ru/job4j/map/SimpleHashMap.java).
+6. **Tree:**
+    - Создание элементарной структуры дерева.
+7. **Контрольные вопросы и тестовое задание:**
+    - Статистика по коллекции: определить разницу между начальным и измененным состоянием массива;
+    - Задание [Почта](https://github.com/staskorobeynikov/job4j/blob/master/chapter_005/src/main/java/ru/job4j/exam/Post.java): объединить пользователей, у которых совпадают email.
