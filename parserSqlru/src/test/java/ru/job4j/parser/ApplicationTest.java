@@ -1,6 +1,7 @@
 package ru.job4j.parser;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 import ru.job4j.tracker.ConnectionRollback;
 
 import java.io.InputStream;
@@ -13,6 +14,8 @@ import java.util.Set;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class ApplicationTest {
 
@@ -82,7 +85,11 @@ public class ApplicationTest {
 
     @Test
     public void whenConnectionIsNotNull() {
-        Config config = new ConfigForSQLParser();
+        Config config = mock(ConfigForSQLParser.class);
+        when(config.getProperty("driver")).thenReturn("org.postgresql.Driver");
+        when(config.getProperty("url")).thenReturn("jdbc:postgresql://127.0.0.1:5432/tracker");
+        when(config.getProperty("username")).thenReturn("postgres");
+        when(config.getProperty("password")).thenReturn("password");
         config.init();
         ConnectStoreSQL connect = new ConnectStoreSQL(config);
         assertNotNull(connect.getConnection());
