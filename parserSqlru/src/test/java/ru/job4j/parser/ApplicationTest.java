@@ -79,4 +79,12 @@ public class ApplicationTest {
 
         assertThat(result, is(true));
     }
+
+    @Test
+    public void whenConnectionIsNotNull() {
+        Config config = new ConfigForSQLParser();
+        config.init();
+        ConnectStoreSQL connect = new ConnectStoreSQL(config);
+        assertNotNull(connect.getConnection());
+    }
 }
