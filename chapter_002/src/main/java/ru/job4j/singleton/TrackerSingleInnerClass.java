@@ -1,3 +1,5 @@
+package ru.job4j.singleton;
+
 import ru.job4j.tracker.Item;
 
 public class TrackerSingleInnerClass {

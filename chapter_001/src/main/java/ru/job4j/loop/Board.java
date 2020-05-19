@@ -1,4 +1,4 @@
-package ru.job4j.ru.job4j.loop;
+package ru.job4j.loop;
 
 public class Board {
     public void paint(int width, int height) {
