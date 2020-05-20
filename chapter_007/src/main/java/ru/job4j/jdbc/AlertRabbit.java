@@ -37,6 +37,7 @@ public class AlertRabbit {
         FileInputStream fis = new FileInputStream(PROPERTY_FILE);
         Properties properties = new Properties();
         properties.load(fis);
+        fis.close();
         return Integer.parseInt(properties.getProperty("rabbit.interval"));
     }
 
