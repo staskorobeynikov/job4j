@@ -13,7 +13,7 @@ public class MatrixToList {
      */
     public List<Integer> convert(Integer[][] array) {
         return Arrays.stream(array)
-                .flatMap(mt -> Stream.of(mt))
+                .flatMap(Stream::of)
                 .collect(Collectors.toList());
     }
 }
