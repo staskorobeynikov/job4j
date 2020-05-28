@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 import java.util.StringJoiner;
 import java.util.function.Consumer;
 
@@ -11,15 +12,19 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.IsNull.nullValue;
 
-public class RefactStartUITest {
+public class RefactoringStartUITest {
+
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+
     private final PrintStream stdout = new PrintStream(out);
+
     private final Consumer<String> output = new Consumer<String>() {
         @Override
         public void accept(String s) {
             stdout.println(s);
         }
     };
+
     private UserAction[] actions = {
             new CreateAction(),
             new ShowAllAction(),
@@ -29,10 +34,12 @@ public class RefactStartUITest {
             new FindByNameAction(),
             new ExitAction()
     };
+
     @After
     public void backOutput() {
         System.setOut(this.stdout);
     }
+
     @Test
     public void whenPrtMenu() {
         StubInput input = new StubInput(
@@ -48,6 +55,17 @@ public class RefactStartUITest {
                 .toString();
         assertThat(new String(out.toByteArray()), is(expect));
     }
+
+    @Test
+    public void whenTestMethodCreateNewItem() {
+        Tracker tracker = new Tracker();
+        Input input = new StubInput(new String[] {"0", "first Task", "6"});
+        new StartUI(output).init(input, tracker, actions);
+        List<Item> store = tracker.findByName("first Task");
+        assertThat(store.size(), is(1));
+        assertThat(store.get(0).getName(), is("first Task"));
+    }
+
     @Test
     public void whenShowAllItems() {
         Tracker tracker = new Tracker();
@@ -62,6 +80,7 @@ public class RefactStartUITest {
                 + System.lineSeparator(), item.getName(), item.getId());
         assertThat(actual, is(expected));
     }
+
     @Test
     public void whenShowItemReplaceItem() {
         Tracker tracker = new Tracker();
@@ -75,6 +94,7 @@ public class RefactStartUITest {
         String actual = tracker.findById(item2.getId()).getName();
         assertThat(actual, is("test2 replace"));
     }
+
     @Test
     public void whenShowItemDelete() {
         Tracker tracker = new Tracker();
@@ -87,6 +107,7 @@ public class RefactStartUITest {
         Item actual = tracker.findById(item2.getId());
         assertThat(actual, is(nullValue()));
     }
+
     @Test
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();
@@ -101,6 +122,7 @@ public class RefactStartUITest {
                 + System.lineSeparator(), item.getName(), item.getId());
         assertThat(actual, is(expected));
     }
+
     @Test
     public void whenShowItemsFindByName() {
         Tracker tracker = new Tracker();
