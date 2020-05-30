@@ -96,6 +96,25 @@ public class RefactoringStartUITest {
     }
 
     @Test
+    public void whenReplaceItemThanReplaceNoAction() {
+        String id = "111111";
+        Tracker tracker = new Tracker();
+        Item item = new Item("test1");
+        Item item2 = new Item("test2");
+        tracker.add(item);
+        tracker.add(item2);
+        Input input = new StubInput(new String[] {"2", id,
+                "test2 replace", "6"});
+        new StartUI(output).init(input, tracker, actions);
+        int i1 = new StringBuilder(out.toString()).indexOf("Заявка");
+        int i2 = new StringBuilder(out.toString()).indexOf("Menu.", i1);
+        String actual = new StringBuilder(out.toString()).substring(i1, i2);
+        String expected = String.format("Заявка по id %s не найдена"
+                + System.lineSeparator(), id);
+        assertThat(actual, is(expected));
+    }
+
+    @Test
     public void whenShowItemDelete() {
         Tracker tracker = new Tracker();
         Item item = new Item("test1");
@@ -109,7 +128,20 @@ public class RefactoringStartUITest {
     }
 
     @Test
-    public void whenDeleteItem() {
+    public void whenShowItemThatNotDelete() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("test1");
+        Item item2 = new Item("test2");
+        tracker.add(item);
+        tracker.add(item2);
+        Input input = new StubInput(new String[] {"3", "1111111", "6"});
+        new StartUI(output).init(input, tracker, actions);
+        Item actual = tracker.findById(item2.getId());
+        assertThat(actual.getName(), is("test2"));
+    }
+
+    @Test
+    public void whenShowItemById() {
         Tracker tracker = new Tracker();
         Item item = new Item("test1");
         tracker.add(item);
@@ -120,6 +152,22 @@ public class RefactoringStartUITest {
         String actual = new StringBuilder(out.toString()).substring(i1, i2);
         String expected = String.format("Name: %s| Id: %s"
                 + System.lineSeparator(), item.getName(), item.getId());
+        assertThat(actual, is(expected));
+    }
+
+    @Test
+    public void whenShowItemByIdNotFound() {
+        String id = "111111";
+        Tracker tracker = new Tracker();
+        Item item = new Item("test1");
+        tracker.add(item);
+        Input input = new StubInput(new String[] {"4", id, "6"});
+        new StartUI(output).init(input, tracker, actions);
+        int i1 = new StringBuilder(out.toString()).indexOf("Заявка");
+        int i2 = new StringBuilder(out.toString()).indexOf("Menu.", i1);
+        String actual = new StringBuilder(out.toString()).substring(i1, i2);
+        String expected = String.format("Заявка по id %s не найдена"
+                + System.lineSeparator(), id);
         assertThat(actual, is(expected));
     }
 
@@ -135,6 +183,23 @@ public class RefactoringStartUITest {
         String actual = new StringBuilder(out.toString()).substring(i1, i2);
         String expected = String.format("Name: %s| Id: %s"
                 + System.lineSeparator(), item.getName(), item.getId());
+        assertThat(actual, is(expected));
+    }
+
+    @Test
+    public void whenShowItemsFindByNameNotFoundItems() {
+        String nameItem = "test1";
+        String nameFindItem = "test3";
+        Tracker tracker = new Tracker();
+        Item item = new Item(nameItem);
+        tracker.add(item);
+        Input input = new StubInput(new String[] {"5", nameFindItem, "6"});
+        new StartUI(output).init(input, tracker, actions);
+        int i1 = new StringBuilder(out.toString()).indexOf("Заявки");
+        int i2 = new StringBuilder(out.toString()).indexOf("Menu.", i1);
+        String actual = new StringBuilder(out.toString()).substring(i1, i2);
+        String expected = String.format("Заявки по имени: %s не найдены."
+                + System.lineSeparator(), nameFindItem);
         assertThat(actual, is(expected));
     }
 }

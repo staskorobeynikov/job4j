@@ -58,7 +58,7 @@ public class Tracker implements ITracker {
     public boolean delete(String id) {
         boolean result = false;
         for (Item item : items) {
-            if (item.getId() != null && item.getId().equals(id)) {
+            if (item.getId().equals(id)) {
                 items.remove(item);
                 result = true;
                 break;
@@ -98,7 +98,7 @@ public class Tracker implements ITracker {
     public Item findById(String id) {
         Item result = null;
         for (Item item : items) {
-            if (item != null && item.getId().equals(id)) {
+            if (item.getId().equals(id)) {
                 result = item;
                 break;
             }
