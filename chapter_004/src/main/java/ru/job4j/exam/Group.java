@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 class Group {
 
-    Map<String, Set<String>> sections(List<Student> students) {
+    public Map<String, Set<String>> sections(List<Student> students) {
         return students.stream().flatMap(
                 student -> student.getUnits().stream().map(unit -> new Holder(unit, student.getName()))
         ).collect(

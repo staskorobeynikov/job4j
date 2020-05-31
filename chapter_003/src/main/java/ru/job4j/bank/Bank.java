@@ -102,10 +102,9 @@ public class Bank {
      * @return пользователя с идентификатором passport
      */
     private User findUserByPassport(String passport) {
-        User result = users.keySet().stream()
+        return users.keySet().stream()
                 .filter(u -> u.getPassport().equals(passport))
                 .findAny().orElse(null);
-        return result;
     }
 
     /**
@@ -116,9 +115,8 @@ public class Bank {
      */
     private Account findAccountByRequisite(String requisites,
                                           List<Account> accounts) {
-        Account result = accounts.stream()
+        return accounts.stream()
                 .filter(a -> a.getRequisites().equals(requisites))
                 .findAny().orElse(null);
-        return result;
     }
 }

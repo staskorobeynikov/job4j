@@ -9,6 +9,7 @@ import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class StudentTest {
+
     @Test
     public void whenFilteredList() {
         StudentCollect collect = new StudentCollect();
@@ -24,6 +25,7 @@ public class StudentTest {
         List<Student> expected = List.of(st5, st4, st3);
         assertThat(actual, is(expected));
     }
+
     @Test
     public void whenEmptyListAfterFilter() {
         StudentCollect collect = new StudentCollect();
@@ -38,6 +40,7 @@ public class StudentTest {
         List<Student> expected = new ArrayList<>();
         assertThat(actual, is(expected));
     }
+
     @Test
     public void whenEmptyList() {
         StudentCollect collect = new StudentCollect();

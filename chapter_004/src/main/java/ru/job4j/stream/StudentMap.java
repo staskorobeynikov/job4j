@@ -1,7 +1,9 @@
 package ru.job4j.stream;
 
 public class StudentMap {
+
     private Student student;
+
     private String surname;
 
     public StudentMap(Student student, String surname) {

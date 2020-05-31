@@ -14,7 +14,8 @@ public class StudentCollect {
      * @return Список студентов которые прошли проверку
      */
     public List<Student> levelOf(List<Student> students, int bound) {
-        return students.stream()
+        return students
+                .stream()
                 .flatMap(Stream::ofNullable)
                 .sorted(Comparator.reverseOrder())
                 .takeWhile(st -> st.getScore() > bound)

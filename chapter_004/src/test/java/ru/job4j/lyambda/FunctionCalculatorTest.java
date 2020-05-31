@@ -10,6 +10,7 @@ import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class FunctionCalculatorTest {
+
     @Test
     public void whenLinearFunctionThenLinearResults() {
         FunctionCalculator function = new FunctionCalculator();
@@ -17,6 +18,7 @@ public class FunctionCalculatorTest {
         List<Double> expected = Arrays.asList(11D, 13D, 15D, 17D);
         assertThat(result, is(expected));
     }
+
     @Test
     public void whenLinearFunctionThenQuadratDataResults() {
         FunctionCalculator function = new FunctionCalculator();
@@ -24,6 +26,7 @@ public class FunctionCalculatorTest {
         List<Double> expected = Arrays.asList(6D, 9D, 14D, 21D, 30D);
         assertThat(result, is(expected));
     }
+
     @Test
     public void whenLinearFunctionThenLogarithmDataResults() {
         FunctionCalculator function = new FunctionCalculator();

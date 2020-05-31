@@ -12,7 +12,8 @@ public class MatrixToList {
      * @return List<Integer> возвращает преобразованную матрицу в виде списка
      */
     public List<Integer> convert(Integer[][] array) {
-        return Arrays.stream(array)
+        return Arrays
+                .stream(array)
                 .flatMap(Stream::of)
                 .collect(Collectors.toList());
     }
