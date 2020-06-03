@@ -10,6 +10,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class ConvertListTest {
+
     private static final String LN = System.lineSeparator();
 
     @Test

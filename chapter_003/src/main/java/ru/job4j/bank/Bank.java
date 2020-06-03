@@ -88,8 +88,7 @@ public class Bank {
         Account destAccount = findAccountByRequisite(destRequisite,
                 getUserAccounts(destPassport));
         if (srcAccount != null && destAccount != null) {
-            if (srcAccount.withdraw(amount)) {
-                destAccount.depositToAccount(amount);
+            if (srcAccount.transfer(destAccount, amount)) {
                 result = true;
             }
         }

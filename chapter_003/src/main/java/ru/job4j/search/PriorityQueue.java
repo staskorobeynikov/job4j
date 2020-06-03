@@ -3,6 +3,7 @@ package ru.job4j.search;
 import java.util.LinkedList;
 
 public class PriorityQueue {
+
     private LinkedList<Task> tasks = new LinkedList<>();
 
     /**
@@ -20,6 +21,7 @@ public class PriorityQueue {
         }
         tasks.add(i, task);
     }
+
     public Task take() {
         return this.tasks.poll();
     }

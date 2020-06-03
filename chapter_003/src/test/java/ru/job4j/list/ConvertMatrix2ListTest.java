@@ -7,6 +7,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class ConvertMatrix2ListTest {
+
     @Test
     public void when2on2ArrayThenList4() {
         ConvertMatrix2List list = new ConvertMatrix2List();
@@ -20,6 +21,7 @@ public class ConvertMatrix2ListTest {
         List<Integer> result = list.toList(input);
         assertThat(result, is(expect));
     }
+
     @Test
     public void when7on4ArrayThenList11() {
         ConvertMatrix2List list = new ConvertMatrix2List();
@@ -33,6 +35,7 @@ public class ConvertMatrix2ListTest {
         List<Integer> result = list.toList(input);
         assertThat(result, is(expect));
     }
+
     @Test
     public void when0on4ArrayThenList4() {
         ConvertMatrix2List list = new ConvertMatrix2List();

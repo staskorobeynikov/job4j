@@ -7,6 +7,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class StringCompareTest {
+
     @Test
     public void whenStringsAreEqualThenZero() {
         StringCompare compare = new StringCompare();
@@ -16,6 +17,7 @@ public class StringCompareTest {
         );
         assertThat(rst, is(0));
     }
+
     @Test
     public void whenLeftLessThanRightResultShouldBeNegative() {
         StringCompare compare = new StringCompare();
@@ -25,6 +27,7 @@ public class StringCompareTest {
         );
         assertThat(rst, lessThan(0));
     }
+
     @Test
     public void whenLeftLessThanRightResultShouldBeNegative1() {
         StringCompare compare = new StringCompare();
@@ -34,6 +37,7 @@ public class StringCompareTest {
         );
         assertThat(rst, greaterThan(0));
     }
+
     @Test
     public void whenLeftGreaterThanRightResultShouldBePositive() {
         StringCompare compare = new StringCompare();
@@ -63,6 +67,7 @@ public class StringCompareTest {
         );
         assertThat(rst, lessThan(0));
     }
+
     @Test
     public void second1CharOfLeftLessThanRightShouldBeNegative() {
         StringCompare compare = new StringCompare();
@@ -72,6 +77,7 @@ public class StringCompareTest {
         );
         assertThat(rst, lessThan(0));
     }
+
     @Test
     public void second1CharOfLeftLessThanRightShouldBeNegative1() {
         StringCompare compare = new StringCompare();

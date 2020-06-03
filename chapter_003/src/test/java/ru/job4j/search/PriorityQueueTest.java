@@ -5,6 +5,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class PriorityQueueTest {
+
     @Test
     public void whenHigherPrioritySecond() {
         var queue = new PriorityQueue();
@@ -14,6 +15,7 @@ public class PriorityQueueTest {
         var result = queue.take();
         assertThat(result.getDesc(), is("urgent"));
     }
+
     @Test
     public void whenHigherPriorityFirst() {
         var queue1 = new PriorityQueue();
@@ -23,6 +25,7 @@ public class PriorityQueueTest {
         var result = queue1.take();
         assertThat(result.getDesc(), is("low"));
     }
+
     @Test
     public void whenHigherPriorityThird() {
         var queue1 = new PriorityQueue();
@@ -32,6 +35,7 @@ public class PriorityQueueTest {
         var result = queue1.take();
         assertThat(result.getDesc(), is("middle"));
     }
+
     @Test
     public void whenHigherPriorityEquals() {
         var queue = new PriorityQueue();
@@ -41,5 +45,4 @@ public class PriorityQueueTest {
         var result = queue.take();
         assertThat(result.getDesc(), is("low"));
     }
-
 }

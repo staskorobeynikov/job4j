@@ -3,7 +3,9 @@ package ru.job4j.bank;
 import java.util.Objects;
 
 public class User {
+
     private String name;
+
     private String passport;
 
     public User(String name, String passport) {
@@ -36,8 +38,7 @@ public class User {
             return false;
         }
         User user = (User) o;
-        return Objects.equals(name, user.name)
-                && Objects.equals(passport, user.passport);
+        return Objects.equals(passport, user.passport);
     }
 
     @Override

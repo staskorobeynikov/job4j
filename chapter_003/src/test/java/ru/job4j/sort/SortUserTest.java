@@ -8,6 +8,7 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 
 public class SortUserTest {
+
     @Test
     public void whenSortDataName() {
         List<User> expected = List.of(
@@ -22,6 +23,7 @@ public class SortUserTest {
         SortUser.sortNameLength(result);
         assertThat(result, is(expected));
     }
+
     @Test
     public void whenSortDataAllFields() {
         List<User> expected = List.of(
@@ -36,6 +38,7 @@ public class SortUserTest {
         SortUser.sortByAllFields(result);
         assertThat(result, is(expected));
     }
+
     @Test
     public void whenSortDataAllFieldsFourUsers() {
         List<User> expected = List.of(

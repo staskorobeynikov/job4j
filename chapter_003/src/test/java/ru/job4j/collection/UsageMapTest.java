@@ -9,6 +9,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class UsageMapTest {
+
     private static final String LN = System.lineSeparator();
 
     @Test

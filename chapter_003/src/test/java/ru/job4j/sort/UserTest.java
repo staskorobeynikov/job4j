@@ -11,6 +11,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class UserTest {
+
     @Test
     public void whenAsc() {
         Set<User> users = new TreeSet<>();
@@ -22,6 +23,7 @@ public class UserTest {
         );
         assertThat(users, is(expected));
     }
+
     @Test
     public void whenComparePertVSIvan() {
         int rsl = new User("Petr", 32)
@@ -30,6 +32,7 @@ public class UserTest {
                 );
         assertThat(rsl, greaterThan(0));
     }
+
     @Test
     public void whenCompareIvanVSPetr() {
         int rsl = new User("Ivan", 32)
@@ -38,6 +41,7 @@ public class UserTest {
                 );
         assertThat(rsl, greaterThan(-100));
     }
+
     @Test
     public void whenComparePertVSPetr() {
         int rsl = new User("Petr", 31)
@@ -46,6 +50,7 @@ public class UserTest {
                 );
         assertThat(rsl, greaterThan(-100));
     }
+
     @Test
     public void whenComparePertVSPetr2() {
         int rsl = new User("Petr", 35)

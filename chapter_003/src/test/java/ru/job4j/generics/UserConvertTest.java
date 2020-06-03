@@ -1,17 +1,16 @@
 package ru.job4j.generics;
 
 import org.junit.Test;
-import ru.job4j.collection.ConvertList2Array;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class UserConvertTest {
+
     private static final String LN = System.lineSeparator();
 
     @Test
@@ -19,10 +18,9 @@ public class UserConvertTest {
         List<User> listUsers = List.of(new User(1, "Stas", "Minsk"));
         User user = new User(1, "Stas", "Minsk");
         HashMap<Integer, User> result = UserConvert.process(listUsers);
-        HashMap<Integer, User> map = new HashMap<Integer, User>();
+        HashMap<Integer, User> map = new HashMap<>();
         map.put(user.getId(), user);
-        HashMap<Integer, User> expect = map;
-        assertThat(result, is(expect));
+        assertThat(result, is(map));
     }
 
     @Test
