@@ -30,7 +30,7 @@ public class AnimalTest {
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
 
-        Animal.main();
+        Animal.main(new String[0]);
 
         String expect = String.format(
                 "Class name: Animal%s%s"

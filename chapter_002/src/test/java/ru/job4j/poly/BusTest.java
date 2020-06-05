@@ -54,7 +54,7 @@ public class BusTest {
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
 
-        Bus.main();
+        Bus.main(new String[0]);
 
         String expect = String.format(
                 "Автобус может ехать%s"

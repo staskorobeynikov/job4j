@@ -18,7 +18,7 @@ public class CollegeTest {
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
 
-        College.main();
+        College.main(new String[0]);
 
         String expect = String.format("Коробейников Стас Евгеньевич учится в группе Стажер%s", LN);
         assertThat(new String(out.toByteArray()), is(expect));

@@ -48,7 +48,7 @@ public class JarTest {
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
 
-        Jar.main();
+        Jar.main(new String[0]);
 
         String expect = String.format(
                 "first : 10. second : 5%s"

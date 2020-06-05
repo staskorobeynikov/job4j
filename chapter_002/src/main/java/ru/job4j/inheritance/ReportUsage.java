@@ -1,7 +1,7 @@
 package ru.job4j.inheritance;
 
 public class ReportUsage {
-    public static void main() {
+    public static void main(String[] args) {
         HtmlReport report = new HtmlReport();
         TextReport report1 = new TextReport();
         JSONReport report2 = new JSONReport();

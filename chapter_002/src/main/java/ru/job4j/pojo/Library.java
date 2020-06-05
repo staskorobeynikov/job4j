@@ -1,7 +1,7 @@
 package ru.job4j.pojo;
 
 public class Library {
-    public static void  main() {
+    public static void  main(String[] args) {
         Book book1 = new Book("Евгений Онегин", 3);
         Book book2 = new Book("Китайский язык", 2);
         Book book3 = new Book("Инструкция пользователя", 5);
@@ -27,7 +27,7 @@ public class Library {
         System.out.println("Show book with name - Clean code");
         for (int i = 0; i < books.length; i++) {
             Book b = books[i];
-            if (b.getName() == "Clean Code") {
+            if (b.getName().equals("Clean Code")) {
                 System.out.println(b.getName() + " - " + b.getCount());
             }
         }

@@ -17,7 +17,7 @@ public class LibraryTest {
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
 
-        Library.main();
+        Library.main(new String[0]);
 
         String expect = String.format(
                 "Евгений Онегин - 3%s"

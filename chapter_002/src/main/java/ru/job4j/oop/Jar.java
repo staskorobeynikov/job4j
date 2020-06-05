@@ -16,7 +16,7 @@ public class Jar {
         another.value = 0;
     }
 
-    public static void main() {
+    public static void main(String[] args) {
         Jar first = new Jar(10);
         Jar second = new Jar(5);
         System.out.println("first : " + first.value + ". second : " + second.value);

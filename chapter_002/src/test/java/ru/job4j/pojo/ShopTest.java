@@ -41,7 +41,7 @@ public class ShopTest {
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
 
-        Shop.main();
+        Shop.main(new String[0]);
 
         String expect = String.format(
                 "Milk%s"

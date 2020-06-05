@@ -7,12 +7,16 @@ import static org.junit.Assert.*;
 
 public class JSONReportTest {
 
+    private static final String LN = System.lineSeparator();
+
     @Test
     public void whenGenerate() {
         JSONReport jsonReport = new JSONReport();
 
         String result = jsonReport.generate("name", "body");
 
-        assertThat(result, is("{\n\nname : name,\nbody : body\n\n}"));
+        String expected = String.format("{%s%sname : name,%sbody : body%s%s}", LN, LN, LN, LN, LN);
+
+        assertThat(result, is(expected));
     }
 }

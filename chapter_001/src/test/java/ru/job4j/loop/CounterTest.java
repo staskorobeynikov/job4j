@@ -15,6 +15,6 @@ public class CounterTest {
     public void whenSumEvenNumbersFrom10To100Then2550() {
         Counter check = new Counter();
         int result = check.add(10, 100);
-        assertThat(result, is(2550));
+        assertThat(result, is(2530));
     }
 }

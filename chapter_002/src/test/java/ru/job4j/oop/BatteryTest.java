@@ -48,7 +48,7 @@ public class BatteryTest {
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
 
-        Battery.main();
+        Battery.main(new String[0]);
 
         String expect = String.format(
                 "first : 30. second : 20%s"

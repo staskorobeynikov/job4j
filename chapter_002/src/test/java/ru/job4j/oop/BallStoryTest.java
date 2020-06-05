@@ -17,7 +17,7 @@ public class BallStoryTest {
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
 
-        BallStory.main();
+        BallStory.main(new String[0]);
 
         String expect = String.format(
                 "Заяц не съедает колобка%s"

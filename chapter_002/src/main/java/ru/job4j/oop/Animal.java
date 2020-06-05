@@ -7,7 +7,7 @@ public class Animal {
     }
     public Animal(String name) {
     }
-    public static void main() {
+    public static void main(String[] args) {
         Animal animal = new Animal("Predator");
         Animal animal1 = new Animal();
         System.out.println();
