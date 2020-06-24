@@ -21,4 +21,19 @@ public class FreezeStrTest {
     public void whenNotMultiEq() {
         assertThat(FreezeStr.equal("heloo", "hello"), is(false));
     }
+
+    @Test
+    public void whenEq1() {
+        assertThat(FreezeStr.equalWithEvenNumber("Hello", "Hlloe"), is(true));
+    }
+
+    @Test
+    public void whenNotEq1() {
+        assertThat(FreezeStr.equalWithEvenNumber("Hello", "Halle"), is(false));
+    }
+
+    @Test
+    public void whenNotMultiEq1() {
+        assertThat(FreezeStr.equalWithEvenNumber("heloo", "hello"), is(false));
+    }
 }
