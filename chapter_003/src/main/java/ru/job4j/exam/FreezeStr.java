@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class FreezeStr {
 
-    public static boolean equalWithEvenNumber(String left, String right) {
+    public static boolean equal(String left, String right) {
         Map<Character, Integer> leftMap = new HashMap<>();
         for (Character c : left.toCharArray()) {
             int count = 1;
@@ -27,7 +27,7 @@ public class FreezeStr {
         return leftMap.size() == 0;
     }
 
-    public static boolean equal(String left, String right) {
+    public static boolean equalWithEvenNumber(String left, String right) {
         boolean result = true;
         String combine = String.format("%s%s", left, right);
         Map<Character, Integer> letters = new HashMap<>();
@@ -54,9 +54,5 @@ public class FreezeStr {
             result.put(c, result.size());
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(FreezeStr.getMap("Hello"));
     }
 }
