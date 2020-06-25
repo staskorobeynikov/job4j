@@ -24,16 +24,16 @@ public class FreezeStrTest {
 
     @Test
     public void whenEq1() {
-        assertThat(FreezeStr.equalWithEvenNumber("Hello", "Hlloe"), is(true));
+        assertThat(FreezeStr.equalWithSetValues("Hello", "Hlloe"), is(true));
     }
 
     @Test
     public void whenNotEq1() {
-        assertThat(FreezeStr.equalWithEvenNumber("Hello", "Halle"), is(false));
+        assertThat(FreezeStr.equalWithSetValues("Hello", "Halle"), is(false));
     }
 
     @Test
     public void whenNotMultiEq1() {
-        assertThat(FreezeStr.equalWithEvenNumber("heloo", "hello"), is(false));
+        assertThat(FreezeStr.equalWithSetValues("heloo", "hello"), is(false));
     }
 }
