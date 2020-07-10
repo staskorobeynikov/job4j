@@ -3,6 +3,8 @@ package ru.job4j.collection.bank;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Optional;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -39,12 +41,35 @@ public class BankServiceTest {
     }
 
     @Test
+    public void whenAddAccountUserIsEmptyOptional() {
+        User user1 = new User("5656", "Arsentev Petr");
+
+        bank.addAccount(user.getPassport(), new Account("5546", 150));
+        bank.addAccount(user1.getPassport(), new Account("4655", 150));
+
+        Optional<Account> account = bank.findByRequisiteWithStream("5656", "4655");
+
+        assertThat(account.isPresent(), is(false));
+    }
+
+    @Test
     public void whenAddAccount() {
         bank.addAccount(user.getPassport(), new Account("5546", 150));
         bank.addAccount(user.getPassport(), new Account("4655", 250));
         bank.addAccount(user.getPassport(), new Account("5546", 350));
 
         assertThat(bank.findByRequisite("3434", "5546").getBalance(), is(150.0));
+    }
+
+    @Test
+    public void whenAddAccountThanCallMethodWithStreamIsWorkCorrectly() {
+        bank.addAccount(user.getPassport(), new Account("5546", 150));
+        bank.addAccount(user.getPassport(), new Account("4655", 250));
+        bank.addAccount(user.getPassport(), new Account("5546", 350));
+
+        Optional<Account> account = bank.findByRequisiteWithStream("3434", "5546");
+
+        assertThat(account.get().getBalance(), is(150.0));
     }
 
     @Test
