@@ -31,10 +31,10 @@ public class Analyze {
         return stream
                 .flatMap(p -> p.getSubjects().stream())
                 .collect(
-                        Collectors.toMap(
+                        Collectors.groupingBy(
                                 Subject::getName,
-                                Subject::getScore,
-                                (prev, next) -> (prev + next) / 2
+                                TreeMap::new,
+                                Collectors.averagingDouble(Subject::getScore)
                         )
                 )
                 .entrySet()
