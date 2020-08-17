@@ -6,23 +6,23 @@ public class Matches {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int count = 11;
-        while (count >= 0) {
-            System.out.println("На столе осталось: " + count + " спичек (-и, -а)");
-            System.out.println("Игрок 1 введите число от 1 до трех: ");
-            int selectPlayer1 = Integer.parseInt(input.nextLine());
-            count = count - selectPlayer1;
-            System.out.println("На столе осталось: " + count + " спичек (-и, -а)");
-            if (count == 0) {
-                System.out.println("Выиграл Игрок 1");
+        boolean player = true;
+        String name = "";
+        while (true) {
+            name = player ? "Игрок_1" : "Игрок_2";
+            System.out.println(name + " введите число от 1 до 3: ");
+            int select = Integer.parseInt(input.nextLine());
+            while (select < 1 || select > 3) {
+                System.out.println("Вы ввели недопустимое значение. Повторите попытку.");
+                select = Integer.parseInt(input.nextLine());
+            }
+            count = count - select;
+            if (count <= 0) {
                 break;
             }
-            System.out.println("Игрок 2 введите число от 1 до 3");
-            int selectPlayer2 = Integer.parseInt(input.nextLine());
-            count = count - selectPlayer2;
-            if (count == 0) {
-                System.out.println("Выиграл Игрок 2");
-                break;
-            }
+            System.out.println("На столе осталось: " + count + " спичек (-и, -а).");
+            player = !player;
         }
+        System.out.println(String.format("Победу одержал %s!!!", name));
     }
 }
