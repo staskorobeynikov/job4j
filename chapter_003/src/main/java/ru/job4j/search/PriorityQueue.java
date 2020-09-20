@@ -15,9 +15,8 @@ public class PriorityQueue {
         for (var current : tasks) {
             if (task.getPriority() < current.getPriority()) {
                 break;
-            } else {
-                i++;
             }
+            i++;
         }
         tasks.add(i, task);
     }

@@ -7,7 +7,7 @@ public class Matches {
         Scanner input = new Scanner(System.in);
         int count = 11;
         boolean player = true;
-        String name = "";
+        String name;
         while (true) {
             name = player ? "Игрок_1" : "Игрок_2";
             System.out.println(name + " введите число от 1 до 3: ");
