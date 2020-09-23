@@ -30,14 +30,6 @@ public class Job4jStream<T> {
         return list;
     }
 
-    public void setSource(List<T> source) {
-        this.source = source;
-    }
-
-    public void setFilter(Predicate<T> filter) {
-        this.filter = filter;
-    }
-
     static class Builder<T> {
         private List<T> source;
 
@@ -55,8 +47,8 @@ public class Job4jStream<T> {
 
         Job4jStream<T> build() {
             Job4jStream<T> stream = new Job4jStream<>();
-            stream.setSource(source);
-            stream.setFilter(filter);
+            stream.source = source;
+            stream.filter = filter;
             return stream;
         }
     }
