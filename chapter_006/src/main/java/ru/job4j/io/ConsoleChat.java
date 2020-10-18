@@ -1,6 +1,7 @@
 package ru.job4j.io;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -17,6 +18,7 @@ public class ConsoleChat {
     private static final String OUT = "закончить";
     private static final String STOP = "стоп";
     private static final String CONTINUE = "продолжить";
+    private static final String LN = System.lineSeparator();
 
     public ConsoleChat(String path, String botAnswers) {
         this.path = path;
@@ -24,8 +26,8 @@ public class ConsoleChat {
     }
 
     public void init() {
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+             BufferedWriter bw = new BufferedWriter(new FileWriter(path, StandardCharsets.UTF_8))) {
             String inputLine = "";
             String answer;
             StringBuilder dialogText;
@@ -68,10 +70,11 @@ public class ConsoleChat {
     }
 
     public static void main(String[] args) {
-        System.out.println(String.format("Возможны следующие дейтсвия.\n"
-                + "1. Бот перестанет отвечать, введите: %s |\n"
-                + "2. Бот возобновит работу, введите: %s |\n"
-                + "3. Закончить работу с чатом, введите: %s |\n", STOP, CONTINUE, OUT));
+        System.out.println(String.format("Возможны следующие дейтсвия.%s"
+                + "1. Бот перестанет отвечать, введите: %s |%s"
+                + "2. Бот возобновит работу, введите: %s |%s"
+                + "3. Закончить работу с чатом, введите: %s |%s",
+                LN, STOP, LN, CONTINUE, LN, OUT, LN));
         ConsoleChat cc = new ConsoleChat("chapter_006/data/conversation.txt",
                 "chapter_006/data/botphrase.txt");
         cc.init();

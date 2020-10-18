@@ -135,4 +135,5 @@ public class MatrixCheckUpdateTest {
         boolean result = matrixCheckUpdate.isWin(input);
         assertThat(result, is(true));
     }
+
 }
