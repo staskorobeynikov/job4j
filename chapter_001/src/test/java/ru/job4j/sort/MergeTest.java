@@ -23,8 +23,8 @@ public class MergeTest {
     @Test
     public void whenLeftLess() {
         Merge merge = new Merge();
-        int[] expect = {1, 2, 3, 3, 4};
-        assertThat(merge.merge(new int[] {1, 2, 3}, new int[] {3, 4}), is(expect));
+        int[] expect = {1, 1, 2, 2, 3, 3, 4, 4};
+        assertThat(merge.merge(new int[] {1, 2, 3, 4}, new int[] {1, 2, 3, 4}), is(expect));
     }
 
     @Test
