@@ -17,7 +17,7 @@ public class Split {
                 commonCount++;
             } else {
                 chars[k++] = str[i];
-                if (i == str.length - 1){
+                if (i == str.length - 1) {
                     chars = Arrays.copyOf(chars, k);
                     result[commonCount - 1] = chars;
                 }
