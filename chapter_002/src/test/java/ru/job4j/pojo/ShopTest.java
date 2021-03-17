@@ -2,16 +2,10 @@ package ru.job4j.pojo;
 
 import org.junit.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class ShopTest {
-
-    private static final String LN = System.lineSeparator();
-
     @Test
     public void whenDelete() {
         Product[] productsDelete = new Product[6];
@@ -36,66 +30,28 @@ public class ShopTest {
     }
 
     @Test
-    public void whenTestConsoleOutput() {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        PrintStream def = System.out;
-        System.setOut(new PrintStream(out));
-
-        Shop.main(new String[0]);
-
-        String expect = String.format(
-                "Milk%s"
-                        + "Bread%s"
-                        + "Egg%s"
-                        + "null%s"
-                        + "null%s%s"
-                        + "Удаляем значение из ячейки с индексом 1%s"
-                        + "Milk%s"
-                        + "null%s"
-                        + "Egg%s"
-                        + "null%s"
-                        + "null%s%s"
-                        + "Записываем  в ячейку с индексом 1 значение ячейки с индексом 2 и удаляем значение из ячейки с индексом 2%s"
-                        + "Milk%s"
-                        + "Egg%s"
-                        + "null%s"
-                        + "null%s"
-                        + "null%s%s"
-                        + "Milk%s"
-                        + "Bread%s"
-                        + "Egg%s"
-                        + "Fish%s"
-                        + "Meat%s"
-                        + "null%s",
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN,
-                LN
-        );
-        assertThat(new String(out.toByteArray()), is(expect));
-        System.setOut(def);
+    public void whenLastNull() {
+        Product[] products = new Product[5];
+        products[0] = new Product("Milk", 10);
+        products[1] = new Product("Bread", 4);
+        products[2] = new Product("Egg", 19);
+        int rsl = Shop.indexOfNull(products);
+        assertThat(rsl, is(3));
     }
 
+    @Test
+    public void whenFirstNull() {
+        Product[] products = new Product[5];
+        products[1] = new Product("Milk", 10);
+        int rsl = Shop.indexOfNull(products);
+        assertThat(rsl, is(0));
+    }
+
+    @Test
+    public void whenHasNotNull() {
+        Product[] products = new Product[1];
+        products[0] = new Product("Milk", 10);
+        int rsl = Shop.indexOfNull(products);
+        assertThat(rsl, is(-1));
+    }
 }
