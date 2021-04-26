@@ -40,7 +40,7 @@ public class EasyStream {
     }
 
     public List<Integer> collect() {
-        return source;
+        return List.copyOf(source);
     }
 
     static class Builder {
