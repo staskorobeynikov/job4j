@@ -1,8 +1,6 @@
 # Учебный репозиторий по курсу [job4j](https://job4j.ru/courses/java_with_zero_to_job.html).
-[![Build Status](https://travis-ci.org/staskorobeynikov/job4j.svg?branch=master)](https://travis-ci.org/staskorobeynikov/job4j)
+[![Build Status](https://travis-ci.com/staskorobeynikov/job4j.svg?branch=master)](https://travis-ci.com/staskorobeynikov/job4j)
 [![codecov](https://codecov.io/gh/staskorobeynikov/job4j/branch/master/graph/badge.svg)](https://codecov.io/gh/staskorobeynikov/job4j)
-
-**```Начало курса - 27 ноября 2019г.```**
 
 ### Chapter_001. Базовый синтаксис.
 1. **Типы данных:**
