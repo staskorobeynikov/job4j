@@ -2,38 +2,47 @@ package ru.job4j.exam;
 
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class FreezeStrTest {
 
     @Test
     public void whenEq() {
-        assertThat(FreezeStr.equal("Hello", "Hlloe"), is(true));
+        assertTrue(FreezeStr.equal("Hello", "Hlloe"));
+    }
+
+    @Test
+    public void whenNotEqualWithDifferentLength() {
+        assertFalse(FreezeStr.equal("Hello", "Hlloeе"));
     }
 
     @Test
     public void whenNotEq() {
-        assertThat(FreezeStr.equal("Hello", "Halle"), is(false));
+        assertFalse(FreezeStr.equal("Hello", "Halle"));
     }
 
     @Test
     public void whenNotMultiEq() {
-        assertThat(FreezeStr.equal("heloo", "hello"), is(false));
+        assertFalse(FreezeStr.equal("heloo", "hello"));
     }
 
     @Test
     public void whenEq1() {
-        assertThat(FreezeStr.equalWithSetValues("Hello", "Hlloe"), is(true));
+        assertTrue(FreezeStr.equalWithSetValues("Hello", "Hlloe"));
+    }
+
+    @Test
+    public void whenNotEqualWithDifferentLength1() {
+        assertFalse(FreezeStr.equalWithSetValues("Hello", "Hlloeе"));
     }
 
     @Test
     public void whenNotEq1() {
-        assertThat(FreezeStr.equalWithSetValues("Hello", "Halle"), is(false));
+        assertFalse(FreezeStr.equalWithSetValues("Hello", "Halle"));
     }
 
     @Test
     public void whenNotMultiEq1() {
-        assertThat(FreezeStr.equalWithSetValues("heloo", "hello"), is(false));
+        assertFalse(FreezeStr.equalWithSetValues("heloo", "hello"));
     }
 }

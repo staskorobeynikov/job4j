@@ -8,6 +8,9 @@ import java.util.Set;
 public class FreezeStr {
 
     public static boolean equal(String left, String right) {
+        if (left.length() != right.length()) {
+            return false;
+        }
         Map<Character, Integer> leftMap = new HashMap<>();
         for (Character c : left.toCharArray()) {
             leftMap.computeIfPresent(c, (key, value) -> value + 1);
@@ -21,6 +24,9 @@ public class FreezeStr {
     }
 
     public static boolean equalWithSetValues(String left, String right) {
+        if (left.length() != right.length()) {
+            return false;
+        }
         Map<Character, Integer> leftMap = new HashMap<>();
         for (Character c : left.toCharArray()) {
             leftMap.computeIfPresent(c, (key, value) -> value + 1);
