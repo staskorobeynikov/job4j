@@ -5,22 +5,11 @@ import java.util.List;
 
 public class SortUser {
     public static List<User> sortNameLength(List<User> users) {
-        users.sort(new Comparator<User>() {
-            @Override
-            public int compare(User one, User two) {
-                return one.getName().length() - two.getName().length();
-            }
-        });
+        users.sort(Comparator.comparingInt(one -> one.getName().length()));
         return users;
     }
     public static List<User> sortByAllFields(List<User> users) {
-        users.sort(new Comparator<User>() {
-            @Override
-            public int compare(User one, User two) {
-                int result = one.getName().compareTo(two.getName());
-                return result == 0 ? one.getAge() - two.getAge() : result;
-            }
-        });
+        users.sort(Comparator.comparing(User::getName).thenComparingInt(User::getAge));
         return users;
     }
 }
