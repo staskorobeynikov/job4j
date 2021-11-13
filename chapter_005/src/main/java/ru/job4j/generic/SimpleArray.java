@@ -35,6 +35,7 @@ public class SimpleArray<T> implements Iterable<T> {
                 index, sizeArray - index);
         array[sizeArray] = null;
     }
+
     public T get(int index) {
         if (index > array.length) {
             throw new ArrayIndexOutOfBoundsException("Индекс больше размера "

@@ -15,6 +15,7 @@ public class Battery {
         this.load = this.load + another.load;
         another.load = 0;
     }
+
     public static void main(String[] args) {
         Battery first = new Battery(30);
         Battery second = new Battery(20);

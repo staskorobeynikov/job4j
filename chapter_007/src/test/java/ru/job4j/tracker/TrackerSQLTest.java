@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
 public class TrackerSQLTest {
 
     private final Logger logger = LogManager.getLogger(TrackerSQLTest.class.getName());
+
     public Connection init() {
         try (InputStream in = TrackerSQL.class.getClassLoader().getResourceAsStream("app.properties")) {
             Properties config = new Properties();

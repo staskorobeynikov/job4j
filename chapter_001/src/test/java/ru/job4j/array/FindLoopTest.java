@@ -14,6 +14,7 @@ public class FindLoopTest {
         int expect = 0;
         assertThat(result, is(expect));
     }
+
     @Test
     public void whenArrayHas4ThenNot() {
         FindLoop find = new FindLoop();
@@ -23,6 +24,7 @@ public class FindLoopTest {
         int expect = -1;
         assertThat(result, is(expect));
     }
+
     @Test
     public void whenArrayHas8Then4() {
         FindLoop find = new FindLoop();
@@ -32,6 +34,7 @@ public class FindLoopTest {
         int expect = 4;
         assertThat(result, is(expect));
     }
+
     @Test
     public void whenFind3() {
         int[] input = new int[] {5, 2, 10, 2, 4};
@@ -42,6 +45,7 @@ public class FindLoopTest {
         int expect = 3;
         assertThat(result, is(expect));
     }
+
     @Test
     public void whenFind10() {
         int[] input = new int[] {5, 2, 17, 2, 10, 8, 11, 30, 15};

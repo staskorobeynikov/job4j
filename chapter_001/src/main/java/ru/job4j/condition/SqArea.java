@@ -6,6 +6,7 @@ public class SqArea {
         double length = k * height;
         return height * length;
     }
+
     public static void main(String[] args) {
         SqArea sqArea = new SqArea();
         double result1 = sqArea.square(4, 1);

@@ -33,7 +33,7 @@ public class Analyze {
                 .collect(
                         Collectors.groupingBy(
                                 Subject::getName,
-                                TreeMap::new,
+                                LinkedHashMap::new,
                                 Collectors.averagingDouble(Subject::getScore)
                         )
                 )

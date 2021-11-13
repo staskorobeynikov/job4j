@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 
 public class DynamicContainerTest {
     private DynamicContainer<Integer> container;
+
     @Before
     public void init() {
         container = new DynamicContainer<>(3);

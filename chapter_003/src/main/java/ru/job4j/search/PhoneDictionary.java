@@ -11,6 +11,7 @@ public class PhoneDictionary {
     public void add(Person person) {
         this.persons.add(person);
     }
+
     /**
      * Вернуть список всех пользователей, который содержат key в любых полях.
      * @param key Ключ поиска

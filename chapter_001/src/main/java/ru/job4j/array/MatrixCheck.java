@@ -31,6 +31,7 @@ public class MatrixCheck {
         System.out.println();
         return result;
     }
+
     public static void main(String[] args) {
         char[][] hasWinVertical = {
                 {'_', '_', 'X', '_', '_'},

@@ -16,6 +16,7 @@ public class Doctor extends Profession {
     public void treatPatient() {
         System.out.println("treatPatient");
     }
+
     public void healDiagnose() {
         System.out.println("healDiagnose");
     }

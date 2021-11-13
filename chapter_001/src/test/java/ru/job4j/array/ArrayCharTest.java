@@ -13,6 +13,7 @@ public class ArrayCharTest {
         boolean result = arrayChar.startsWith(word, pref);
         assertThat(result, is(true));
     }
+
     @Test
     public void whenNotStartWithPrefixThenFalse() {
         char[] word = {'H', 'e', 'l', 'l', 'o'};
@@ -21,6 +22,7 @@ public class ArrayCharTest {
         boolean result = arrayChar.startsWith(word, pref);
         assertThat(result, is(false));
     }
+
     @Test
     public void whenStartWithLastGreatThenTrue() {
         char[] word = {'H', 'e', 'l', 'l', 'o'};

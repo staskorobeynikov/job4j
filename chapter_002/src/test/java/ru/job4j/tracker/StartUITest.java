@@ -15,6 +15,7 @@ public class StartUITest {
         new StartUI(System.out::println).init(input, new Tracker(), new UserAction[] {action});
         assertThat(action.isCall(), is(true));
     }
+
     @Test
     public void whenAddItem() {
         Tracker tracker = new Tracker();
@@ -23,6 +24,7 @@ public class StartUITest {
         Item expected = new Item("Fix PC");
         assertThat(created.getName(), is(expected.getName()));
     }
+
     @Test
     public void whenReplaceItem() {
         Tracker tracker = new Tracker();
@@ -32,6 +34,7 @@ public class StartUITest {
         Item replaced = tracker.findById(item.getId());
         assertThat(replaced.getName(), is("replaced item"));
     }
+
     @Test
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();

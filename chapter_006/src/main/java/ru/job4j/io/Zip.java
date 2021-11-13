@@ -79,6 +79,7 @@ public class Zip {
         }
         return result;
     }
+
     public static void main(String[] args) {
         Zip zip = new Zip();
         if (zip.validate(args)) {

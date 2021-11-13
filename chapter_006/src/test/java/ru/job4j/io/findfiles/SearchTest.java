@@ -30,6 +30,7 @@ public class SearchTest {
             assertEquals(findFiles.get(i), result.get(i).getName());
         }
     }
+
     @Ignore
     @Test
     public void whenSearchFileByName() {

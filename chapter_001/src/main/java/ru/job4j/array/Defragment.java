@@ -19,6 +19,7 @@ public class Defragment {
         }
         return array;
     }
+
     public static void main(String[] args) {
         String[] input = {"I", null, "wanna", null, "be", null, "compressed"};
         Defragment defragment = new Defragment();

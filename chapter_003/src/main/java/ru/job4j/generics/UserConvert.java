@@ -13,6 +13,7 @@ public class UserConvert {
         }
         return map;
     }
+
     public static void main(String[] args) {
         List<User> listUsers = new ArrayList<>();
         listUsers.add(new User(1, "Stas", "Minsk"));

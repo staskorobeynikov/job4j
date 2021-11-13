@@ -10,7 +10,6 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-
 @Ignore public class StoreSQLTest {
     private Connection conn = new Config().init("url");
     private StoreSQL storeSQL = new StoreSQL(conn);

@@ -5,6 +5,7 @@ public class DummyDic {
         String say = "Неизвестное слово. ";
         return say + eng;
     }
+
     public static void main(String[] args) {
         DummyDic dic = new DummyDic();
         String answer = dic.engToRus("Inheritance");

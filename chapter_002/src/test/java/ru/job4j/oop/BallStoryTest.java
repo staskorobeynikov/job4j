@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 public class BallStoryTest {
 
     private static final String LN = System.lineSeparator();
+
     @Test
     public void whenTestMain() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -31,5 +32,4 @@ public class BallStoryTest {
         assertThat(new String(out.toByteArray()), is(expect));
         System.setOut(def);
     }
-
 }

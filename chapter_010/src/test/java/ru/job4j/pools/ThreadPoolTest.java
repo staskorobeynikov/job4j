@@ -7,7 +7,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-
 public class ThreadPoolTest {
 
     private int actionForTest() {

@@ -12,6 +12,7 @@ public class CheckTest {
         boolean result = check.mono(input);
         assertThat(result, is(true));
     }
+
     @Test
     public void whenDataNotMonoByTrueThenFalse() {
         Check check = new Check();
@@ -19,6 +20,7 @@ public class CheckTest {
         boolean result = check.mono(input);
         assertThat(result, is(false));
     }
+
     @Test
     public void whenDataMonoByFalseThenTrue() {
         Check check = new Check();

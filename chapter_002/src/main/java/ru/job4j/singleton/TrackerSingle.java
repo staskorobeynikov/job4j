@@ -7,6 +7,7 @@ public enum TrackerSingle {
     public Item add(Item model) {
         return model;
     }
+
     public static void main(String[]args) {
         TrackerSingle tracker = TrackerSingle.INSTANCE;
     }

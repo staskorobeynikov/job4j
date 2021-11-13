@@ -19,6 +19,7 @@ public class ZipTest {
     public void loadOutput() {
         System.setOut(new PrintStream(out));
     }
+
     @After
     public void backOutput() {
         System.setOut(def);

@@ -19,6 +19,7 @@ public class ConvertList {
         }
         return result;
     }
+
     public static void main(String[] args) {
         List<Integer> result = convert(Arrays.asList(new int[]{1, 2}, new int[]{3, 4, 5, 6}));
         System.out.println(result);

@@ -18,12 +18,14 @@ public class StartUI {
             run = action.execute(input, tracker, output);
         }
     }
+
     private void showMenu(UserAction[] actions) {
         output.accept("Menu.");
         for (int index = 0; index < actions.length; index++) {
             output.accept(index + ". " + actions[index].name());
         }
     }
+
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Input validate = new ValidateInput(input);

@@ -15,6 +15,7 @@ public class MatrixTest {
         };
         assertThat(table, is(expect));
     }
+
     @Test
     public void when9on9() {
         Matrix matrix = new Matrix();

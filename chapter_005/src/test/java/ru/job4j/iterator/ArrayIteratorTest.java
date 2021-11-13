@@ -12,6 +12,7 @@ import static org.junit.Assert.assertThat;
 
 public class ArrayIteratorTest {
     private ArrayIterator<Integer> it;
+
     @Before
     public void setUp() {
         it = new ArrayIterator(new Integer[][]{{1}, {3, 4}, {7}});
@@ -47,6 +48,7 @@ public class ArrayIteratorTest {
         MatcherAssert.assertThat(it.next(), Matchers.is(7));
         MatcherAssert.assertThat(it.hasNext(), Matchers.is(false));
     }
+
     @Test
     public void whenThreeArrayWithoutNull() {
         ArrayIterator<Integer> it = new ArrayIterator<Integer>(new Integer[][]
@@ -56,6 +58,7 @@ public class ArrayIteratorTest {
         assertThat(it.next(), is(3));
         assertThat(it.next(), is(5));
     }
+
     @Test
     public void whenThreeArrayWithNull() {
         ArrayIterator<Integer> it = new ArrayIterator<Integer>(new Integer[][]
@@ -65,6 +68,7 @@ public class ArrayIteratorTest {
         assertThat(it.next(), is(3));
         assertThat(it.next(), is(5));
     }
+
     @Test
     public void whenThreeArrayWithNullMoreOne() {
         ArrayIterator<Integer> it = new ArrayIterator<Integer>(new Integer[][]
@@ -74,6 +78,7 @@ public class ArrayIteratorTest {
         assertThat(it.next(), is(3));
         assertThat(it.next(), is(5));
     }
+
     @Test
     public void whenThreeArrayHasNextMethod() {
         ArrayIterator<Integer> it = new ArrayIterator<Integer>(new Integer[][]
@@ -85,6 +90,7 @@ public class ArrayIteratorTest {
         assertThat(it.next(), is(3));
         assertThat(it.next(), is(5));
     }
+
     @Test
     public void whenArray135And7911Is1357911() {
         ArrayIterator<Integer> it = new ArrayIterator<Integer>(new Integer[][]
@@ -102,6 +108,7 @@ public class ArrayIteratorTest {
         assertThat(it.next(), is(11));
         assertThat(it.hasNext(), is(false));
     }
+
     @Test(expected = NoSuchElementException.class)
     public void whenArrayGetException() {
         ArrayIterator<Integer> it = new ArrayIterator<Integer>(new Integer[][]

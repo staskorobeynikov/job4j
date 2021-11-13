@@ -37,6 +37,7 @@ public class DynamicContainer<E> implements Iterable<E> {
     public int getLength() {
         return container.length;
     }
+
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {

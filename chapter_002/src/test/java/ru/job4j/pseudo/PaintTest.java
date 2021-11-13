@@ -17,14 +17,17 @@ public class PaintTest {
     private final PrintStream stdout = System.out;
     // буфер для результата
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+
     @Before
     public void loadOutput() {
         System.setOut(new PrintStream(this.out));
     }
+
     @After
     public void backOutput() {
         System.setOut(this.stdout);
     }
+
     @Test
     public void whenDrawSquare() {
         new Paint().draw(new Square());
@@ -44,6 +47,7 @@ public class PaintTest {
                 )
         );
     }
+
     @Test
     public void whenDrawTriangle() {
         new Paint().draw(new Triangle());

@@ -55,6 +55,7 @@ public class LinkedListContainer<E> implements Iterable {
         listLength--;
         return result;
     }
+
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
@@ -80,6 +81,7 @@ public class LinkedListContainer<E> implements Iterable {
                 lastReturned = lastReturned.next;
                 return result;
             }
+
             private void checkModCount() {
                 if (modCount != expectedModCount) {
                     throw new ConcurrentModificationException();
@@ -87,6 +89,7 @@ public class LinkedListContainer<E> implements Iterable {
             }
         };
     }
+
     private static class Node<E> {
         E data;
         Node<E> next;

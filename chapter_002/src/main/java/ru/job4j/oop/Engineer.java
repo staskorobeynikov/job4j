@@ -16,6 +16,7 @@ public class Engineer extends Profession {
     public void makeInvention() {
         System.out.println("makeInvention");
     }
+
     public void optimize() {
         System.out.println("optimize");
     }

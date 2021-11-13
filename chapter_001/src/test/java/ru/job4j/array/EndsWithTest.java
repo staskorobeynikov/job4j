@@ -13,6 +13,7 @@ public class EndsWithTest {
         boolean result = endsWith.endsWith(word, post);
         assertThat(result, is(true));
     }
+
     @Test
     public void whenNotStartWithPrefixThenFalse() {
         char[] word = {'H', 'e', 'l', 'l', 'o'};
@@ -21,6 +22,7 @@ public class EndsWithTest {
         boolean result = endsWith.endsWith(word, post);
         assertThat(result, is(false));
     }
+
     @Test
     public void whenStartWithAllWord() {
         char[] word = {'H', 'e', 'l', 'l', 'o'};
@@ -29,6 +31,7 @@ public class EndsWithTest {
         boolean result = endsWith.endsWith(word, post);
         assertThat(result, is(true));
     }
+
     @Test
     public void whenStartWithAllWordLGreet() {
         char[] word = {'H', 'e', 'l', 'l', 'o'};

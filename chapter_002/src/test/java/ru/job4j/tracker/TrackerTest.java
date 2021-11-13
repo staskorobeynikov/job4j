@@ -13,6 +13,7 @@ public class TrackerTest {
         Item result = tracker.findById(item.getId());
         assertThat(result.toString(), is(item.getName()));
     }
+
     @Test
     public void whenReplaceNameThenReturnNewName() {
         Tracker tracker = new Tracker();
