@@ -7,12 +7,12 @@ public class Fact {
     }
 
     public int calc(int n) {
-        int result = 1;
-        if (n < 1) {
-            throw new IllegalArgumentException("n should be great or equal 1");
+        if (n < 0) {
+            throw new IllegalArgumentException("n should be great or equal 0");
         }
-        for (int index = 1; index != n; index++) {
-            result += index;
+        int result = 1;
+        for (int index = 2; index <= n; index++) {
+            result *= index;
         }
         return result;
     }

@@ -9,28 +9,29 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class FactTest {
-    private static final String LN = System.lineSeparator();
-
     @Test
-    public void whenCalcTest() {
+    public void whenNumberIs4Then24() {
         Fact fact = new Fact();
-
         int result = fact.calc(4);
-
-        assertThat(result, is(7));
+        assertThat(result, is(24));
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void whenCalcTestException() {
+    public void whenNumberIsMinus1ThenException() {
         Fact fact = new Fact();
+        fact.calc(-1);
+    }
 
+    @Test
+    public void whenNumberIs0Then1() {
+        Fact fact = new Fact();
         int result = fact.calc(0);
-
-        assertThat(result, is(7));
+        assertThat(result, is(1));
     }
 
     @Test
     public void whenTestMain() {
+        String ln = System.lineSeparator();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
@@ -39,8 +40,8 @@ public class FactTest {
         Fact.main(args);
 
         String expect = String.format(
-                "Factorial 3 equal: 4%s",
-                LN);
+                "Factorial 3 equal: 6%s",
+                ln);
         assertThat(new String(out.toByteArray()), is(expect));
         System.setOut(def);
     }

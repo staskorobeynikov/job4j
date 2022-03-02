@@ -21,7 +21,7 @@ public class BackArrayTest {
         BackArray.main(args);
 
         String expect = String.format(
-                "[Vasya, Ivan, Nik, Petr]%s",
+                "[Vasya, Nik, Ivan, Petr]%s",
                 LN);
         assertThat(new String(out.toByteArray()), is(expect));
         System.setOut(def);

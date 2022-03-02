@@ -2,7 +2,7 @@ package ru.job4j.exam;
 
 import java.util.Arrays;
 
-class Machine {
+public class Machine {
     private static final int[] COINS = {10, 5, 2, 1};
 
     int[] change(int money, int price) {
@@ -10,10 +10,10 @@ class Machine {
         int size = 0;
         if (money > price) {
             int balance = money - price;
-            for (Integer integer : COINS) {
-                while (balance - integer >= 0) {
-                    result[size] = integer;
-                    balance -= integer;
+            for (int coin : COINS) {
+                while (balance - coin >= 0) {
+                    result[size] = coin;
+                    balance -= coin;
                     size++;
                 }
             }
